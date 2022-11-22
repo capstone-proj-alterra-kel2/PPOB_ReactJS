@@ -1,18 +1,18 @@
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/landing/navbar/Navbar";
 import "../../assets/styles/landing.css";
-import Hero from "../../components/hero/Hero";
-import AboutUsLanding from "../../components/aboutUs/AboutUs";
+import Hero from "../../components/landing/hero/Hero";
+import AboutUsLanding from "../../components/landing/aboutUs/AboutUs";
 const LandingPage = () => {
   return (
     <>
       <div
-        className="min-h-screen 
+        className="min-h-screen w-full
       "
       >
         <div className="circle w-[421px] h-[421px] absolute rounded-full"></div>
         <div className="rectangle" />
         <Navbar />
-        <div className="mr-auto ml-auto mb-7 content-navbar ">
+        <div className="mx-auto mt-[50px] mb-[58px] content-navbar ">
           <h1 className="text-center ">
             Transaksi Lebih Aman Dan Nyaman Bersama MYCUAN
           </h1>
