@@ -1,0 +1,124 @@
+.content-navbar {
+  width: 1026px;
+  height: 170px;
+}
+
+.content-navbar h1 {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 70px;
+  line-height: 85px;
+}
+
+.circle {
+  background-color: #5679d7;
+  left: -62px;
+  top: -60px;
+  z-index: -1;
+  opacity: 0.56;
+  filter: blur(300px);
+}
+
+.circle3 {
+  background-color: #5679d7;
+  opacity: 0.4;
+  filter: blur(200px);
+}
+
+.rectangle {
+  width: 387px;
+  height: 185px;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  filter: blur(100px);
+  background: linear-gradient(
+    169.01deg,
+    #ffffff 4.38%,
+    rgba(255, 255, 255, 0) 91.64%
+  );
+  /* opacity: 0.48; */
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* Tentang kami */
+.tentangkami-hero {
+  background-color: #335aff;
+  z-index: -10px;
+}
+
+.about-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  color: white;
+}
+
+.sub-title-content {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 40px;
+}
+
+.about-content {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: white;
+}
+
+/* .segitiga1 {
+  height: 0px;
+  width: 0px;
+  border: 2px double black;
+  border-bottom: solid 120px red;
+  border-left: solid 80px transparent;
+  border-right: solid 80px transparent;
+} */
+
+.circle2 {
+  border-radius: 0 200px 200px 200px;
+  background-color: aliceblue;
+}
+
+.image-tentangkami {
+  top: -70px;
+  left: 10px;
+}
+
+.image-tentangkami img {
+  object-fit: contain;
+  /* border: 2px solid black; */
+  height: 200px;
+  border-radius: 0 200px 200px 200px;
+
+  /* border-radius: 50%; */
+}
+/* end Tentang Kami*/
+
+/* navbar */
+
+.font-navbar {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.font-logo {
+  line-height: 33px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* hero wrapper */
+
+/* .center-hero-content {
+  transform: matrix(0.99, 0.11, 0.11, 0.99, 0, 0);
+} */
