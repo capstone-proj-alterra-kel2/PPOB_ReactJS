@@ -9,8 +9,8 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <div className="justify-start flex items-end w-[100%] h-[827px] bg-blackfooter text-white1">
-        <div className="flex mx-[120px] mb-[10px]">
+      <div className="justify-start flex items-end w-[100%] h-[700px] bg-blackfooter text-white1">
+        <div className="flex mx-[120px] mb-[40px]">
           {/* deskripsi mycuan */}
           <div className="about mycuan">
             <div className="">
@@ -18,7 +18,7 @@ const Footer = () => {
                 className="mb-[27px]"
                 src={logomycuan}
                 width="250px"
-                height="63px"
+                height="63px" alt=""
               ></img>
               <p className="text-base w-[378px] font-normal text-justify mb-[20px]">
                 Lorem Ipsum is simply dummy text of the printing and typesetting

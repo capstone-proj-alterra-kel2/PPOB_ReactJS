@@ -121,8 +121,8 @@ const LandingPage = () => {
             </p>
           </div>
           <div className=" flex justify-center items-center">
-            <img className="mt-[20px] w-[248px] mr-[8px]" src={downloadps}></img>
-            <img className="mt-[20px] w-[248px]" src={downloadaps}></img>
+            <img className="mt-[20px] w-[248px] mr-[8px]" src={downloadps} alt=""></img>
+            <img className="mt-[20px] w-[248px]" src={downloadaps} alt=""></img>
           </div>
         </div>
 
