@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import "../../../assets/styles/modal.css";
-import telp from "../../../assets/img/icon-telp.png";
 import email from "../../../assets/img/icon-email.png";
-import user from "../../../assets/img/icon-user.png";
-import background from "../../../assets/img/Group 606.png";
+import shield from "../../../assets/img/icon-shield.png";
+import background from "../../../assets/img/edit-admin.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
-import { hasuraApi, usersApi } from "../../../apis/user";
+import { hasuraApi } from "../../../apis/user";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
@@ -19,39 +17,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     avatar: "",
   });
   const [file, setFile] = useState("");
-
-  console.log("berubah ", formData);
-
-  // masih belum implementasi untuk axios instance get data by id
-  // const getUsersbyid = async (id) => {
-  //   const response = await usersApi.get(`/${id}`);
-  //   return response.data;
-  // };
-
-  // get data by id
-  useEffect(() => {
-    hasuraApi(`/get/${idUser}`).then((res) => {
-      console.log("id user", res.data.users_by_pk);
-      setFormData({
-        username: res.data.users_by_pk.username,
-        email: res.data.users_by_pk.email,
-        handphone: res.data.users_by_pk.handphone,
-        avatar: res.data.users_by_pk.avatar,
-      });
-    });
-  }, [idUser]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:3000/users/${idUser}`)
-  //     .then((res) => {
-  //       setFormData({
-  //         nama: res.data.name,
-  //         email: res.data.email,
-  //         avatar: res.data.avatar,
-  //       });
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [idUser]);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -67,14 +32,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  //onchange data by id user
-  // const data = {
-  //   username: formData.username,
-  //   email: formData.email,
-  //   handphone: formData.handphone,
-  //   avatar: file,
-  // };
 
   // update to date use axios.post
   const Update = () => {
@@ -127,7 +84,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   <img
                     src={iconEdit}
                     alt="edit"
-                    className="absolute w-8 h-8 top-[245px] left-[735px]"
+                    className="absolute w-8 h-8 top-[290px] left-[745px]"
                   />
                 </label>
                 <input
@@ -141,9 +98,9 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 />
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Username</label>
+                <label className="text-grey2 mb-3">Nama</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img src={user} alt="telp.icon" className="w-5 h-5 mr-2" />
+                  <img src={shield} alt="nama.icon" className="w-5 h-5 mr-2" />
                   <input
                     className="w-[300px]"
                     value={formData.username}
@@ -163,19 +120,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                     onChange={onChangeData}
                     name="email"
                     type="email"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col form-input  mb-[24px]">
-                <label className="text-grey2 mb-3">No Handphone</label>
-                <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img src={telp} alt="telp.icon" className="w-5 h-5 mr-2" />
-                  <input
-                    className="w-[300px]"
-                    value={formData.handphone}
-                    onChange={onChangeData}
-                    name="handphone"
-                    type="text"
                   />
                 </div>
               </div>

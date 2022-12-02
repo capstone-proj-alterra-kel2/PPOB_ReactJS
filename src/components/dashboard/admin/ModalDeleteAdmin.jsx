@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../../assets/styles/modal.css";
 import backgroundDel from "../../../assets/img/del-pengguna.png";
 import { toast } from "react-toastify";
 import { hasuraApi } from "../../../apis/user";
 
-const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
+const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   const [email, setEmail] = useState("");
 
@@ -85,4 +84,4 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   );
 };
 
-export default DeleteModal;
+export default ModalDeleteAdmin;

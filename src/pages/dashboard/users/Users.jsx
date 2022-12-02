@@ -9,16 +9,17 @@ import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../../redux/feature/UsersSlice";
 import { AiOutlineSearch } from "react-icons/ai";
-import { getUsers } from "../../../apis/user";
+import { getUsersHasura } from "../../../apis/user";
 import Pagination from "../../../components/dashboard/pagination/Pagination";
 import Loading from "../../../utils/Loading";
+import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
 
 const UsersPage = () => {
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataUsers = useSelector((state) => state.users.users);
   const [search, setSearch] = useState("");
-
+  console.log("punya data ?", DataUsers);
   // Pagination useState
   const [currentItems, setcurrentItems] = useState(DataUsers);
 
@@ -32,24 +33,21 @@ const UsersPage = () => {
   const [id, setID] = useState("");
 
   useEffect(() => {
-    getUsers().then((res) => {
+    getUsersHasura().then((res) => {
       setLoading(false);
       dispatch(setUsers(res));
     });
   }, [loading]);
-
-  // console.log("usersPage: ", DataUsers);
-  // console.log("counter: ", counter);
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {
     const getSearch = e.target.value;
     setSearch(getSearch);
     if (getSearch !== "") {
-      const searchData = currentItems.filter((item) =>
-        item.name.toLowerCase().includes(getSearch)
+      const searchData = DataUsers.filter((item) =>
+        item.username.toLowerCase().includes(getSearch)
       );
-      setcurrentItems(searchData);
+      setcurrentItems(searchData.slice(0, 5));
     } else {
       setcurrentItems(DataUsers.slice(0, 5));
     }
@@ -57,14 +55,14 @@ const UsersPage = () => {
   };
 
   return (
-    <>
+    <SidebarPage>
       {loading ? (
         <div className="h-[100vh] flex justify-center items-center">
           <Loading />
         </div>
       ) : (
         <div className="p-5">
-          <div className="flex  pb-3 flex-col">
+          <div className="flex  pb-3 flex-col flex-wrap">
             <div className="mb-5">
               <div className="not-italic text-2xl font-bold ">
                 Menu Pengguna
@@ -100,7 +98,7 @@ const UsersPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col cards ">
+          <div className="flex flex-col cards h-[450px]">
             {loading ? (
               <div className="h-[100vh] flex justify-center items-center">
                 <Loading />
@@ -127,7 +125,7 @@ const UsersPage = () => {
                       </div>
                       <div className="pr-[25px] w-60">
                         <div className="text-grey2">Username</div>
-                        <div>{item.name}</div>
+                        <div>{item.username}</div>
                       </div>
                       <div className="pr-[25px] w-60">
                         <div className="text-grey2">Email</div>
@@ -135,7 +133,7 @@ const UsersPage = () => {
                       </div>
                       <div className="pr-[25px] w-60">
                         <div className="text-grey2">No Handphone</div>
-                        <div>{item.email}</div>
+                        <div>{item.handphone}</div>
                       </div>
                     </div>
                     <div className="flex justify-center items-center">
@@ -202,7 +200,7 @@ const UsersPage = () => {
         : counter === 0
         ? "No data"
         : null} */}
-    </>
+    </SidebarPage>
   );
 };
 

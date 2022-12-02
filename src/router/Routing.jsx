@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SidebarPage from "../components/dashboard/sidebar/Sidebar";
 import DashboardPage from "../pages/dashboard/Dashboard";
 import ProductsPage from "../pages/dashboard/products/ProductsPage";
 import TransactionsPage from "../pages/dashboard/transactions/Transactions";
@@ -9,6 +8,7 @@ import LandingPage from "../pages/landing/Landing";
 import PulsaPage from "../pages/dashboard/products/telecommunication/Pulsa";
 import PaketData from "../pages/dashboard/products/telecommunication/PaketData";
 import TelkomselPage from "../pages/dashboard/products/telecommunication/Telkomsel";
+import PrivateRoute from "./PrivateRoute";
 
 const Routing = () => {
   return (
@@ -16,16 +16,15 @@ const Routing = () => {
       <BrowserRouter>
         {/* Public Router */}
         <Routes>
-          <Route path="/landing">
-            <Route index element={<LandingPage />} />
-          </Route>
+          <Route path="/landing" element={<LandingPage />}></Route>
           <Route path="/login" element={<LandingPage />} />
           <Route path="/register" element={<LandingPage />} />
         </Routes>
+
         {/* Private Router, Auth */}
 
-        <SidebarPage>
-          <Routes>
+        <Routes>
+          <Route element={<PrivateRoute />}>
             <Route path="/">
               <Route index element={<DashboardPage />} />
             </Route>
@@ -46,8 +45,8 @@ const Routing = () => {
             <Route path="/admins">
               <Route index element={<AdminsPage />} />
             </Route>
-          </Routes>
-        </SidebarPage>
+          </Route>
+        </Routes>
       </BrowserRouter>
     </>
   );

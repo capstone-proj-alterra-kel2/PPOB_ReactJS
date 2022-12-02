@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import logo from "../../../assets/img/logo4.png";
+import iconLogout from "../../../assets/img/icon-logout.png";
+import iconProducts from "../../../assets/img/icon-products.png";
+import iconHistory from "../../../assets/img/icon-history.png";
+import iconUsers from "../../../assets/img/icon-users.png";
+import iconAdmin from "../../../assets/img/icon-admin.png";
+
 import { FaConnectdevelop, FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarDashboard from "../navbar/Navbar";
@@ -17,22 +23,22 @@ const SidebarPage = ({ children }) => {
     {
       path: "/users",
       name: "Pengguna",
-      icon: <FaConnectdevelop />,
+      icon: <img src={iconUsers} alt="" className="w-7 h-7" />,
     },
     {
       path: "/products",
       name: "Produk Kami",
-      icon: <FaConnectdevelop />,
+      icon: <img src={iconProducts} alt="" className="w-7 h-7" />,
     },
     {
       path: "/transactions",
       name: "Riwayat Transaksi",
-      icon: <FaConnectdevelop />,
+      icon: <img src={iconHistory} alt="" className="w-7 h-7" />,
     },
     {
       path: "/admins",
       name: "Akun Admin",
-      icon: <FaConnectdevelop />,
+      icon: <img src={iconAdmin} alt="" className="w-7 h-7" />,
     },
   ];
   return (
@@ -59,26 +65,28 @@ const SidebarPage = ({ children }) => {
         </div>
         <hr />
 
-        <div className="flex flex-col">
-          {menuItem.map((item, index) => (
-            <NavLink
-              to={item.path}
-              key={index}
-              className="flex mt-[10px] mb-[10px] list-none text-white h-[48px] items-center content-center px-[10px] hover:bg-white hover:text-midblue"
-              activeClassName="active"
-            >
-              <div className="font-menu p-2">{item.icon}</div>
-              <div
-                style={{ display: isOpen ? "block" : "none" }}
-                className="font-menu p-1 text-base font-semibold not-italic"
+        <div className="flex flex-col  h-[90vh] justify-between">
+          <div>
+            {menuItem.map((item, index) => (
+              <NavLink
+                to={item.path}
+                key={index}
+                className="flex mt-[10px] mb-[10px] list-none text-white h-[48px] items-center content-center px-[10px] hover:bg-white hover:text-midblue"
+                activeClassName="active"
               >
-                {item.name}
-              </div>
-            </NavLink>
-          ))}
-          <div className="flex mt-[50px] mb-[10px] list-none text-white h-[48px] items-center content-center px-[10px] hover:bg-white hover:text-midblue">
+                <div className="font-menu p-2">{item.icon}</div>
+                <div
+                  style={{ display: isOpen ? "block" : "none" }}
+                  className="font-menu p-1 text-base font-semibold not-italic"
+                >
+                  {item.name}
+                </div>
+              </NavLink>
+            ))}
+          </div>
+          <div className="flex mt-[50px] mb-[10px] list-none text-white h-[48px] items-center  px-[10px] hover:bg-white hover:text-midblue">
             <div className="font-menu p-2">
-              <FaConnectdevelop />
+              <img src={iconLogout} alt="" className="w-7 h-7" />
             </div>
 
             <button

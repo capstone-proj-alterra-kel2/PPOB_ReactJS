@@ -1,20 +1,22 @@
-import pending from "../../../../src/assets/img/logo-pending.png";
-import berhasil from "../../../../src/assets/img/logo-berhasil.png";
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../../../assets/styles/dashboard.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import Pagination from "../../../components/dashboard/pagination/Pagination";
 import { transactions } from "../../../apis/Transactions";
+import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
+
+// Logo assets
+import pending from "../../../../src/assets/img/logo-pending.png";
+import berhasil from "../../../../src/assets/img/logo-berhasil.png";
 
 const TransactionsPage = () => {
   const [loading, setLoading] = useState(false);
   // Pagination useState
   const [currentItems, setcurrentItems] = useState(transactions);
   const [search, setSearch] = useState("");
-  const arr = [1, 2, 3, 4, 5];
+
   return (
-    <>
+    <SidebarPage>
       {loading ? (
         "data masih Proses"
       ) : (
@@ -29,11 +31,19 @@ const TransactionsPage = () => {
               </div>
               <div className="flex">
                 <button className="pending w-[200px] h-[45px] bg-green text-white m-1 flex justify-center items-center rounded">
-                  <img src={pending} className="mr-2 w-[22px] h-[22px]" />
+                  <img
+                    src={pending}
+                    alt=""
+                    className="mr-2 w-[22px] h-[22px]"
+                  />
                   <div>Transaksi Pending</div>
                 </button>
                 <button className="berhasil w-[200px] h-[45px] m-1 border border-midblue text-midblue flex justify-center items-center rounded">
-                  <img src={berhasil} className="mr-2 w-[22px] h-[22px]" />
+                  <img
+                    src={berhasil}
+                    alt=""
+                    className="mr-2 w-[22px] h-[22px]"
+                  />
                   <div>Transaksi Berhasil</div>
                 </button>
               </div>
@@ -112,7 +122,7 @@ const TransactionsPage = () => {
           />
         </div>
       )}
-    </>
+    </SidebarPage>
   );
 };
 

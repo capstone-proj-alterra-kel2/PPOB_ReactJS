@@ -2,24 +2,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
 import { Telkomcolumns } from "../../../../components/dashboard/products/Telkomsel";
 
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { produts } from "../../../../apis/produtcs";
 import { AiOutlineSearch } from "react-icons/ai";
 
 const TelkomselPage = () => {
   const [dataProducts, setDataProducts] = useState(produts);
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  //   useEffect(() => {
-  //     const data = async () => {
-  //       setLoading(true);
-  //       const res = await axios.get("http://localhost:3000/products");
-  //       setDataProducts(res.data);
-  //       setLoading(false);
-  //     };
-  //     data();
-  //   }, []);
+  // const [loading, setLoading] = useState(false);
 
   return (
     <>

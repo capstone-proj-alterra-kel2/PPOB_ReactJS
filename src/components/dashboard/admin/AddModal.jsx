@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import background from "../../../assets/img/add-pengguna.png";
+import background from "../../../assets/img/add-admin.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
 import { hasuraApi } from "../../../apis/user";
@@ -7,12 +7,12 @@ import telpIcon from "../../../assets/img/icon-telp.png";
 import emailIcon from "../../../assets/img/icon-email.png";
 import userIcon from "../../../assets/img/icon-user.png";
 
-const AddModal = ({ isVisible, onClose, setLoading }) => {
+const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState();
   const [password, setPassword] = useState("");
-  const [handphone, setHandphone] = useState("");
+
   const data = {
     username: nama,
     email: email,
@@ -29,8 +29,6 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
       .post("/post", {
         username: nama,
         email: email,
-        handphone: handphone,
-        password: password,
       })
       .then((res) => {
         console.log("data succes", res);
@@ -97,11 +95,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 />
 
                 <label htmlFor="file">
-                  <img
-                    src={iconEdit}
-                    alt="edit"
-                    className="absolute w-8 h-8 top-[190px] left-[735px]"
-                  />
+                  <img src={iconEdit} alt="edit" className="icon2" />
                 </label>
                 <input
                   type="file"
@@ -113,18 +107,16 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 />
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Masukan Username</label>
+                <label className="mb-3 text-grey2">Nama Lengkap</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={userIcon}
                     alt="telp.icon"
                     className="w-5 h-5 mr-2"
                   />
-
                   <input
                     value={nama}
                     type="text"
-                    className="w-[100%]"
                     placeholder="Masukan Email..."
                     onChange={(event) => {
                       setNama(event.target.value);
@@ -133,7 +125,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 </div>
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Masukan Email</label>
+                <label className="mb-3 text-grey2">Email</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={emailIcon}
@@ -144,7 +136,6 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                     value={email}
                     placeholder="Masukan Email..."
                     type="email"
-                    className="w-[100%]"
                     onChange={(event) => {
                       setEmail(event.target.value);
                     }}
@@ -152,42 +143,17 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 </div>
               </div>
               <div className="flex flex-col form-input  mb-[24px]">
-                <label className="text-grey2 mb-3">
-                  Masukan Nomor Handphone
-                </label>
+                <label className="text-grey2 mb-3">Password</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={telpIcon}
+                    src={emailIcon}
                     alt="telp.icon"
                     className="w-5 h-5 mr-2"
                   />
-
-                  <input
-                    type="handphone"
-                    required
-                    value={handphone}
-                    className="w-[100%]"
-                    placeholder="Masukan Nomor Handphone..."
-                    onChange={(event) => {
-                      setHandphone(event.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col form-input  mb-[24px]">
-                <label className="text-grey2 mb-3">Masukan Password</label>
-                <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img
-                    src={userIcon}
-                    alt="telp.icon"
-                    className="w-5 h-5 mr-2"
-                  />
-
                   <input
                     type="password"
                     required
                     value={password}
-                    className="w-[100%]"
                     placeholder="Masukan Password..."
                     onChange={(event) => {
                       setPassword(event.target.value);
@@ -221,4 +187,4 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
   );
 };
 
-export default AddModal;
+export default AddModalAdmin;
