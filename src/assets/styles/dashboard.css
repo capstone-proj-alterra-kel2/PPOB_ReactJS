@@ -1,6 +1,6 @@
 /* Sidebar Component*/
 .active {
-  background: white;
+  background: #e7ecf9;
   color: #000;
 }
 
@@ -27,7 +27,7 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
   margin-right: 5rem;
   font-size: 1.2rem;
   gap: 5px;
@@ -72,7 +72,12 @@
   margin-bottom: 12px;
   width: 266px;
   height: 121px;
-  background: linear-gradient(84.3deg, #0d40c6 1.52%, #4a92e7 95.29%);
+  color: #262729;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  background-color: #b5c4fd;
+  /* background: linear-gradient(84.3deg, #0d40c6 1.52%, #4a92e7 95.29%); */
   border-radius: 12px;
 }
 

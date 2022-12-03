@@ -20,8 +20,8 @@ const TransactionsPage = () => {
       {loading ? (
         "data masih Proses"
       ) : (
-        <div>
-          <div className="p-6">
+        <div className="snap-x">
+          <div className="px-10 pt-5 snap-center">
             <div className="flex justify-between pb-3">
               <div>
                 <h1 className="text-3xl font-bold pl-1">Riwayat Transaksi</h1>

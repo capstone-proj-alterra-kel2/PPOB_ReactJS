@@ -9,6 +9,7 @@ import PulsaPage from "../pages/dashboard/products/telecommunication/Pulsa";
 import PaketData from "../pages/dashboard/products/telecommunication/PaketData";
 import TelkomselPage from "../pages/dashboard/products/telecommunication/Telkomsel";
 import PrivateRoute from "./PrivateRoute";
+import AddProductsTelkomsel from "../pages/dashboard/products/telecommunication/AddProductsTelkomsel";
 
 const Routing = () => {
   return (
@@ -35,7 +36,11 @@ const Routing = () => {
               <Route index element={<ProductsPage />} />
               <Route path="pulsa">
                 <Route index element={<PulsaPage />} />
-                <Route path="telkomsel" element={<TelkomselPage />} />
+                <Route path="telkomsel">
+                  <Route index element={<TelkomselPage />} />
+                  <Route path="new" element={<AddProductsTelkomsel />} />
+                </Route>
+                <Route path="simpati" element={"a"} />
               </Route>
               <Route path="paket-data" element={<PaketData />} />
             </Route>

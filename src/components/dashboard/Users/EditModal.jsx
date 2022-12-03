@@ -127,7 +127,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   <img
                     src={iconEdit}
                     alt="edit"
-                    className="absolute w-8 h-8 top-[245px] left-[735px]"
+                    className="absolute w-8 h-8 top-[210px] left-[670px]"
                   />
                 </label>
                 <input

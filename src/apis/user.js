@@ -22,6 +22,11 @@ export const getUsersHasura = async () => {
   return response.data.users;
 };
 
+export const getAdminsHasura = async () => {
+  const response = await hasuraApi.get("/admins");
+  return response.data.admin;
+};
+
 export const postUserHasura = async () => {
   const response = await hasuraApi.post("/post");
   return response.data.users;

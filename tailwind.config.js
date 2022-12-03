@@ -21,6 +21,7 @@ module.exports = {
       error50: "#E61010",
       golden10: "#FFBA541A",
       golden: "#FFBA54",
+      black90: "#262729",
     },
     extend: {},
   },

@@ -13,18 +13,8 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
   const [avatar, setAvatar] = useState();
   const [password, setPassword] = useState("");
   const [handphone, setHandphone] = useState("");
-  const data = {
-    username: nama,
-    email: email,
-    avatar: avatar,
-  };
 
   const AddData = async () => {
-    // const data = new FormData();
-    // data.append("name", nama);
-    // data.append("email", email);
-    // data.append("avatar", avatar);
-
     await hasuraApi
       .post("/post", {
         username: nama,
@@ -42,19 +32,6 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
         console.log(err);
         toast.error("Data Akun GAGAL DIBUAT!");
       });
-
-    // axios
-    //   .post(`http://localhost:3000/users/`, data)
-    //   .then((res) => {
-    //     console.log("data succes", res);
-    //     setLoading(true);
-    //     onClose(true);
-    //     toast.success("Data Akun BERHASIL DIBUAT!");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     toast.error("Data Akun GAGAL DIBUAT!");
-    //   });
   };
 
   const imageUpload = (e) => {
@@ -100,7 +77,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                   <img
                     src={iconEdit}
                     alt="edit"
-                    className="absolute w-8 h-8 top-[190px] left-[735px]"
+                    className="absolute w-8 h-8 top-[155px] left-[670px]"
                   />
                 </label>
                 <input
@@ -163,7 +140,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                   />
 
                   <input
-                    type="handphone"
+                    type="number"
                     required
                     value={handphone}
                     className="w-[100%]"

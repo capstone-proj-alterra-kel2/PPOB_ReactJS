@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
 import "../../../assets/styles/dashboard.css";
-import icondel from "../../../assets/img/icon-delete.png";
-import iconedit from "../../../assets/img/icon-edit2.png";
-import iconAdd from "../../../assets/img/icon-add.png";
-import AddModal from "../../../components/dashboard/Users/AddModal";
-import EditModal from "../../../components/dashboard/Users/EditModal";
-import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../../redux/feature/UsersSlice";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -13,6 +7,15 @@ import { getUsersHasura } from "../../../apis/user";
 import Pagination from "../../../components/dashboard/pagination/Pagination";
 import Loading from "../../../utils/Loading";
 import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
+import { Breadcrumbs } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
+
+// assets logo / icon
+import icondel from "../../../assets/img/icon-delete.png";
+import iconedit from "../../../assets/img/icon-edit2.png";
+import iconAdd from "../../../assets/img/icon-add.png";
+import AddModal from "../../../components/dashboard/Users/AddModal";
+import EditModal from "../../../components/dashboard/Users/EditModal";
+import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
 
 const UsersPage = () => {
   const [counter, setCounter] = useState(0);
@@ -26,12 +29,13 @@ const UsersPage = () => {
   // loading
   const [loading, setLoading] = useState(true);
 
-  // Showmodal Edit
-  const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
-  const [showModal3, setShowModal3] = useState(false);
+  // Show modal
+  const [showModalEdit, setShowModalEdit] = useState(false);
+  const [showModalAdd, setShowModalAdd] = useState(false);
+  const [showModalDel, setShowModalDel] = useState(false);
   const [id, setID] = useState("");
 
+  // get Data Users
   useEffect(() => {
     getUsersHasura().then((res) => {
       setLoading(false);
@@ -57,18 +61,18 @@ const UsersPage = () => {
   return (
     <SidebarPage>
       {loading ? (
-        <div className="h-[100vh] flex justify-center items-center">
+        <div className="h-[80vh] flex justify-center items-center">
           <Loading />
         </div>
       ) : (
-        <div className="p-5">
-          <div className="flex  pb-3 flex-col flex-wrap">
+        <div className="px-10 pt-5 h-[100%]">
+          <div className="pb-5">
             <div className="mb-5">
               <div className="not-italic text-2xl font-bold ">
                 Menu Pengguna
               </div>
               <p className="text-base font-medium text-grey2">
-                Lorem ipsum dolor sit amet.
+                <Breadcrumbs />
               </p>
             </div>
             <div className="flex justify-between">
@@ -86,7 +90,7 @@ const UsersPage = () => {
               <div
                 className=" gap-[10px] px-5 pt-[10px] pb-[10px] bg-primary50 text-white cursor-pointer flex justify-center items-center rounded"
                 onClick={() => {
-                  setShowModal2(true);
+                  setShowModalAdd(true);
                 }}
               >
                 <img
@@ -141,7 +145,7 @@ const UsersPage = () => {
                         className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
                         onClick={() => {
                           setID(item.id);
-                          setShowModal(true);
+                          setShowModalEdit(true);
                         }}
                       >
                         <img
@@ -154,7 +158,7 @@ const UsersPage = () => {
                         className="px-3 pt-[10px] pb-[10px] text-error50 flex"
                         onClick={() => {
                           setID(item.id);
-                          setShowModal3(true);
+                          setShowModalDel(true);
                         }}
                       >
                         <img
@@ -170,22 +174,22 @@ const UsersPage = () => {
             )}
           </div>
           <EditModal
-            isVisible={showModal}
-            onClose={() => setShowModal(false)}
+            isVisible={showModalEdit}
+            onClose={() => setShowModalEdit(false)}
             id={id}
             setLoading={setLoading}
-          ></EditModal>
+          />
           <AddModal
-            isVisible={showModal2}
-            onClose={() => setShowModal2(false)}
+            isVisible={showModalAdd}
+            onClose={() => setShowModalAdd(false)}
             setLoading={setLoading}
-          ></AddModal>
+          />
           <DeleteModal
-            isVisible={showModal3}
-            onClose={() => setShowModal3(false)}
+            isVisible={showModalDel}
+            onClose={() => setShowModalDel(false)}
             id={id}
             setLoading={setLoading}
-          ></DeleteModal>
+          />
 
           <Pagination
             Datas={DataUsers}

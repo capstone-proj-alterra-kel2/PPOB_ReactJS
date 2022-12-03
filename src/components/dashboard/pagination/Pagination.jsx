@@ -23,7 +23,7 @@ const Pagination = ({ Datas, setcurrentItems, currentItems, loading }) => {
       {loading ? (
         "Loading"
       ) : currentItems.length === 0 ? null : (
-        <div className=" flex  justify-between mt-3">
+        <div className=" flex  justify-between pt-3">
           <div className="ml-[30px]">
             Showing {itemOffset + 1} to {endOffset} | {enteries} entries
           </div>
