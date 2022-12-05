@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../../assets/styles/modal.css";
 import email from "../../../assets/img/icon-email.png";
 import shield from "../../../assets/img/icon-shield.png";
@@ -9,14 +9,27 @@ import { hasuraApi } from "../../../apis/user";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  const [username, setUserName] = useState("");
+  console.log("ada id nya admin", id);
   const [formData, setFormData] = useState({
-    username: "",
+    nama_lengkap: "",
     email: "",
-    handphone: "",
     avatar: "",
   });
   const [file, setFile] = useState("");
+
+  // get data by id
+  useEffect(() => {
+    hasuraApi(`/admins/${idUser}`).then((res) => {
+      console.log("id user", res.data.data_admins_by_pk);
+      setFormData({
+        nama_lengkap: res.data.data_admins_by_pk.nama_lengkap,
+        email: res.data.data_admins_by_pk.email,
+        avatar: res.data.data_admins_by_pk.avatar,
+      });
+    });
+  }, [idUser]);
+
+  console.log("form data admins by id,", formData);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -36,10 +49,9 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   // update to date use axios.post
   const Update = () => {
     hasuraApi
-      .put(`update/${idUser}`, {
-        username: formData.username,
+      .put(`/admins/${idUser}`, {
+        nama_lengkap: formData.nama_lengkap,
         email: formData.email,
-        handphone: formData.handphone,
         avatar: formData.avatar,
       })
       .then(() => {
@@ -98,14 +110,14 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 />
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Nama</label>
+                <label className="text-grey2 mb-3">Nama Lengkap</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={shield} alt="nama.icon" className="w-5 h-5 mr-2" />
                   <input
                     className="w-[300px]"
-                    value={formData.username}
+                    value={formData.nama_lengkap}
                     onChange={onChangeData}
-                    name="username"
+                    name="nama_lengkap"
                     type="text"
                   />
                 </div>

@@ -12,6 +12,7 @@ import pdam from "../../../assets/img/products/PDAM.png";
 import shopee from "../../../assets/img/products/shopee.png";
 import tagihanListrik from "../../../assets/img/products/Tagihan_listrik.png";
 import tokenListrik from "../../../assets/img/products/Token_listrik.png";
+
 export const telekomunikasi = [
   {
     id: 1,
@@ -35,7 +36,7 @@ export const telekomunikasi = [
   },
   {
     id: 3,
-    path: "/",
+    path: "indihome",
     produk: "Indihome",
     logo: (
       <img
@@ -50,7 +51,7 @@ export const telekomunikasi = [
 export const tagihan = [
   {
     id: 1,
-    path: "/",
+    path: "bpjs",
     produk: "BPJS",
     logo: (
       <img src={bpjs} alt="BPJS" style={{ width: "48px", height: "48px" }} />
@@ -58,7 +59,7 @@ export const tagihan = [
   },
   {
     id: 2,
-    path: "/",
+    path: "listrik",
     produk: "Listrik",
     logo: (
       <img
@@ -70,7 +71,7 @@ export const tagihan = [
   },
   {
     id: 3,
-    path: "/",
+    path: "token-listrik",
     produk: "Token Listrik",
     logo: (
       <img
@@ -82,7 +83,7 @@ export const tagihan = [
   },
   {
     id: 4,
-    path: "/",
+    path: "pdam",
     produk: "PDAM",
     logo: (
       <img src={pdam} alt="PDAM" style={{ width: "48px", height: "48px" }} />
@@ -93,7 +94,7 @@ export const tagihan = [
 export const voucher = [
   {
     id: 1,
-    path: "/",
+    path: "voucher-game",
     produk: "Voucher Game",
     logo: (
       <img
@@ -105,7 +106,7 @@ export const voucher = [
   },
   {
     id: 2,
-    path: "/",
+    path: "google-play",
     produk: "Google Play",
     logo: (
       <img
@@ -120,7 +121,7 @@ export const voucher = [
 export const keuangan = [
   {
     id: 1,
-    path: "/",
+    path: "shoopepay",
     produk: "ShoopePay",
     logo: (
       <img
@@ -132,7 +133,7 @@ export const keuangan = [
   },
   {
     id: 2,
-    path: "/",
+    path: "linkaja",
     produk: "Linkaja",
     logo: (
       <img
@@ -144,7 +145,7 @@ export const keuangan = [
   },
   {
     id: 3,
-    path: "/",
+    path: "dana",
     produk: "Dana",
     logo: (
       <img src={dana} alt="Dana" style={{ width: "48px", height: "48px" }} />
@@ -152,7 +153,7 @@ export const keuangan = [
   },
   {
     id: 4,
-    path: "/",
+    path: "gopay",
     produk: "Gopay",
     logo: (
       <img src={gopay} alt="Gopay" style={{ width: "48px", height: "48px" }} />
@@ -160,7 +161,7 @@ export const keuangan = [
   },
   {
     id: 5,
-    path: "/",
+    path: "ovo",
     produk: "Ovo",
     logo: <img src={ovo} alt="OVO" style={{ width: "48px", height: "48px" }} />,
   },

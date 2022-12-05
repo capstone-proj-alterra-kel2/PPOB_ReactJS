@@ -10,11 +10,13 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
 
   // get data email user
   useEffect(() => {
-    hasuraApi(`/get/${idUser}`).then((res) => {
-      console.log("id user", res.data.users_by_pk);
-      setEmail(res.data.users_by_pk.email);
+    hasuraApi(`/admins/${idUser}`).then((res) => {
+      // console.log("delete data admin", res.data.data_admins_by_pk);
+      setEmail(res.data.data_admins_by_pk.email);
     });
   }, [idUser]);
+
+  // console.log("punya id untuk delete", id);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -26,7 +28,7 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
   // remove data using axios delete
   const handleDelete = () => {
     hasuraApi
-      .delete(`delete/${idUser}`)
+      .delete(`admins/${idUser}`)
       .then(() => {
         setLoading(true);
         onClose(true);

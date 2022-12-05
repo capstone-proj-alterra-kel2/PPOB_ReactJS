@@ -7,11 +7,44 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarDashboard from "../navbar/Navbar";
 import { ToastContainer } from "react-toastify";
+import { Navigate } from "react-router-dom";
+import { AxiosInstance } from "../../../apis/api";
+import { Auth } from "../../../utils/Auth";
 
 const SidebarPage = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const [navigate, setNavigate] = useState(false);
 
+  // useEffect(() => {
+  //     (async () => {
+  //         try {
+  //             const {data} = await axios.get('user');
+
+  //             setName(data.name);
+  //         } catch (e) {
+  //             setNavigate(true);
+  //         }
+  //     })();
+  // }, []);
+
+  const logout = () => {
+    AxiosInstance.post("/auth/logout", {}).then((res) => {
+      console.log("berhasil", res);
+      // return Cookies.remove("token");
+    });
+
+    setNavigate(true);
+  };
+
+  const handleLogout = () => {
+    Auth.signOut();
+    setNavigate(true);
+  };
+
+  if (navigate) {
+    return <Navigate to="/login" />;
+  }
   return (
     <div className="flex">
       <div className="">
@@ -56,7 +89,10 @@ const SidebarPage = ({ children }) => {
                 </NavLink>
               ))}
             </div>
-            <div className="flex mt-[50px] mb-[10px] list-none text-white h-[48px] items-center  px-[10px] hover:bg-white hover:text-midblue">
+            <div
+              onClick={handleLogout}
+              className="flex mt-[50px] mb-[10px] list-none text-white h-[48px] items-center  px-[10px] hover:bg-white hover:text-midblue"
+            >
               <div className="font-menu p-2">
                 <img src={iconLogout} alt="" className="w-7 h-7" />
               </div>

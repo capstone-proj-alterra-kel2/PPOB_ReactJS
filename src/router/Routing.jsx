@@ -8,8 +8,11 @@ import LandingPage from "../pages/landing/Landing";
 import PulsaPage from "../pages/dashboard/products/telecommunication/Pulsa";
 import PaketData from "../pages/dashboard/products/telecommunication/PaketData";
 import TelkomselPage from "../pages/dashboard/products/telecommunication/Telkomsel";
+import AddProductsTelkomsel from "../pages/dashboard/products/telecommunication/pulsa/AddProductsTelkomsel";
+import EditProductTelkomsel from "../pages/dashboard/products/telecommunication/pulsa/EditProductTelkomsel";
 import PrivateRoute from "./PrivateRoute";
-import AddProductsTelkomsel from "../pages/dashboard/products/telecommunication/AddProductsTelkomsel";
+import { Login } from "../components/login/Login";
+import NotFound from "../pages/notfound";
 
 const Routing = () => {
   return (
@@ -18,14 +21,20 @@ const Routing = () => {
         {/* Public Router */}
         <Routes>
           <Route path="/landing" element={<LandingPage />}></Route>
-          <Route path="/login" element={<LandingPage />} />
-          <Route path="/register" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />/
+          <Route path="/register" element={<AddProductsTelkomsel />} />
         </Routes>
 
         {/* Private Router, Auth */}
 
         <Routes>
+          {/* <Route path="/login" element={<PrivateRoute />} />
+
+          <Route path="/" element={<DashboardPage />} /> */}
+
           <Route element={<PrivateRoute />}>
+            <Route path="*" element={<NotFound />} />
+
             <Route path="/">
               <Route index element={<DashboardPage />} />
             </Route>
@@ -39,6 +48,7 @@ const Routing = () => {
                 <Route path="telkomsel">
                   <Route index element={<TelkomselPage />} />
                   <Route path="new" element={<AddProductsTelkomsel />} />
+                  <Route path="edit" element={<EditProductTelkomsel />} />
                 </Route>
                 <Route path="simpati" element={"a"} />
               </Route>

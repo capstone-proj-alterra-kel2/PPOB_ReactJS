@@ -2,18 +2,21 @@ import icondel from "../../../../assets/img/icon-delete.png";
 import iconedit from "../../../../assets/img/icon-edit2.png";
 import iconAdd from "../../../../assets/img/icon-add.png";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
+import DiscountOutlinedIcon from "@mui/icons-material/DiscountOutlined";
 
 import { useState } from "react";
-import { produts } from "../../../../apis/produtcs";
+// import { produts } from "../../../../apis/produtcs";
 import { AiOutlineSearch } from "react-icons/ai";
 import SidebarPage from "../../../../components/dashboard/sidebar/Sidebar";
 import { BreadcrumbTelkomsel } from "../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { Link } from "react-router-dom";
+import DelProductTelkomsel from "./pulsa/DelProductTelkomsel";
 
 const TelkomselPage = () => {
-  const [dataProducts, setDataProducts] = useState(produts);
+  // const [dataProducts, setDataProducts] = useState(produts);
   const [search, setSearch] = useState("");
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showModalDelProduct, setShowModalDelProduct] = useState(false);
 
   return (
     <SidebarPage>
@@ -34,8 +37,8 @@ const TelkomselPage = () => {
                 <div>Normal</div>
               </button>
               <button className="border border-primary50 text-primary50 py-3 px-4 rounded-full flex justify-center items-center text-sm font-semibold">
-                <div className="mr-2"> x</div>
-                <div>Normal</div>
+                <DiscountOutlinedIcon className="mr-1 w-5 h-5" />
+                <div>Promo</div>
               </button>
             </div>
           </div>
@@ -73,13 +76,6 @@ const TelkomselPage = () => {
             className="card h-[80px] mb-2 bg-white flex items-center justify-between px-6 py-4 gap-16 rounded-xl"
           >
             <div className="flex items-center flex-1 font-medium text-sm">
-              <div className=" mr-5 relative">
-                {/* <img
-                        src={item.avatar}
-                        alt="Item"
-                        className="w-[55px] h-[55px] rounded-full"
-                      /> */}
-              </div>
               <div className="pr-[25px] w-60">
                 <div className="text-grey2">Nama Produk</div>
                 <div className="text-lg font-semibold">Pulsa 5.000</div>
@@ -94,11 +90,12 @@ const TelkomselPage = () => {
               </div>
             </div>
             <div className="flex justify-center items-center">
-              <button
+              {/* Edit  */}
+              <Link
+                to={`edit`}
                 className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
                 // onClick={() => {
                 //   setID(item.id);
-                //   setShowModal(true);
                 // }}
               >
                 <img
@@ -106,13 +103,13 @@ const TelkomselPage = () => {
                   className="w-[20px] h-[20px] mt-1"
                   alt="Edit"
                 />
-              </button>
+              </Link>
               <button
                 className="px-3 pt-[10px] pb-[10px] text-error50 flex"
-                // onClick={() => {
-                //   setID(item.id);
-                //   setShowModal3(true);
-                // }}
+                onClick={() => {
+                  // setID(item.id);
+                  setShowModalDelProduct(true);
+                }}
               >
                 <img
                   src={icondel}
@@ -124,6 +121,11 @@ const TelkomselPage = () => {
           </div>
         </div>
       </div>
+      <DelProductTelkomsel
+        isVisible={showModalDelProduct}
+        onClose={() => setShowModalDelProduct(false)}
+        setLoading={setLoading}
+      ></DelProductTelkomsel>
     </SidebarPage>
   );
 };

@@ -6,7 +6,6 @@ module.exports = {
       darkblue: "#0931aa",
       midblue: "#2976DF",
       lightblue: "#335aff",
-
       primary50: "#0D40C6",
       red2: "#EE5858",
       trueblue: "#CADAF1",
@@ -22,6 +21,8 @@ module.exports = {
       golden10: "#FFBA541A",
       golden: "#FFBA54",
       black90: "#262729",
+
+      merah: "#FDE7E7",
     },
     extend: {},
   },

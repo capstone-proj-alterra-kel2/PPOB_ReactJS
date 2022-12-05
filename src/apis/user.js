@@ -10,21 +10,21 @@ export const getUsers = async () => {
 };
 
 export const hasuraApi = axios.create({
-  baseURL: "https://capstone-alterra.hasura.app/api/rest",
+  baseURL: "https://capstone-kel2.hasura.app/api/rest/",
   headers: {
     "x-hasura-admin-secret":
-      "9tNl5pf4Cbw6ZORJXjQEW6vz3T1saIM83m6BDtvl31wPh61k4o7jxNq52TwBFARh",
+      "cL4GG8Gy40j8TNxZacZ7rgxWjVtke2P267pHIKLjvmGPm1K2w4ggOFFINEVBN6Zl",
   },
 });
 
 export const getUsersHasura = async () => {
-  const response = await hasuraApi.get("/get");
+  const response = await hasuraApi.get("/users");
   return response.data.users;
 };
 
 export const getAdminsHasura = async () => {
   const response = await hasuraApi.get("/admins");
-  return response.data.admin;
+  return response.data.data_admins;
 };
 
 export const postUserHasura = async () => {

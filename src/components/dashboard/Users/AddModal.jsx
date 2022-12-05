@@ -6,9 +6,10 @@ import { hasuraApi } from "../../../apis/user";
 import telpIcon from "../../../assets/img/icon-telp.png";
 import emailIcon from "../../../assets/img/icon-email.png";
 import userIcon from "../../../assets/img/icon-user.png";
+import lockIcon from "../../../assets/img/icon-lock.png";
 
 const AddModal = ({ isVisible, onClose, setLoading }) => {
-  const [nama, setNama] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState();
   const [password, setPassword] = useState("");
@@ -16,8 +17,8 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
 
   const AddData = async () => {
     await hasuraApi
-      .post("/post", {
-        username: nama,
+      .post("/users", {
+        username: username,
         email: email,
         handphone: handphone,
         password: password,
@@ -94,17 +95,17 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={userIcon}
-                    alt="telp.icon"
+                    alt="user.icon"
                     className="w-5 h-5 mr-2"
                   />
 
                   <input
-                    value={nama}
+                    value={username}
                     type="text"
                     className="w-[100%]"
                     placeholder="Masukan Email..."
                     onChange={(event) => {
-                      setNama(event.target.value);
+                      setUsername(event.target.value);
                     }}
                   />
                 </div>
@@ -114,7 +115,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={emailIcon}
-                    alt="telp.icon"
+                    alt="email.icon"
                     className="w-5 h-5 mr-2"
                   />
                   <input
@@ -155,8 +156,8 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 <label className="text-grey2 mb-3">Masukan Password</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={userIcon}
-                    alt="telp.icon"
+                    src={lockIcon}
+                    alt="lock.icon"
                     className="w-5 h-5 mr-2"
                   />
 

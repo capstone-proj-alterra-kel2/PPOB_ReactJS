@@ -1,12 +1,12 @@
-import pulsa from "../../../assets/img/products/Pulsa.png";
-import telkomsel from "../../../assets/img/products/telkomsel.png";
-import indosat from "../../../assets/img/products/indosat.png";
-import three from "../../../assets/img/products/three.png";
-import axis from "../../../assets/img/products/axis.png";
-import smartfren from "../../../assets/img/products/smartfren.png";
-import byu from "../../../assets/img/products/byu.png";
-import xl from "../../../assets/img/products/xl.png";
-import simpati from "../../../assets/img/products/simpati.png";
+import pulsa from "../../../../assets/img/products/Pulsa.png";
+import telkomsel from "../../../../assets/img/products/telkomsel.png";
+import indosat from "../../../../assets/img/products/indosat.png";
+import three from "../../../../assets/img/products/three.png";
+import axis from "../../../../assets/img/products/axis.png";
+import smartfren from "../../../../assets/img/products/smartfren.png";
+import byu from "../../../../assets/img/products/byu.png";
+import xl from "../../../../assets/img/products/xl.png";
+import simpati from "../../../../assets/img/products/simpati.png";
 
 export const pulsaData = [
   {

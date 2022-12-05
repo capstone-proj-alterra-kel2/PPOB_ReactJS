@@ -4,16 +4,28 @@ import { AiOutlineSearch } from "react-icons/ai";
 import Pagination from "../../../components/dashboard/pagination/Pagination";
 import { transactions } from "../../../apis/Transactions";
 import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
+import Cookies from "js-cookie";
 
 // Logo assets
 import pending from "../../../../src/assets/img/logo-pending.png";
 import berhasil from "../../../../src/assets/img/logo-berhasil.png";
+import { useEffect } from "react";
+import { AxiosInstance } from "../../../apis/api";
 
 const TransactionsPage = () => {
   const [loading, setLoading] = useState(false);
   // Pagination useState
   const [currentItems, setcurrentItems] = useState(transactions);
   const [search, setSearch] = useState("");
+  const [token, setToken] = useState(Cookies.get("token"));
+
+  useEffect(() => {
+    AxiosInstance.get("admin/users", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => console.log("masuk ya", res));
+  }, []);
 
   return (
     <SidebarPage>

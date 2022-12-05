@@ -1,7 +1,8 @@
-import { pulsaData } from "../../../../components/dashboard/products/Telecommunication";
+import { pulsaData } from "../../../../components/dashboard/products/Telecommunication/Telecommunication";
 import { NavLink } from "react-router-dom";
 import SidebarPage from "../../../../components/dashboard/sidebar/Sidebar";
 import { BreadcrumbPulsa } from "../../../../components/dashboard/breadcrumbs/BreadCrumbs";
+
 const PulsaPage = () => {
   return (
     <SidebarPage>

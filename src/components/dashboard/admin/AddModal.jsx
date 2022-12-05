@@ -6,29 +6,31 @@ import { hasuraApi } from "../../../apis/user";
 import telpIcon from "../../../assets/img/icon-telp.png";
 import emailIcon from "../../../assets/img/icon-email.png";
 import userIcon from "../../../assets/img/icon-user.png";
+import lockIcon from "../../../assets/img/icon-lock.png";
 
 const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
-  const [nama, setNama] = useState("");
+  const [namaLengkap, setNamaLengkap] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState();
   const [password, setPassword] = useState("");
 
   const data = {
-    username: nama,
+    nama_lengkap: namaLengkap,
     email: email,
     avatar: avatar,
   };
 
   const AddData = async () => {
     // const data = new FormData();
-    // data.append("name", nama);
+    // data.append("name", namaLengkap);
     // data.append("email", email);
     // data.append("avatar", avatar);
 
     await hasuraApi
-      .post("/post", {
-        username: nama,
+      .post("/admins", {
+        nama_lengkap: namaLengkap,
         email: email,
+        password: password,
       })
       .then((res) => {
         console.log("data succes", res);
@@ -111,15 +113,15 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={userIcon}
-                    alt="telp.icon"
+                    alt="user.icon"
                     className="w-5 h-5 mr-2"
                   />
                   <input
-                    value={nama}
+                    value={namaLengkap}
                     type="text"
                     placeholder="Masukan Email..."
                     onChange={(event) => {
-                      setNama(event.target.value);
+                      setNamaLengkap(event.target.value);
                     }}
                   />
                 </div>
@@ -129,7 +131,7 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={emailIcon}
-                    alt="telp.icon"
+                    alt="email.icon"
                     className="w-5 h-5 mr-2"
                   />
                   <input
@@ -146,8 +148,8 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
                 <label className="text-grey2 mb-3">Password</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={emailIcon}
-                    alt="telp.icon"
+                    src={lockIcon}
+                    alt="pass.icon"
                     className="w-5 h-5 mr-2"
                   />
                   <input

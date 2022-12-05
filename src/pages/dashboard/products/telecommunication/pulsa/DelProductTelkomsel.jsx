@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "../../../assets/styles/modal.css";
-import backgroundDel from "../../../assets/img/del-pengguna.png";
+import "../../../../../assets/styles/modal.css";
+import backgroundDel from "../../../../../assets/img/del-product.png";
 import { toast } from "react-toastify";
-import { hasuraApi } from "../../../apis/user";
+// import { hasuraApi } from "../../../apis/user";
 
-const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
+const DelProductTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   const [email, setEmail] = useState("");
 
   // get data email user
-  useEffect(() => {
-    hasuraApi(`/newusers/${idUser}`).then((res) => {
-      console.log("delete data", res.data);
-      setEmail(res.data.users_by_pk.email);
-    });
-  }, [idUser]);
-
-  console.log("email untuk delete ", email);
+  //   useEffect(() => {
+  //     hasuraApi(`/get/${idUser}`).then((res) => {
+  //       console.log("id user", res.data.users_by_pk);
+  //       setEmail(res.data.users_by_pk.email);
+  //     });
+  //   }, [idUser]);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -27,19 +24,19 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   };
 
   // remove data using axios delete
-  const handleDelete = () => {
-    hasuraApi
-      .delete(`users/${idUser}`)
-      .then(() => {
-        setLoading(true);
-        onClose(true);
-        toast.success("Akun Pengguna BERHASIL DIHAPUS!");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Data Akun  Pengguna GAGAL DIHAPUS!");
-      });
-  };
+  //   const handleDelete = () => {
+  //     hasuraApi
+  //       .delete(`delete/${idUser}`)
+  //       .then(() => {
+  //         setLoading(true);
+  //         onClose(true);
+  //         toast.success("Akun Pengguna BERHASIL DIHAPUS!");
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //         toast.error("Data Akun  Pengguna GAGAL DIHAPUS!");
+  //       });
+  //   };
 
   return (
     <>
@@ -57,7 +54,7 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
             </div>
             <div>
               <h1 className="text-lg text-center mb-[10px]">
-                Anda yakin ingin menghapus akun dengan email
+                Anda yakin ingin menghapus Produk ini:
               </h1>
               <div className="bg-lightyellow h-[45px] mb-5 text-center text-sm pt-[10px] pb-[10px]">
                 {email}
@@ -74,7 +71,7 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
                 Kembali
               </button>
               <button
-                onClick={handleDelete}
+                //  onClick={handleDelete}
                 className="p-[10px] w-[200px] bg-red2 gap-[10px] text-white rounded"
               >
                 Ya, Hapus Sekarang
@@ -87,4 +84,4 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   );
 };
 
-export default DeleteModal;
+export default DelProductTelkomsel;

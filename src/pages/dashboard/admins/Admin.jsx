@@ -16,6 +16,8 @@ const AdminPage = () => {
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataAdmins = useSelector((state) => state.admins.admins);
+  const [id, setID] = useState("");
+
   // const [currentItems, setcurrentItems] = useState(DataUsers);
   // Pagination useState
 
@@ -91,9 +93,9 @@ const AdminPage = () => {
                         className="w-[55px] h-[55px] rounded-full"
                       />
                     </div>
-                    <div className="pr-[50px] w-[138px]">
-                      <div className="text-grey2">Username</div>
-                      <div>{admin.username}</div>
+                    <div className="pr-[50px] w-[250px]">
+                      <div className="text-grey2">Nama Lengkap</div>
+                      <div>{admin.nama_lengkap}</div>
                     </div>
                     <div className="pr-[50px] w-60">
                       <div className="text-grey2">Email</div>
@@ -104,7 +106,7 @@ const AdminPage = () => {
                     <button
                       className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
                       onClick={() => {
-                        // setID(item.id);
+                        setID(admin.id);
                         setShowModalEditAdmin(true);
                       }}
                     >
@@ -117,7 +119,7 @@ const AdminPage = () => {
                     <button
                       className="px-3 pt-[10px] pb-[10px] text-error50 flex"
                       onClick={() => {
-                        // setID(item.id);
+                        setID(admin.id);
                         setShowModalDelAdmin(true);
                       }}
                     >
@@ -141,11 +143,13 @@ const AdminPage = () => {
             isVisible={showModalEditAdmin}
             onClose={() => setShowModalEditAdmin(false)}
             setLoading={setLoading}
+            id={id}
           ></EditModal>
           <ModalDeleteAdmin
             isVisible={showModalDelAdmin}
             onClose={() => setShowModalDelAdmin(false)}
             setLoading={setLoading}
+            id={id}
           ></ModalDeleteAdmin>
         </div>
       )}

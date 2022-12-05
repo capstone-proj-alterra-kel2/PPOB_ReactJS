@@ -11,7 +11,7 @@ import { hasuraApi, usersApi } from "../../../apis/user";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  const [username, setUserName] = useState("");
+  console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -19,8 +19,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     avatar: "",
   });
   const [file, setFile] = useState("");
-
-  console.log("berubah ", formData);
 
   // masih belum implementasi untuk axios instance get data by id
   // const getUsersbyid = async (id) => {
@@ -30,7 +28,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
 
   // get data by id
   useEffect(() => {
-    hasuraApi(`/get/${idUser}`).then((res) => {
+    hasuraApi(`/newusers/${idUser}`).then((res) => {
       console.log("id user", res.data.users_by_pk);
       setFormData({
         username: res.data.users_by_pk.username,
@@ -79,7 +77,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   // update to date use axios.post
   const Update = () => {
     hasuraApi
-      .put(`update/${idUser}`, {
+      .put(`users/${idUser}`, {
         username: formData.username,
         email: formData.email,
         handphone: formData.handphone,

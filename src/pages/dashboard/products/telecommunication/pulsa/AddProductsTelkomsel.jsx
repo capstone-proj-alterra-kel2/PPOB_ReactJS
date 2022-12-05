@@ -1,4 +1,4 @@
-import SidebarPage from "../../../../components/dashboard/sidebar/Sidebar";
+import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
 import { Switch } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
