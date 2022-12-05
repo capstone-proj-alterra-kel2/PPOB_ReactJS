@@ -19,6 +19,7 @@ const TransactionsPage = () => {
   const [search, setSearch] = useState("");
   const [token, setToken] = useState(Cookies.get("token"));
 
+  // uji coba api dari be
   useEffect(() => {
     AxiosInstance.get("admin/users", {
       headers: {

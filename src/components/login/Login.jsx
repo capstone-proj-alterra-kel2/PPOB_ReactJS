@@ -19,6 +19,10 @@ export const Login = () => {
   const errRef = useRef();
   const [show, setShow] = useState(false);
 
+  console.log(
+    `email dan password admin, email: ${email}  password: ${password}`
+  );
+
   const submit = async (e) => {
     // const { setAuth } = useAuth();
     e.preventDefault();

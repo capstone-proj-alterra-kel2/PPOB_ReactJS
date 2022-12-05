@@ -16,6 +16,7 @@ import iconAdd from "../../../assets/img/icon-add.png";
 import AddModal from "../../../components/dashboard/Users/AddModal";
 import EditModal from "../../../components/dashboard/Users/EditModal";
 import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
+import Search from "../../../components/dashboard/search/Search";
 
 const UsersPage = () => {
   const [counter, setCounter] = useState(0);
@@ -108,10 +109,7 @@ const UsersPage = () => {
                 <Loading />
               </div>
             ) : currentItems.length === 0 ? (
-              <div className="bg-golden10 border border-golden text-sm font-medium py-5 px-2 flex items-center justify-center">
-                <AiOutlineSearch className="mr-2" />
-                <div>Hasil Pencarian Tidak Ditemukan</div>
-              </div>
+              <Search />
             ) : (
               currentItems.map((item) => {
                 return (

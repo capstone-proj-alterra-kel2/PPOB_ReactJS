@@ -108,7 +108,7 @@ const SidebarPage = ({ children }) => {
         </div>
       </div>
 
-      <div className="w-[100%] max-h-screen bg-grey overflow-auto">
+      <div className="w-[100%] max-h-screen bg-grey3 overflow-auto">
         <NavbarDashboard />
 
         <ToastContainer

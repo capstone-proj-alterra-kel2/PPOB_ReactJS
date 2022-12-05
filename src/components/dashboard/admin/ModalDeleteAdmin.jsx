@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../../assets/styles/modal.css";
-import backgroundDel from "../../../assets/img/del-pengguna.png";
+import backgroundDel from "../../../assets/img/del-admin.png";
 import { toast } from "react-toastify";
 import { hasuraApi } from "../../../apis/user";
 
