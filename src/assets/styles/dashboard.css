@@ -1,0 +1,88 @@
+/* Sidebar Component*/
+.active {
+  background: #e7ecf9;
+  color: #000;
+}
+
+/* End Sidebar Component */
+
+/* Search */
+.search {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+/*End  Search */
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  /* margin-bottom: 5rem; */
+  margin-right: 5rem;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+.pagination .page-link {
+  padding: 4px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+}
+
+.pagination .page-link:hover {
+  background-color: #55b220;
+  color: #000;
+}
+
+.pagination .active {
+  background-color: #55b220;
+}
+
+/* Users Page || users Components */
+.title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+/* End Users Page || Users Components */
+
+/* Products */
+.cards-product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.card-product {
+  display: flex;
+  margin-right: 24px;
+  margin-bottom: 12px;
+  width: 266px;
+  height: 121px;
+  color: #262729;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  background-color: #b5c4fd;
+  /* background: linear-gradient(84.3deg, #0d40c6 1.52%, #4a92e7 95.29%); */
+  border-radius: 12px;
+}
+
+/* End Produts // Products Components */
+
+input {
+  background: transparent;
+}

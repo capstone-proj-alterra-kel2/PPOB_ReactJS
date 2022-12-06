@@ -1,7 +1,11 @@
+import SidebarPage from "../../components/dashboard/sidebar/Sidebar";
+
 const DashboardPage = () => {
   return (
     <>
-      <div>Dashboard Page</div>
+      <SidebarPage>
+        <div>Di sini cman coba2 slicing</div>
+      </SidebarPage>
     </>
   );
 };

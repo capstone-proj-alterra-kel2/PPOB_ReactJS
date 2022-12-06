@@ -1,142 +1,33 @@
-export const users = [
-  {
-    id: 1,
-    user_name: "Cleon",
-    email: "cjockle0@nasa.gov",
-    password: "1HzX9J",
-    gender: "Male",
+import axios from "axios";
+
+export const usersApi = axios.create({
+  baseURL: "http://localhost:3000/users",
+});
+
+export const getUsers = async () => {
+  const response = await usersApi.get("/");
+  return response.data;
+};
+
+export const hasuraApi = axios.create({
+  baseURL: "https://capstone-kel2.hasura.app/api/rest/",
+  headers: {
+    "x-hasura-admin-secret":
+      "cL4GG8Gy40j8TNxZacZ7rgxWjVtke2P267pHIKLjvmGPm1K2w4ggOFFINEVBN6Zl",
   },
-  {
-    id: 2,
-    user_name: "Annabell",
-    email: "aroubeix1@rambler.ru",
-    password: "isRyQ0uscKr",
-    gender: "Female",
-  },
-  {
-    id: 3,
-    user_name: "Krissie",
-    email: "kgirdler2@pcworld.com",
-    password: "A9GSRHFqKq5",
-    gender: "Female",
-  },
-  {
-    id: 4,
-    user_name: "Chad",
-    email: "cstaynes3@miibeian.gov.cn",
-    password: "Lv89gHIWIKj",
-    gender: "Female",
-  },
-  {
-    id: 5,
-    user_name: "Tiebold",
-    email: "tdumingo4@craigslist.org",
-    password: "3qQxGPlaaM3M",
-    gender: "Male",
-  },
-  {
-    id: 6,
-    user_name: "Bronson",
-    email: "bhunte5@t-online.de",
-    password: "U5XwHyx5ad",
-    gender: "Male",
-  },
-  {
-    id: 7,
-    user_name: "Carolus",
-    email: "cgough6@wisc.edu",
-    password: "jsDAs9dox",
-    gender: "Male",
-  },
-  {
-    id: 8,
-    user_name: "Rayner",
-    email: "rocorhane7@weebly.com",
-    password: "bnKJsx",
-    gender: "Male",
-  },
-  {
-    id: 9,
-    user_name: "Reba",
-    email: "rpache8@scribd.com",
-    password: "4DiMq8bj",
-    gender: "Female",
-  },
-  {
-    id: 10,
-    user_name: "Remington",
-    email: "rcarmo9@icq.com",
-    password: "mEhRoEtjpFA",
-    gender: "Male",
-  },
-  {
-    id: 11,
-    user_name: "Jim",
-    email: "jeglina@amazon.co.jp",
-    password: "H0Kavg",
-    gender: "Male",
-  },
-  {
-    id: 12,
-    user_name: "Moina",
-    email: "mstablesb@gravatar.com",
-    password: "MDgiaAxhXCup",
-    gender: "Female",
-  },
-  {
-    id: 13,
-    user_name: "Penelope",
-    email: "pkeaseyc@theglobeandmail.com",
-    password: "mThZr2anQoZK",
-    gender: "Female",
-  },
-  {
-    id: 14,
-    user_name: "Aristotle",
-    email: "aissattd@examiner.com",
-    password: "yIFAECGan0",
-    gender: "Male",
-  },
-  {
-    id: 15,
-    user_name: "Gun",
-    email: "ggarrettse@youtu.be",
-    password: "GLu2wpliw",
-    gender: "Male",
-  },
-  {
-    id: 16,
-    user_name: "Carlen",
-    email: "cbostockf@exblog.jp",
-    password: "JumcjImF",
-    gender: "Female",
-  },
-  {
-    id: 17,
-    user_name: "Kayla",
-    email: "kcampellig@aol.com",
-    password: "CamiyZVSa",
-    gender: "Female",
-  },
-  {
-    id: 18,
-    user_name: "Nissie",
-    email: "nseaberth@pcworld.com",
-    password: "vkiuD4d",
-    gender: "Female",
-  },
-  {
-    id: 19,
-    user_name: "Pinchas",
-    email: "pthongeri@oakley.com",
-    password: "14t2cnVAolwj",
-    gender: "Male",
-  },
-  {
-    id: 20,
-    user_name: "Lusa",
-    email: "ltoffettoj@state.tx.us",
-    password: "Xv8Csn",
-    gender: "Female",
-  },
-];
+});
+
+export const getUsersHasura = async () => {
+  const response = await hasuraApi.get("/users");
+  return response.data.users;
+};
+
+export const getAdminsHasura = async () => {
+  const response = await hasuraApi.get("/admins");
+  return response.data.data_admins;
+};
+
+export const postUserHasura = async () => {
+  const response = await hasuraApi.post("/post");
+  return response.data.users;
+};
