@@ -25,32 +25,63 @@ import "./breadcrumbs.css";
 //   );
 // }
 
-export function Breadcrumbs() {
+// Sub Menu Sidebar
+export function BreadcrumbUser() {
   const location = useLocation();
 
   return (
     <nav>
       <Link
-        to="/"
-        className={
-          location.pathname === "/"
-            ? "breadcrumb-active"
-            : "breadcrumb-not-active"
-        }
-      >
-        Home
-      </Link>
-      <span className="breadcrumb-arrow">&gt;</span>
-      <Link
         to="/users"
         className={
-          location.pathname.startsWith("/users")
+          location.pathname === "/users"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
       >
-        Users
+        Pengguna
       </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+export function BreadcrumbAdmin() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/admins"
+        className={
+          location.pathname === "/admins"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Admin
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+export function BreadcrumbTransaction() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/transactions"
+        className={
+          location.pathname === "/transactions"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Riwayat
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
     </nav>
   );
 }
@@ -61,46 +92,26 @@ export function BreadcrumbProduts() {
   return (
     <nav>
       <Link
-        to="/"
-        className={
-          location.pathname === "/"
-            ? "breadcrumb-active"
-            : "breadcrumb-not-active"
-        }
-      >
-        Home
-      </Link>
-      <span className="breadcrumb-arrow">&gt;</span>
-      <Link
         to="/products"
         className={
-          location.pathname.startsWith("/products")
+          location.pathname === "/products"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
       >
-        Produts
+        Produk
       </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
     </nav>
   );
 }
 
+// Product Menu
 export function BreadcrumbPulsa() {
   const location = useLocation();
 
   return (
     <nav>
-      <Link
-        to="/"
-        className={
-          location.pathname === "/"
-            ? "breadcrumb-active"
-            : "breadcrumb-not-active"
-        }
-      >
-        Home
-      </Link>
-      <span className="breadcrumb-arrow">&gt;</span>
       <Link
         to="/products"
         className={
@@ -112,6 +123,7 @@ export function BreadcrumbPulsa() {
         Products
       </Link>
       <span className="breadcrumb-arrow">&gt;</span>
+
       <Link
         to="/products/pulsa"
         className={
@@ -122,6 +134,7 @@ export function BreadcrumbPulsa() {
       >
         Pulsa
       </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
     </nav>
   );
 }
@@ -131,17 +144,6 @@ export function BreadcrumbTelkomsel() {
 
   return (
     <nav>
-      <Link
-        to="/"
-        className={
-          location.pathname === "/"
-            ? "breadcrumb-active"
-            : "breadcrumb-not-active"
-        }
-      >
-        Home
-      </Link>
-      <span className="breadcrumb-arrow">&gt;</span>
       <Link
         to="/products"
         className={
@@ -153,6 +155,7 @@ export function BreadcrumbTelkomsel() {
         Products
       </Link>
       <span className="breadcrumb-arrow">&gt;</span>
+
       <Link
         to="/products/pulsa"
         className={
@@ -174,6 +177,9 @@ export function BreadcrumbTelkomsel() {
       >
         Telkomsel
       </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
     </nav>
   );
 }
+
+// end product menu

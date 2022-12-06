@@ -13,6 +13,7 @@ import Search from "../../../components/dashboard/search/Search";
 import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
 import { setAdmins } from "../../../redux/feature/AdminSlice";
 import Loading from "../../../utils/Loading";
+import { BreadcrumbAdmin } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
 
 const AdminPage = () => {
   const [counter, setCounter] = useState(0);
@@ -68,10 +69,10 @@ const AdminPage = () => {
         <div className="px-10 py-5">
           <div className="flex  pb-3 flex-col">
             <div className="mb-5">
-              <div className="not-italic text-2xl font-bold ">Akun Admin</div>
               <p className="text-base font-medium text-grey2">
-                Lorem ipsum dolor sit amet.
+                <BreadcrumbAdmin />
               </p>
+              <div className="not-italic text-2xl font-bold ">Menu Admin</div>
             </div>
             <div className="flex justify-between">
               <div className="search mr-5 w-[315px] bg-white rounded">

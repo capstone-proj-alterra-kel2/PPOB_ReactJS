@@ -24,12 +24,12 @@ const TelkomselPage = () => {
         <div className="pb-5">
           <div className="mb-5 flex justify-between h-[64px]">
             <div className="flex flex-col">
-              <div className="not-italic text-2xl font-bold ">
-                Pulsa Telkomsel
-              </div>
               <p className="text-base font-medium text-grey2">
                 <BreadcrumbTelkomsel />
               </p>
+              <div className="not-italic text-2xl font-bold ">
+                Pulsa Telkomsel
+              </div>
             </div>
             <div className="flex items-end text-white">
               <button className="bg-green py-3 px-4 rounded-full flex justify-center items-center text-sm mr-5 font-semibold">
