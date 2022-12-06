@@ -7,7 +7,7 @@ import { getUsersHasura } from "../../../apis/user";
 import Pagination from "../../../components/dashboard/pagination/Pagination";
 import Loading from "../../../utils/Loading";
 import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
-import { Breadcrumbs } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import { BreadcrumbUser } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
 
 // assets logo / icon
 import icondel from "../../../assets/img/icon-delete.png";
@@ -69,12 +69,12 @@ const UsersPage = () => {
         <div className="px-10 pt-5 h-[100%]">
           <div className="pb-5">
             <div className="mb-5">
+              <p className="text-base font-medium text-grey2">
+                <BreadcrumbUser />
+              </p>
               <div className="not-italic text-2xl font-bold ">
                 Menu Pengguna
               </div>
-              <p className="text-base font-medium text-grey2">
-                <Breadcrumbs />
-              </p>
             </div>
             <div className="flex justify-between">
               <div className="search mr-5 w-[315px] bg-white rounded">

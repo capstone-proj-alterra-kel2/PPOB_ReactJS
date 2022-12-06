@@ -11,6 +11,7 @@ import pending from "../../../../src/assets/img/logo-pending.png";
 import berhasil from "../../../../src/assets/img/logo-berhasil.png";
 import { useEffect } from "react";
 import { AxiosInstance } from "../../../apis/api";
+import { BreadcrumbTransaction } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
 
 const TransactionsPage = () => {
   const [loading, setLoading] = useState(false);
@@ -37,10 +38,10 @@ const TransactionsPage = () => {
           <div className="px-10 pt-5 snap-center">
             <div className="flex justify-between pb-3">
               <div>
-                <h1 className="text-3xl font-bold pl-1">Riwayat Transaksi</h1>
-                <p className="sub-title text-grey2">
-                  Lorem ipsum dolor sit amet.
+                <p className="text-base font-medium text-grey2">
+                  <BreadcrumbTransaction />
                 </p>
+                <h1 className="text-3xl font-bold pl-1">Menu Riwayat</h1>
               </div>
               <div className="flex">
                 <button className="pending w-[200px] h-[45px] bg-green text-white m-1 flex justify-center items-center rounded">

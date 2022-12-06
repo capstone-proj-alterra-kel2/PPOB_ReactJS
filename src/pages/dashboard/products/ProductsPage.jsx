@@ -14,10 +14,10 @@ const ProductsPage = () => {
   return (
     <SidebarPage>
       <div className="p-8">
-        <h1 className="text-3xl font-bold">Produk Kami</h1>
         <p className="text-base font-medium text-grey2">
           <BreadcrumbProduts />
         </p>
+        <h1 className="text-3xl font-bold">Produk Kami</h1>
         <div>
           <h1 className="pt-6 pb-6 font-semibold text-2xl ">Telekomunikasi</h1>
 
