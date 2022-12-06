@@ -177,3 +177,33 @@ export function BreadcrumbTelkomsel() {
     </nav>
   );
 }
+
+export function BreadcrumbAdmin() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/"
+        className={
+          location.pathname === "/"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Home
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+      <Link
+        to="/admin"
+        className={
+          location.pathname.startsWith("/admin")
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Admin
+      </Link>
+    </nav>
+  );
+}

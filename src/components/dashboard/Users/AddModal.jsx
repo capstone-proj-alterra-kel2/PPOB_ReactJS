@@ -25,13 +25,13 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
         avatar: avatar,
       })
       .then((res) => {
-        // console.log("data succes", res);
+        console.log("data succes", res);
         setLoading(true);
         onClose(true);
         toast.success("Data Akun BERHASIL DIBUAT!");
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
         toast.error("Data Akun GAGAL DIBUAT!");
       });
   };

@@ -25,7 +25,7 @@ const Pagination = ({ Datas, setcurrentItems, currentItems, loading }) => {
       ) : currentItems.length === 0 ? null : (
         <div className=" flex  justify-between pt-3">
           <div className="ml-[30px]">
-            Showing {itemOffset + 1} to {endOffset} | {enteries} entries
+            Menampilkan {itemOffset + 1} dari {endOffset} | {enteries} Data
           </div>
           <ReactPaginate
             previousLabel={`<`}
@@ -37,9 +37,9 @@ const Pagination = ({ Datas, setcurrentItems, currentItems, loading }) => {
             onPageChange={handlePageClick}
             containerClassName={`pagination`}
             pageClassName={`page-item`}
-            pageLinkClassName={`page-link`}
+            pageLinkClassName={`page-link-data`}
             previousLinkClassName={`page-link`}
-            nextLinkClassName={`page-link`}
+            nextLinkClassName={`page-link-next`}
             activeLinkClassName={`active`}
           />
         </div>

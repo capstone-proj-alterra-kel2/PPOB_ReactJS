@@ -42,7 +42,7 @@ const UsersPage = () => {
       setLoading(false);
       dispatch(setUsers(res));
     });
-  });
+  }, [loading]);
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {

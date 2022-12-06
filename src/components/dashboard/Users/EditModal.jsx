@@ -11,7 +11,7 @@ import { hasuraApi, usersApi } from "../../../apis/user";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  // console.log("id user get by id", idUser);
+  console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -31,10 +31,10 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     hasuraApi(`/newusers/${idUser}`).then((res) => {
       // console.log("id user", res.data.users_by_pk);
       setFormData({
-        username: res.data.users_by_pk.username,
-        email: res.data.users_by_pk.email,
-        handphone: res.data.users_by_pk.handphone,
-        avatar: res.data.users_by_pk.avatar,
+        username: res.data.users_by_pk?.username,
+        email: res.data.users_by_pk?.email,
+        handphone: res.data.users_by_pk?.handphone,
+        avatar: res.data.users_by_pk?.avatar,
       });
     });
   }, [idUser]);
@@ -125,7 +125,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   <img
                     src={iconEdit}
                     alt="edit"
-                    className="absolute w-8 h-8 top-[210px] left-[670px]"
+                    className="fixed w-8 h-8 top-[210px] left-[670px]"
                   />
                 </label>
                 <input
