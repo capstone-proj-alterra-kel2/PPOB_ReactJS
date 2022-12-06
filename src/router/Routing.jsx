@@ -35,8 +35,8 @@ const Routing = () => {
           <Route element={<PrivateRoute />}>
             <Route path="/">
               <Route index element={<DashboardPage />} />
-              {/* <Route path="*" element={<NotFound />} /> */}
             </Route>
+            {/* <Route path="/*" element={<NotFound />} /> */}
             <Route path="/users">
               <Route index element={<UsersPage />} />
             </Route>

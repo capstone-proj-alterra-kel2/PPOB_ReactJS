@@ -70,7 +70,7 @@ const TelkomselPage = () => {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col cards h-[450px]">
+        <div className="flex flex-col cards h-[450px] flex-wrap">
           <div
             // key={item.id}
             className="card h-[80px] mb-2 bg-white flex items-center justify-between px-6 py-4 gap-16 rounded-xl"
