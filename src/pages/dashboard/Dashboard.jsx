@@ -4,7 +4,7 @@ const DashboardPage = () => {
   return (
     <>
       <SidebarPage>
-        <div>Dashboard Page</div>
+        <div>Di sini cman coba2 slicing</div>
       </SidebarPage>
     </>
   );

@@ -23,7 +23,7 @@ const UsersPage = () => {
   const dispatch = useDispatch();
   const DataUsers = useSelector((state) => state.users.users);
   const [search, setSearch] = useState("");
-  console.log("punya data ?", DataUsers);
+  // console.log("punya data ?", DataUsers);
   // Pagination useState
   const [currentItems, setcurrentItems] = useState(DataUsers);
 
@@ -42,7 +42,7 @@ const UsersPage = () => {
       setLoading(false);
       dispatch(setUsers(res));
     });
-  }, [loading]);
+  });
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {

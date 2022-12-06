@@ -11,7 +11,7 @@ import { hasuraApi, usersApi } from "../../../apis/user";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  console.log("id user get by id", idUser);
+  // console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -29,7 +29,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   // get data by id
   useEffect(() => {
     hasuraApi(`/newusers/${idUser}`).then((res) => {
-      console.log("id user", res.data.users_by_pk);
+      // console.log("id user", res.data.users_by_pk);
       setFormData({
         username: res.data.users_by_pk.username,
         email: res.data.users_by_pk.email,

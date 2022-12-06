@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { store } from "./redux/Store";
+import { store, persistor } from "./redux/Store";
+// import PersistStore from "redux-persist/lib/persistStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    {/* <PersistStore persistor={persistor}> */}
     <Provider store={store}>
       <App />
     </Provider>
+    {/* </PersistStore> */}
   </React.StrictMode>
 );
 

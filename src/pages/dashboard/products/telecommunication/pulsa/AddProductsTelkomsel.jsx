@@ -7,6 +7,7 @@ const AddProductsTelkomsel = () => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [showPromo, setShowPromo] = useState(false);
+  const [hargaStok, setHargaStok] = useState(0);
 
   const handleToggle = () => {
     let data = toggle;
@@ -19,6 +20,21 @@ const AddProductsTelkomsel = () => {
 
   const backToTelkomsel = () => {
     navigate(-1);
+  };
+
+  const _renderNumeric = () => {
+    let number = Number(hargaStok);
+    return number?.toLocaleString("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    let data = e.target.value.replace(/\d{1,3}/g);
+    setHargaStok(`${_renderNumeric(data)}`);
   };
 
   return (
@@ -61,6 +77,10 @@ const AddProductsTelkomsel = () => {
               <div className="flex justify-between items-center mb-4">
                 <label>Harga Produk</label>
                 <input
+                  value={hargaStok}
+                  onChange={(e) => {
+                    handleSubmit(e);
+                  }}
                   className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
                   name="produk"
                   type="text"

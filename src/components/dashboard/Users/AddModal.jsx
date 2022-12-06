@@ -11,7 +11,7 @@ import lockIcon from "../../../assets/img/icon-lock.png";
 const AddModal = ({ isVisible, onClose, setLoading }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState("");
   const [password, setPassword] = useState("");
   const [handphone, setHandphone] = useState("");
 
@@ -22,25 +22,25 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
         email: email,
         handphone: handphone,
         password: password,
+        avatar: avatar,
       })
       .then((res) => {
-        console.log("data succes", res);
+        // console.log("data succes", res);
         setLoading(true);
         onClose(true);
         toast.success("Data Akun BERHASIL DIBUAT!");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         toast.error("Data Akun GAGAL DIBUAT!");
       });
   };
 
   const imageUpload = (e) => {
-    const data = e.target.files[0];
+    const data = e.target.files[0].name;
     setAvatar(data);
     console.log("data2a", avatar);
   };
-  console.log("data", avatar);
 
   if (!isVisible) return null;
 
@@ -61,7 +61,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} />
+                <img src={background} alt="" />
               </div>
               <div className="pt-6 pb-7 flex flex-col justify-center items-center">
                 <img
@@ -72,6 +72,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                   }
                   style={{ width: "80px", height: "80px", borderRadius: "50%" }}
                   className=" relative"
+                  alt=""
                 />
 
                 <label htmlFor="file">

@@ -21,7 +21,7 @@ const Routing = () => {
         {/* Public Router */}
         <Routes>
           <Route path="/landing" element={<LandingPage />}></Route>
-          <Route path="/login" element={<Login />} />/
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<AddProductsTelkomsel />} />
         </Routes>
 
@@ -33,10 +33,9 @@ const Routing = () => {
           <Route path="/" element={<DashboardPage />} /> */}
 
           <Route element={<PrivateRoute />}>
-            <Route path="*" element={<NotFound />} />
-
             <Route path="/">
               <Route index element={<DashboardPage />} />
+              {/* <Route path="*" element={<NotFound />} /> */}
             </Route>
             <Route path="/users">
               <Route index element={<UsersPage />} />

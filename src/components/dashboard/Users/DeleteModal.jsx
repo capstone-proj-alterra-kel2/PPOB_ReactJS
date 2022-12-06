@@ -12,12 +12,12 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   // get data email user
   useEffect(() => {
     hasuraApi(`/newusers/${idUser}`).then((res) => {
-      console.log("delete data", res.data);
+      // console.log("delete data", res.data);
       setEmail(res.data.users_by_pk.email);
     });
   }, [idUser]);
 
-  console.log("email untuk delete ", email);
+  // console.log("email untuk delete ", email);
 
   // pop up / modals
   if (!isVisible) return null;

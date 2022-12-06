@@ -104,9 +104,11 @@ export const Login = () => {
             </span>
           </div>
 
-          <p className="text-red2 flex justify-center items-center bg-merah mt-5 h-10 ">
-            {errMsg}
-          </p>
+          {errMsg && (
+            <p className="text-red2 flex justify-center items-center bg-merah mt-5 h-10 ">
+              {errMsg}
+            </p>
+          )}
 
           <div className="flex justify-center ">
             <button

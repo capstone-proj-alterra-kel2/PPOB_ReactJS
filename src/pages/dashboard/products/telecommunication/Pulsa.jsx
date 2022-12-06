@@ -7,12 +7,12 @@ const PulsaPage = () => {
   return (
     <SidebarPage>
       <div className="p-6">
-        <h1 className="text-3xl font-bold pl-1">Pulsa Page</h1>
-        <p className="text-base font-medium text-grey2">
+        <p className="text-base font-medium mb-11">
           <BreadcrumbPulsa />
         </p>
+        <h1 className="text-3xl font-bold pl-1">Pulsa</h1>
         <div>
-          <div className="cards-product mt-12">
+          <div className="cards-product mt-6">
             {pulsaData.map((data) => {
               return (
                 <NavLink key={data.id} to={data.path}>
