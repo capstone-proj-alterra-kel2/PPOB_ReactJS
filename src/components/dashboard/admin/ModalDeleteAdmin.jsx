@@ -11,12 +11,12 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
   // get data email user
   useEffect(() => {
     hasuraApi(`/admins/${idUser}`).then((res) => {
-      // console.log("delete data admin", res.data.data_admins_by_pk);
+      console.log("delete data admin", res.data.data_admins_by_pk);
       setEmail(res.data.data_admins_by_pk.email);
     });
   }, [idUser]);
 
-  // console.log("punya id untuk delete", id);
+  console.log("punya id untuk delete", idUser);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -28,8 +28,9 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
   // remove data using axios delete
   const handleDelete = () => {
     hasuraApi
-      .delete(`admins/${idUser}`)
-      .then(() => {
+      .delete(`/newadmins/${idUser}`)
+      .then((res) => {
+        console.log("berhasill  hapus data admin", res);
         setLoading(true);
         onClose(true);
         toast.success("Akun Pengguna BERHASIL DIHAPUS!");
@@ -51,7 +52,7 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={backgroundDel} />
+                <img src={backgroundDel} alt="" />
               </div>
             </div>
             <div>

@@ -9,7 +9,7 @@ import { hasuraApi } from "../../../apis/user";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  console.log("ada id nya admin", id);
+  // console.log("ada id nya admin", id);
   const [formData, setFormData] = useState({
     nama_lengkap: "",
     email: "",
@@ -20,7 +20,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   // get data by id
   useEffect(() => {
     hasuraApi(`/admins/${idUser}`).then((res) => {
-      console.log("id user", res.data.data_admins_by_pk);
+      // console.log("id user", res.data.data_admins_by_pk);
       setFormData({
         nama_lengkap: res.data.data_admins_by_pk.nama_lengkap,
         email: res.data.data_admins_by_pk.email,
@@ -29,7 +29,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     });
   }, [idUser]);
 
-  console.log("form data admins by id,", formData);
+  // console.log("form data admins by id,", formData);
 
   // pop up / modals
   if (!isVisible) return null;

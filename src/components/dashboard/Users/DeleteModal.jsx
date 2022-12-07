@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../../assets/styles/modal.css";
 import backgroundDel from "../../../assets/img/del-pengguna.png";
 import { toast } from "react-toastify";
@@ -8,12 +7,13 @@ import { hasuraApi } from "../../../apis/user";
 const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   const [email, setEmail] = useState("");
+  console.log("masuk ke id", idUser);
 
   // get data email user
   useEffect(() => {
     hasuraApi(`/newusers/${idUser}`).then((res) => {
       // console.log("delete data", res.data);
-      setEmail(res.data.users_by_pk.email);
+      setEmail(res.data?.users_by_pk.email);
     });
   }, [idUser]);
 
@@ -30,7 +30,9 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   const handleDelete = () => {
     hasuraApi
       .delete(`users/${idUser}`)
-      .then(() => {
+      .then((res) => {
+        console.log("berhasill  hapus data users", res);
+
         setLoading(true);
         onClose(true);
         toast.success("Akun Pengguna BERHASIL DIHAPUS!");
@@ -52,7 +54,7 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={backgroundDel} />
+                <img src={backgroundDel} alt="" />
               </div>
             </div>
             <div>

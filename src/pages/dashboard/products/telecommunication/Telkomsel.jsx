@@ -22,28 +22,26 @@ const TelkomselPage = () => {
     <SidebarPage>
       <div className="px-10 py-3">
         <div className="pb-5">
+          <p className="text-base font-medium text-grey2 mb-4">
+            <BreadcrumbTelkomsel />
+          </p>
           <div className="mb-5 flex justify-between h-[64px]">
-            <div className="flex flex-col">
-              <p className="text-base font-medium text-grey2">
-                <BreadcrumbTelkomsel />
-              </p>
-              <div className="not-italic text-2xl font-bold ">
-                Pulsa Telkomsel
-              </div>
+            <div className="not-italic text-2xl font-bold ">
+              Pulsa Telkomsel
             </div>
-            <div className="flex items-end text-white">
-              <button className="bg-green py-3 px-4 rounded-full flex justify-center items-center text-sm mr-5 font-semibold">
+            <div className="flex text-white">
+              <button className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold">
                 <AttachMoneyOutlinedIcon className="mr-1 w-5 h-5" />
-                <div>Normal</div>
+                <div className="text-sm font-medium">Normal</div>
               </button>
-              <button className="border border-primary50 text-primary50 py-3 px-4 rounded-full flex justify-center items-center text-sm font-semibold">
+              <button className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold">
                 <DiscountOutlinedIcon className="mr-1 w-5 h-5" />
-                <div>Promo</div>
+                <div className="text-sm font-medium">Promo</div>
               </button>
             </div>
           </div>
           <div className="flex justify-between">
-            <div className="search mr-5 w-[216px] bg-white rounded-xl">
+            <div className="search mr-5 w-[315px] bg-white rounded">
               <AiOutlineSearch className="mr-2" />
               <input
                 type="text"
@@ -56,10 +54,7 @@ const TelkomselPage = () => {
             </div>
             <Link
               to="new"
-              className=" w-[185px] gap-2 px-5 pt-[10px] pb-[10px] bg-primary50 text-white cursor-pointer flex justify-center items-center rounded-xl"
-              // onClick={() => {
-              //   setShowModal2(true);
-              // }}
+              className=" gap-2 px-6 py-3  bg-primary50 text-white cursor-pointer flex justify-center items-center rounded"
             >
               <img
                 src={iconAdd}
@@ -75,20 +70,20 @@ const TelkomselPage = () => {
             // key={item.id}
             className="card h-[80px] mb-2 bg-white flex items-center justify-between px-6 py-4 gap-16 rounded-xl"
           >
-            <div className="flex items-center flex-1 font-medium text-sm">
-              <div className="pr-[25px] w-60">
-                <div className="text-grey2">Nama Produk</div>
-                <div className="text-lg font-semibold">Pulsa 5.000</div>
-              </div>
-              <div className="pr-[25px] w-60">
-                <div className="text-grey2">Harga Produk</div>
-                <div className="text-lg font-semibold">Rp. 7.0000,00</div>
-              </div>
-              <div className="pr-[25px] w-60">
-                <div className="text-grey2">Stok Produk</div>
-                <div className="text-lg font-semibold">123</div>
-              </div>
+            {/* <div className="flex items-center flex-1 font-medium text-sm"> */}
+            <div className=" w-60 flex flex-col">
+              <div className="text-grey2">Nama Produk</div>
+              <div className="text-lg font-semibold">Pulsa 5.000</div>
             </div>
+            <div className=" w-60">
+              <div className="text-grey2">Harga Produk</div>
+              <div className="text-lg font-semibold">Rp. 7.0000,00</div>
+            </div>
+            <div className=" w-60">
+              <div className="text-grey2">Stok Produk</div>
+              <div className="text-lg font-semibold">123</div>
+            </div>
+            {/* </div> */}
             <div className="flex justify-center items-center">
               {/* Edit  */}
               <Link

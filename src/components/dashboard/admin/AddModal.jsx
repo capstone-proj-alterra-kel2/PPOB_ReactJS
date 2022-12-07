@@ -62,7 +62,7 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
     setAvatar(data);
     console.log("data2a", avatar);
   };
-  console.log("data", avatar);
+  // console.log("data", avatar);
 
   if (!isVisible) return null;
 

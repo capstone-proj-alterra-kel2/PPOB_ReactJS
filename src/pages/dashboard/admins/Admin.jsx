@@ -102,7 +102,7 @@ const AdminPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col cards ">
+          <div className="flex flex-col cards h-[450px]">
             {loading ? (
               <div className="h-[100vh] flex justify-center items-center">
                 <Loading />
