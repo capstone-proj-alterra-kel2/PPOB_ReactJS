@@ -22,7 +22,7 @@ const TransactionsPage = () => {
 
   // uji coba api dari be
   useEffect(() => {
-    AxiosInstance.get("/product_types", {
+    AxiosInstance.get("/admin/users", {
       headers: {
         Authorization: "Bearer " + token,
       },

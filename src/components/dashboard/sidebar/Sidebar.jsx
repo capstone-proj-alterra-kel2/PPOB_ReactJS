@@ -125,7 +125,7 @@ const SidebarPage = ({ children }) => {
 
         <ToastContainer
           position="top-left"
-          autoClose={false}
+          autoClose={3000}
           newestOnTop={false}
           style={{
             width: "95%",

@@ -16,7 +16,7 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
     });
   }, [idUser]);
 
-  console.log("punya id untuk delete", idUser);
+  // console.log("punya id untuk delete", idUser);
 
   // pop up / modals
   if (!isVisible) return null;

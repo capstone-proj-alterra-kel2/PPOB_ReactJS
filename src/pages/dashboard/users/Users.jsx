@@ -3,7 +3,8 @@ import "../../../assets/styles/dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../../redux/feature/UsersSlice";
 import { AiOutlineSearch } from "react-icons/ai";
-import { getUsersHasura } from "../../../apis/user";
+import { getUsersHasura, hasuraApi } from "../../../apis/user";
+import { getDataUsers, AxiosInstance } from "../../../apis/api";
 import Pagination from "../../../components/dashboard/pagination/Pagination";
 import Loading from "../../../utils/Loading";
 import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
@@ -17,8 +18,10 @@ import AddModal from "../../../components/dashboard/Users/AddModal";
 import EditModal from "../../../components/dashboard/Users/EditModal";
 import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
 import Search from "../../../components/dashboard/search/Search";
+import Cookies from "js-cookie";
 
 const UsersPage = () => {
+  const [token, setToken] = useState(Cookies.get("token"));
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataUsers = useSelector((state) => state.users.users);
@@ -36,6 +39,7 @@ const UsersPage = () => {
   const [showModalDel, setShowModalDel] = useState(false);
   const [id, setID] = useState("");
 
+  // console.log(token, "token");
   // get Data Users
   useEffect(() => {
     getUsersHasura().then((res) => {
@@ -43,6 +47,14 @@ const UsersPage = () => {
       dispatch(setUsers(res));
     });
   }, [loading]);
+
+  // useEffect(() => {
+  //   AxiosInstance.get("/admin/users", {
+  //     headers: {
+  //       Authorization: "Bearer " + token,
+  //     },
+  //   }).then((res) => console.log("masuk ya user", res.data.data.items));
+  // }, [loading]);
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {

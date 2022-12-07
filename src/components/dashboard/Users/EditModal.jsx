@@ -8,25 +8,29 @@ import background from "../../../assets/img/Group 606.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
 import { hasuraApi, usersApi } from "../../../apis/user";
+import { useSelector } from "react-redux";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  console.log("id user get by id", idUser);
+  // console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     handphone: "",
     avatar: "",
   });
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const [file, setFile] = useState("");
+  const DataUsers = useSelector((state) => state.users.users);
+  const [dataPost, setDataPost] = useState(DataUsers);
 
-  // masih belum implementasi untuk axios instance get data by id
-  // const getUsersbyid = async (id) => {
-  //   const response = await usersApi.get(`/${id}`);
-  //   return response.data;
-  // };
+  useEffect(() => {
+    DataUsers.map((data) => {
+      setDataPost(data);
+    });
+  });
 
-  // get data by id
   useEffect(() => {
     hasuraApi(`/newusers/${idUser}`).then((res) => {
       // console.log("id user", res.data.users_by_pk);
@@ -38,18 +42,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
       });
     });
   }, [idUser]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:3000/users/${idUser}`)
-  //     .then((res) => {
-  //       setFormData({
-  //         nama: res.data.name,
-  //         email: res.data.email,
-  //         avatar: res.data.avatar,
-  //       });
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [idUser]);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -75,24 +67,57 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   // };
 
   // update to date use axios.post
-  const Update = () => {
-    hasuraApi
-      .put(`users/${idUser}`, {
-        username: formData.username,
-        email: formData.email,
-        handphone: formData.handphone,
-        avatar: formData.avatar,
-      })
-      .then(() => {
-        setLoading(true);
-        onClose(true);
-        toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
-      })
-      .catch((err) => {
-        console.log(err);
+  const Update = (e) => {
+    e.preventDefault();
+    const errors = validate(formData);
+    setIsSubmit(true);
+    if (Object.keys(errors).length === 0 && isSubmit) {
+      hasuraApi
+        .put(`users/${idUser}`, {
+          username: formData.username,
+          email: formData.email,
+          handphone: formData.handphone,
+          avatar: formData.avatar,
+        })
+        .then(() => {
+          setLoading(true);
+          onClose(true);
+          toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
+        })
+        .catch((err) => {
+          console.log(err);
 
-        toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
-      });
+          toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
+        });
+    } else {
+      Object.values(errors).map((err) => alert(err));
+    }
+  };
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (values.username === null || values.username === "") {
+      errors.username = "Username is required!";
+    }
+    if (values.username === dataPost.username) {
+      errors.username = "Username has been ";
+    }
+    if (!values.email) {
+      errors.email = "Email is required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format!";
+    }
+    if (values.email === dataPost.email) {
+      errors.email = "email has been ";
+    }
+    if (!values.handphone) {
+      errors.handphone = "handphone is required!";
+    }
+    if (values.handphone === dataPost.handphone) {
+      errors.handphone = "Handphone has been ";
+    }
+    return errors;
   };
 
   return (
@@ -108,7 +133,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <div className="h-[68px] w-[100%] ">
                 <img src={background} />
               </div>
-              <div className="pt-6 pb-7 flex flex-col justify-center items-center">
+              <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
                   src={
                     file
@@ -121,12 +146,8 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   // alt="gambar.png"
                 />
 
-                <label htmlFor="file">
-                  <img
-                    src={iconEdit}
-                    alt="edit"
-                    className="fixed w-8 h-8 top-[210px] left-[670px]"
-                  />
+                <label htmlFor="file" className="absolute">
+                  <img src={iconEdit} alt="edit" className="z-50 w-8 h-8 " />
                 </label>
                 <input
                   type="file"
@@ -143,7 +164,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={user} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    className="w-[300px]"
                     value={formData.username}
                     onChange={onChangeData}
                     name="username"
@@ -156,7 +176,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={email} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    className="w-[300px]"
                     value={formData.email}
                     onChange={onChangeData}
                     name="email"
@@ -169,11 +188,10 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={telp} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    className="w-[300px]"
                     value={formData.handphone}
                     onChange={onChangeData}
                     name="handphone"
-                    type="text"
+                    type="number"
                   />
                 </div>
               </div>

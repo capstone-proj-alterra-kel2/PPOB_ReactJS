@@ -7,7 +7,7 @@ import { hasuraApi } from "../../../apis/user";
 const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   const [email, setEmail] = useState("");
-  console.log("masuk ke id", idUser);
+  // console.log("masuk ke id", idUser);
 
   // get data email user
   useEffect(() => {

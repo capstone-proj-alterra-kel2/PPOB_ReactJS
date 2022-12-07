@@ -15,3 +15,8 @@ export const logoutAdmin = async () => {
   const response = await AxiosInstance.post("/auth/logout");
   return response.data;
 };
+
+export const getDataUsers = async () => {
+  const response = await AxiosInstance.get("/admin/users");
+  return response.data;
+};
