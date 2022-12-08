@@ -132,10 +132,6 @@
   transform: matrix(0.99, 0.11, 0.11, 0.99, 0, 0);
 } */
 
-.halodek {
-  background: linear-gradient(
-    111.67deg,
-    #e7ecf9 25.7%,
-    rgba(231, 236, 249, 0) 70.98%
-  );
+.download {
+  background: #335aff
 }

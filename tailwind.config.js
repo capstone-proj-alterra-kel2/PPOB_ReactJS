@@ -13,6 +13,7 @@ module.exports = {
       blackfooter: "#262729",
       blackfooter2: "#2E2F32",
       white1: "#ffffff",
+      
 
       truered: "#FACFCF",
       black: "#000",

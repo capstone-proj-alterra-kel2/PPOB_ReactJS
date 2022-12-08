@@ -7,6 +7,10 @@ import Group40 from "../../assets/img/Group 40.png";
 import Footer from "../../components/landing/footer/Footer";
 import downloadps from "../../assets/img/Download Playstore.png";
 import downloadaps from "../../assets/img/Download Appstore.png";
+import BPJS from "../../assets/img/products/BPJS.png";
+import Tagihanlistrik from "../../assets/img/products/Tagihan_listrik.png";
+import Tokenlistrik from "../../assets/img/products/Token_listrik.png";
+import PDAM from "../../assets/img/products/PDAM.png";
 
 const LandingPage = () => {
   return (
@@ -37,7 +41,8 @@ const LandingPage = () => {
           <div className="">
             <p style={{ fontSize: 48, textAlign: "center" }}>
               <b>
-              Beberapa produk untuk membantu<br></br>layanan telekomunikasi anda
+                Beberapa produk untuk membantu<br></br>layanan telekomunikasi
+                anda
               </b>
             </p>
           </div>
@@ -71,13 +76,14 @@ const LandingPage = () => {
               <b>Makin mudah Isi pulsa ke berbagai macam operator</b>
             </p>
             <p className="text3" style={{ fontSize: 16 }}>
-            Melalui fitur ini, pembeli dapat membeli pulsa prabayar dari berbagai operator dan memilih nominal pulsa sesuai kebutuhan
+              Melalui fitur ini, pembeli dapat membeli pulsa prabayar dari
+              berbagai operator dan memilih nominal pulsa sesuai kebutuhan
             </p>
           </div>
         </div>
 
         {/* topup game */}
-        <div className="flex justify-center items-center mx-[155px] mb-[300px]">
+        <div className="flex justify-center items-center mx-[155px] mb-[200px]">
           <div
             className="ml-[30px] mr-[400px] mt-[150px]"
             style={{ textAlign: "justify" }}
@@ -89,7 +95,8 @@ const LandingPage = () => {
               <b>Berbagai macam paket data yang memiliki banyak bonus</b>
             </p>
             <p className="text3" style={{ fontSize: 16 }}>
-            Melalui fitur ini, pembeli dapat memilih paket data yang tersedia sesuai kebutuhan
+              Melalui fitur ini, pembeli dapat memilih paket data yang tersedia
+              sesuai kebutuhan
             </p>
           </div>
           <div className="">
@@ -108,37 +115,138 @@ const LandingPage = () => {
         </div>
 
         {/* indihome */}
-        {/* <div className="mx-[155px] justify-center items-center mt-[0px]">
+        <div className="flex mx-[155px] justify-center items-center mb-[100px]">
           <div className="">
             <img
-              className="absolute"
+              className=""
               src={Group1}
               alt="a.png"
               style={{
-                width: "330px",
+                width: "1000px",
                 height: "300px",
                 top: "1500px",
                 left: "140px",
               }}
             />
           </div>
-          <div
-            className="ml-[400px] mt-[0px]"
-            style={{ textAlign: "justify" }}
-          >
+          <div className="ml-[100px] mt-[0px]" style={{ textAlign: "justify" }}>
             <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
               <b>#INDIHOME</b>
             </p>
             <p className="text2" style={{ fontSize: 36 }}>
-              <b>Lorem Ipsum is simply dummy<br></br>the setting industry.</b>
+              <b>
+                Lorem Ipsum is simply dummy<br></br>the setting industry.
+              </b>
             </p>
             <p className="text3" style={{ fontSize: 16 }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
             </p>
           </div>
-        </div> */}
+        </div>
 
-        <div className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[2200px] bg-lightblue mt-3 absolute">
+        {/* produk tagihan */}
+        <div className="flex flex-col items-center bg-grey3 h-[800px]">
+          <div className="mt-[80px]">
+            <p style={{ fontSize: 24, textAlign: "center", color: "#8C8E93" }}>
+              PRODUK TAGIHAN
+            </p>
+          </div>
+
+          <div className="">
+            <p style={{ fontSize: 48, textAlign: "center" }}>
+              <b>
+                Beberapa produk untuk membantu<br></br>berbagai macam tagihan
+                anda
+              </b>
+            </p>
+          </div>
+
+          <div className="w-[70px] h-[8px] bg-blue mt-3 rounded"></div>
+
+          <div className="flex flex-row gap-4 mt-20 mb-10">
+            {/* bpjs */}
+            <div class="w-[285px] h-[208px] mt-[20px] mb-[20px] rounded-md dropshadow-sm bg-white">
+              <img
+                className=""
+                src={BPJS}
+                alt="a.png"
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  marginLeft: "20px",
+                  marginTop: "20px",
+                }}
+              />
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>BPJS</b></h1>
+              <p style={{ marginLeft: "20px" }}>
+                Pembayaran BPJS secara online, berbagai metode pembayaran
+              </p>
+            </div>
+
+            {/* listrik */}
+            <div class="rounded-md w-[285px] h-[208px] mt-[20px] mb-[20px] dropshadow=sm bg-white">
+              <img
+                className=""
+                src={Tagihanlistrik}
+                alt="a.png"
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  marginLeft: "20px",
+                  marginTop: "20px",
+                }}
+              />
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>Tagihan Listrik</b></h1>
+              <p style={{ marginLeft: "20px" }}>
+              Pembayaran tagihan listrik secara online, dengan berbagai metode pembayaran
+              </p>
+            </div>
+
+            {/* token listrik */}
+            <div class="rounded-md w-[285px] h-[208px] mt-[20px] mb-[20px] dropshadow=sm bg-white">
+              <img
+                className=""
+                src={Tokenlistrik}
+                alt="a.png"
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  marginLeft: "20px",
+                  marginTop: "20px",
+                }}
+              />
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>Token Listrik</b></h1>
+              <p style={{ marginLeft: "20px" }}>
+                Pembayaran token listrik secara online, dengan berbagai metode pembayaran
+              </p>
+            </div>
+
+            {/* pdam */}
+            <div class="rounded-md w-[285px] h-[208px] mt-[20px] mb-[20px] dropshadow=sm bg-white">
+              <img
+                className=""
+                src={PDAM}
+                alt="a.png"
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  marginLeft: "20px",
+                  marginTop: "20px",
+                }}
+              />
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>PDAM</b></h1>
+              <p style={{ marginLeft: "20px" }}>
+                Pembayaran PDAM secara online, berbagai metode pembayaran
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* cta */}
+        <div className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3300px] mt-[50px] absolute">
           <div>
             <p className="font-bold text-5xl mx-[217] text-center text-white1">
               Download Aplikasi Kami Sekarang Juga dan Nikmati Produk Utama

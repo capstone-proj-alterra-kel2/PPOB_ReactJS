@@ -1,5 +1,7 @@
 import heroImage from "../../../assets/img/image-hero-2.png";
 import icon from "../../../assets/img/icon-hero.png";
+import fourstar from "../../../assets/img/4star.png";
+import fivestar from "../../../assets/img/5star.png";
 
 const Hero = () => {
   return (
@@ -23,13 +25,19 @@ const Hero = () => {
       <div className="flex justify-around">
         <div className="left-hero-content">
           <ul className="flex flex-col justify-between  gap-[70px] h-[360px] w-[281px] items-center">
-            <li className="sub-title-content">
-              7k+ User <br /> Download
-            </li>
+            <div>
+              <li className="sub-title-content">
+                <b>7k+ User <br /> Download</b>
+              </li>
+              <p>7240 User telah download aplikasi mycuan di playstore dan appstore</p>
+            </div>
             
-            <li className="sub-title-content">
-              5k+ User <br /> Aktif
-            </li>
+            <div>
+              <li className="sub-title-content">
+                <b>5k+ User <br /> Aktif</b>
+              </li>
+              <p>7240 User telah download aplikasi mycuan di playstore dan appstore</p>
+            </div>
           </ul>
         </div>
         <div className="center-hero-content">
@@ -37,8 +45,22 @@ const Hero = () => {
         </div>
         <div className="right-hero-content">
           <ul className="flex flex-col justify-between  gap-[70px] h-[360px] w-[281px] items-center">
-            <li className="sub-title-content">4 Rating Play Store</li>
-            <li className="sub-title-content">5 Rating App Store</li>
+
+            <div>
+            <img src={fourstar}/>
+              <li className="sub-title-content">
+                <p className="font-bold">4 Rating Play Store</p>
+              </li>
+              <p>4 bintang untuk rata rata rating yang diberikan oleh user pada playstore</p>
+            </div>
+            
+            <div>
+            <img src={fivestar}/>
+              <li className="sub-title-content">
+                <b>5 Rating App Store</b>
+              </li>
+              <p>5 bintang untuk rata rata rating yang diberikan oleh user pada appstore</p>
+            </div>
           </ul>
         </div>
       </div>
