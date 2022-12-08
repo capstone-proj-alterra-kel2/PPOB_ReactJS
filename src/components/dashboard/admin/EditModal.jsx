@@ -29,8 +29,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     });
   }, [idUser]);
 
-  // console.log("form data admins by id,", formData);
-
   // pop up / modals
   if (!isVisible) return null;
 
