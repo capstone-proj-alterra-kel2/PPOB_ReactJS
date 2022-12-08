@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../../assets/styles/modal.css";
 import telp from "../../../assets/img/icon-telp.png";
 import email from "../../../assets/img/icon-email.png";
@@ -7,41 +6,56 @@ import user from "../../../assets/img/icon-user.png";
 import background from "../../../assets/img/Group 606.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
-import { hasuraApi, usersApi } from "../../../apis/user";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
+  const [token, setToken] = useState(Cookies.get("token"));
   const idUser = id;
-  // console.log("id user get by id", idUser);
+  console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
-    handphone: "",
-    avatar: "",
+    phone_number: "",
+    image: "",
   });
   const [isSubmit, setIsSubmit] = useState(false);
 
   const [file, setFile] = useState("");
-  const DataUsers = useSelector((state) => state.users.users);
-  const [dataPost, setDataPost] = useState(DataUsers);
+  // const DataUsers = useSelector((state) => state.users.users);
+  // const [dataPost, setDataPost] = useState(DataUsers);
+
+  // useEffect(() => {
+  //   DataUsers.map((data) => {
+  //     setDataPost(data);
+  //   });
+  // });
+
+  // console.log(
+  //   "data user Array object",
+  //   DataUsers,
+  //   "data user hasil mapping",
+  //   dataPost
+  // );
 
   useEffect(() => {
-    DataUsers.map((data) => {
-      setDataPost(data);
-    });
-  });
-
-  useEffect(() => {
-    hasuraApi(`/newusers/${idUser}`).then((res) => {
-      // console.log("id user", res.data.users_by_pk);
+    AxiosInstance(`/admin/users/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
+      console.log("data get by id", res.data.data);
       setFormData({
-        username: res.data.users_by_pk?.username,
-        email: res.data.users_by_pk?.email,
-        handphone: res.data.users_by_pk?.handphone,
-        avatar: res.data.users_by_pk?.avatar,
+        name: res.data.data?.name,
+        email: res.data.data?.email,
+        phone_number: res.data.data?.phone_number,
+        image: res.data.data?.image,
       });
     });
   }, [idUser]);
+
+  console.log("form data", formData);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -60,10 +74,10 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
 
   //onchange data by id user
   // const data = {
-  //   username: formData.username,
+  //   name: formData.name,
   //   email: formData.email,
-  //   handphone: formData.handphone,
-  //   avatar: file,
+  //   phone_number: formData.phone_number,
+  //   image: file,
   // };
 
   // update to date use axios.post
@@ -72,13 +86,20 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     const errors = validate(formData);
     setIsSubmit(true);
     if (Object.keys(errors).length === 0 && isSubmit) {
-      hasuraApi
-        .put(`users/${idUser}`, {
-          username: formData.username,
+      AxiosInstance.put(
+        `/admin/users/${idUser}`,
+        {
+          name: formData.name,
           email: formData.email,
-          handphone: formData.handphone,
-          avatar: formData.avatar,
-        })
+          phone_number: formData.phone_number,
+          image: formData.image,
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
         .then(() => {
           setLoading(true);
           onClose(true);
@@ -97,26 +118,32 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (values.username === null || values.username === "") {
-      errors.username = "Username is required!";
+
+    // DataUsers.map((user) => {
+    //   if (values.name === user.name) {
+    //     errors.name = "Username has been ";
+    //   }
+    //   if (values.email === user.email) {
+    //     errors.email = "email has been ";
+    //   }
+    //   if (values.phone_number === user.phone_number) {
+    //     errors.phone_number = "Handphone has been ";
+    //   }
+    // });
+    if (values.name === null || values.name === "") {
+      errors.name = "Username is required!";
     }
-    if (values.username === dataPost.username) {
-      errors.username = "Username has been ";
-    }
+
     if (!values.email) {
       errors.email = "Email is required!";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
     }
-    if (values.email === dataPost.email) {
-      errors.email = "email has been ";
+
+    if (!values.phone_number) {
+      errors.phone_number = "phone_number is required!";
     }
-    if (!values.handphone) {
-      errors.handphone = "handphone is required!";
-    }
-    if (values.handphone === dataPost.handphone) {
-      errors.handphone = "Handphone has been ";
-    }
+
     return errors;
   };
 
@@ -131,14 +158,15 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} />
+                <img src={background} alt="" />
               </div>
               <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
+                  alt=""
                   src={
                     file
                       ? URL.createObjectURL(file)
-                      : formData.avatar ||
+                      : formData.image ||
                         "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                   }
                   style={{ width: "80px", height: "80px", borderRadius: "50%" }}
@@ -164,9 +192,9 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={user} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    value={formData.username}
+                    value={formData.name}
                     onChange={onChangeData}
-                    name="username"
+                    name="name"
                     type="text"
                   />
                 </div>
@@ -188,9 +216,9 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={telp} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    value={formData.handphone}
+                    value={formData.phone_number}
                     onChange={onChangeData}
-                    name="handphone"
+                    name="phone_number"
                     type="number"
                   />
                 </div>
@@ -201,7 +229,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <button
                 onClick={() => {
                   onClose();
-
                   toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
                 }}
                 className="bg-grey p-[10px] w-[200px] mr-[12px] gap-[10px] text-midblue border-solid border-2 border-midblue rounded"

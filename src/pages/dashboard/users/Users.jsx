@@ -3,12 +3,12 @@ import "../../../assets/styles/dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../../redux/feature/UsersSlice";
 import { AiOutlineSearch } from "react-icons/ai";
-import { getUsersHasura, hasuraApi } from "../../../apis/user";
-import { getDataUsers, AxiosInstance } from "../../../apis/api";
+import { AxiosInstance } from "../../../apis/api";
 import Pagination from "../../../components/dashboard/pagination/Pagination";
 import Loading from "../../../utils/Loading";
 import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
 import { BreadcrumbUser } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import Cookies from "js-cookie";
 
 // assets logo / icon
 import icondel from "../../../assets/img/icon-delete.png";
@@ -18,7 +18,6 @@ import AddModal from "../../../components/dashboard/Users/AddModal";
 import EditModal from "../../../components/dashboard/Users/EditModal";
 import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
 import Search from "../../../components/dashboard/search/Search";
-import Cookies from "js-cookie";
 
 const UsersPage = () => {
   const [token, setToken] = useState(Cookies.get("token"));
@@ -39,22 +38,17 @@ const UsersPage = () => {
   const [showModalDel, setShowModalDel] = useState(false);
   const [id, setID] = useState("");
 
-  // console.log(token, "token");
-  // get Data Users
   useEffect(() => {
-    getUsersHasura().then((res) => {
+    AxiosInstance.get("/admin/users?sort=name&size=50", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
+      console.log("masuk ya user", res.data.data.items);
       setLoading(false);
-      dispatch(setUsers(res));
+      dispatch(setUsers(res.data.data.items));
     });
   }, [loading]);
-
-  // useEffect(() => {
-  //   AxiosInstance.get("/admin/users", {
-  //     headers: {
-  //       Authorization: "Bearer " + token,
-  //     },
-  //   }).then((res) => console.log("masuk ya user", res.data.data.items));
-  // }, [loading]);
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {
@@ -62,7 +56,7 @@ const UsersPage = () => {
     setSearch(getSearch);
     if (getSearch !== "") {
       const searchData = DataUsers.filter((item) =>
-        item.username.toLowerCase().includes(getSearch)
+        item.name.toLowerCase().includes(getSearch)
       );
       setcurrentItems(searchData.slice(0, 5));
     } else {
@@ -132,14 +126,14 @@ const UsersPage = () => {
                     <div className="flex items-center flex-1">
                       <div className=" mr-5 relative">
                         <img
-                          src={item.avatar}
+                          src={item.image}
                           alt="Item"
                           className="w-[55px] h-[55px] rounded-full"
                         />
                       </div>
                       <div className="pr-[25px] w-60">
                         <div className="text-grey2">Username</div>
-                        <div>{item.username}</div>
+                        <div>{item.name}</div>
                       </div>
                       <div className="pr-[25px] w-60">
                         <div className="text-grey2">Email</div>
@@ -147,7 +141,7 @@ const UsersPage = () => {
                       </div>
                       <div className="pr-[25px] w-60">
                         <div className="text-grey2">No Handphone</div>
-                        <div>{item.handphone}</div>
+                        <div>{item.phone_number}</div>
                       </div>
                     </div>
                     <div className="flex justify-center items-center">

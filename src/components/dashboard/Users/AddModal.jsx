@@ -8,27 +8,25 @@ import emailIcon from "../../../assets/img/icon-email.png";
 import userIcon from "../../../assets/img/icon-user.png";
 import lockIcon from "../../../assets/img/icon-lock.png";
 import { useSelector } from "react-redux";
+import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const AddModal = ({ isVisible, onClose, setLoading }) => {
+  const [token, setToken] = useState(Cookies.get("token"));
+
   const [avatar, setAvatar] = useState("");
   const DataUsers = useSelector((state) => state.users.users);
-  const [dataPost, setDataPost] = useState(DataUsers);
 
   const initialValues = {
-    username: "",
+    name: "",
     email: "",
     password: "",
-    handphone: "",
+    phone_number: "",
+    image: "",
   };
 
   const [formValues, setFormValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
-
-  useEffect(() => {
-    DataUsers.map((data) => {
-      setDataPost(data);
-    });
-  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,14 +51,21 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
     const errors = validate(formValues);
     setIsSubmit(true);
     if (Object.keys(errors).length === 0 && isSubmit) {
-      await hasuraApi
-        .post("/users", {
-          username: formValues.username,
+      await AxiosInstance.post(
+        "/admin/users",
+        {
+          name: formValues.name,
           email: formValues.email,
-          handphone: formValues.handphone,
+          phone_number: formValues.phone_number,
           password: formValues.password,
-          avatar: avatar,
-        })
+          image: avatar,
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
         .then((res) => {
           // console.log("data succes", res);
           setLoading(true);
@@ -68,7 +73,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
           toast.success("Data Akun BERHASIL DIBUAT!");
         })
         .catch((err) => {
-          // console.log(err);
+          console.log(err);
           toast.error("Data Akun GAGAL DIBUAT!");
         });
     } else {
@@ -79,33 +84,40 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (values.username === null || values.username === "") {
-      errors.username = "Username is required!";
+
+    DataUsers.map((user) => {
+      if (values.name === user.name) {
+        errors.name = "Username has been ";
+      }
+      if (values.email === user.email) {
+        errors.email = "email has been ";
+      }
+      if (values.phone_number === user.phone_number) {
+        errors.phone_number = "Handphone has been ";
+      }
+    });
+    if (values.name === null || values.name === "") {
+      errors.name = "Username is required!";
     }
-    if (values.username === dataPost.username) {
-      errors.username = "Username has been ";
-    }
+
     if (!values.email) {
       errors.email = "Email is required!";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
     }
-    if (values.email === dataPost.email) {
-      errors.email = "email has been ";
+
+    if (!values.phone_number) {
+      errors.phone_number = "phone_number is required!";
     }
-    if (!values.handphone) {
-      errors.handphone = "handphone is required!";
-    }
-    if (values.handphone === dataPost.handphone) {
-      errors.handphone = "Handphone has been ";
-    }
+
     if (!values.password) {
       errors.password = "Password is required";
     } else if (values.password.length < 4) {
       errors.password = "Password must be more than 4 characters";
-    } else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more than 10 characters";
     }
+    // else if (values.password.length > 10) {
+    //   errors.password = "Password cannot exceed more than 10 characters";
+    // }
 
     return errors;
   };
@@ -171,9 +183,9 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                   />
 
                   <input
-                    value={formValues.username}
+                    value={formValues.name}
                     type="text"
-                    name="username"
+                    name="name"
                     className="w-[100%]"
                     placeholder="Masukan username..."
                     onChange={handleChange}
@@ -214,14 +226,14 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                   <input
                     type="number"
                     required
-                    name="handphone"
-                    value={formValues.handphone}
+                    name="phone_number"
+                    value={formValues.phone_number}
                     className="w-[100%]"
                     placeholder="Masukan Nomor Handphone..."
                     onChange={handleChange}
                   />
                 </div>
-                {/* <p>{formErrors.handphone}</p> */}
+                {/* <p>{formErrors.phone_number}</p> */}
               </div>
               <div className="flex flex-col form-input  mb-[24px]">
                 <label className="text-grey2 mb-3">Masukan Password</label>

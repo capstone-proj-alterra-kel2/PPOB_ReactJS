@@ -2,22 +2,26 @@ import React, { useState, useEffect } from "react";
 import "../../../assets/styles/modal.css";
 import backgroundDel from "../../../assets/img/del-pengguna.png";
 import { toast } from "react-toastify";
-import { hasuraApi } from "../../../apis/user";
+import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState(Cookies.get("token"));
   // console.log("masuk ke id", idUser);
 
   // get data email user
   useEffect(() => {
-    hasuraApi(`/newusers/${idUser}`).then((res) => {
+    AxiosInstance(`/admin/users/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
       // console.log("delete data", res.data);
-      setEmail(res.data?.users_by_pk.email);
+      setEmail(res.data.data?.email);
     });
   }, [idUser]);
-
-  // console.log("email untuk delete ", email);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -28,11 +32,13 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
 
   // remove data using axios delete
   const handleDelete = () => {
-    hasuraApi
-      .delete(`users/${idUser}`)
+    AxiosInstance.delete(`/admin/users/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
       .then((res) => {
         console.log("berhasill  hapus data users", res);
-
         setLoading(true);
         onClose(true);
         toast.success("Akun Pengguna BERHASIL DIHAPUS!");

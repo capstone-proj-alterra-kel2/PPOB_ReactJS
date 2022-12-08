@@ -16,7 +16,9 @@ export const logoutAdmin = async () => {
   return response.data;
 };
 
-export const getDataUsers = async () => {
-  const response = await AxiosInstance.get("/admin/users");
-  return response.data;
-};
+// export const getDataUsers = async () => {
+//   const response = await AxiosInstance.get(
+//     "/admin/users?size=5&page=0&sort=created_at"
+//   );
+//   return response.data.data;
+// };
