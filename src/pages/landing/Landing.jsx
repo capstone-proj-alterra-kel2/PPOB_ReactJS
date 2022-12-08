@@ -30,14 +30,14 @@ const LandingPage = () => {
         <div className="flex flex-col items-center mt-80">
           <div className="">
             <p style={{ fontSize: 24, textAlign: "center", color: "#8C8E93" }}>
-              PRODUK UTAMA KAMI
+              PRODUK TELEKOMUNIKASI
             </p>
           </div>
 
           <div className="">
             <p style={{ fontSize: 48, textAlign: "center" }}>
               <b>
-                Lorem Ipsum is simply dummy<br></br>the setting industry.
+              Beberapa produk untuk membantu<br></br>layanan telekomunikasi anda
               </b>
             </p>
           </div>
@@ -65,16 +65,13 @@ const LandingPage = () => {
             style={{ textAlign: "justify" }}
           >
             <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
-              <b>#TOP UP PULSA</b>
+              <b>#1</b>
             </p>
             <p className="text2" style={{ fontSize: 36 }}>
-              <b>Lorem Ipsum is simply dummy the setting industry.</b>
+              <b>Makin mudah Isi pulsa ke berbagai macam operator</b>
             </p>
             <p className="text3" style={{ fontSize: 16 }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+            Melalui fitur ini, pembeli dapat membeli pulsa prabayar dari berbagai operator dan memilih nominal pulsa sesuai kebutuhan
             </p>
           </div>
         </div>
@@ -86,16 +83,13 @@ const LandingPage = () => {
             style={{ textAlign: "justify" }}
           >
             <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
-              <b>#TOP UP GAME</b>
+              <b>#2</b>
             </p>
             <p className="text2" style={{ fontSize: 36 }}>
-              <b>Lorem Ipsum is simply dummy the setting industry.</b>
+              <b>Berbagai macam paket data yang memiliki banyak bonus</b>
             </p>
             <p className="text3" style={{ fontSize: 16 }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+            Melalui fitur ini, pembeli dapat memilih paket data yang tersedia sesuai kebutuhan
             </p>
           </div>
           <div className="">
@@ -113,7 +107,38 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[2300px] bg-lightblue mt-3 absolute">
+        {/* indihome */}
+        {/* <div className="mx-[155px] justify-center items-center mt-[0px]">
+          <div className="">
+            <img
+              className="absolute"
+              src={Group1}
+              alt="a.png"
+              style={{
+                width: "330px",
+                height: "300px",
+                top: "1500px",
+                left: "140px",
+              }}
+            />
+          </div>
+          <div
+            className="ml-[400px] mt-[0px]"
+            style={{ textAlign: "justify" }}
+          >
+            <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
+              <b>#INDIHOME</b>
+            </p>
+            <p className="text2" style={{ fontSize: 36 }}>
+              <b>Lorem Ipsum is simply dummy<br></br>the setting industry.</b>
+            </p>
+            <p className="text3" style={{ fontSize: 16 }}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </p>
+          </div>
+        </div> */}
+
+        <div className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[2200px] bg-lightblue mt-3 absolute">
           <div>
             <p className="font-bold text-5xl mx-[217] text-center text-white1">
               Download Aplikasi Kami Sekarang Juga dan Nikmati Produk Utama

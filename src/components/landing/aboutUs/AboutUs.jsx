@@ -20,9 +20,9 @@ const AboutUsLanding = () => {
             <div className="flex items-center content-center text-white h-[270px] p-10">
               <p className="text-large mr-12 about-title">Tentang Kami</p>
               <p className="pr-10 about-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-                voluptates tempore inventore mollitia eveniet repellat est
-                suscipit adipisci vel doloremque.
+                MYCUAN adalah layanan pembayaran tagihan secara online real time
+                24 jam sehingga proses rekonsiliasi data dan dana bisa lebih
+                cepat dan akurat serta aman
               </p>
             </div>
           </div>

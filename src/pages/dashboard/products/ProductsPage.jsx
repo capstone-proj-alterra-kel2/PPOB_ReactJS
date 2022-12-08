@@ -26,13 +26,13 @@ const ProductsPage = () => {
               return (
                 <NavLink key={data.id} to={data.path}>
                   <div className="card-product">
-                    {/* <div className="flex justify-center items-center"> */}
+                    <div className="flex justify-center items-center">
                     {/* <img
                       src={logoRounded}
                       alt=""
-                      className=" w-10 h-10  fixed"
+                      className=" w-10 h-10 absolute"
                     /> */}
-                    {/* </div> */}
+                    </div>
                     <div className="flex justify-center items-center pl-4">
                       <div className="mr-4">{data.logo}</div>
                       <div className="text-semibold text-2xl">
