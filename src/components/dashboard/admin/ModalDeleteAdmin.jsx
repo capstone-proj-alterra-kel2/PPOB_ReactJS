@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../../assets/styles/modal.css";
 import backgroundDel from "../../../assets/img/del-admin.png";
 import { toast } from "react-toastify";
-import { hasuraApi } from "../../../apis/user";
+import { AxiosInstance } from "../../../apis/api";
 
 const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
@@ -10,9 +10,9 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
 
   // get data email user
   useEffect(() => {
-    hasuraApi(`/admins/${idUser}`).then((res) => {
+    AxiosInstance(`/admin/admins/${idUser}`).then((res) => {
       console.log("delete data admin", res.data.data_admins_by_pk);
-      setEmail(res.data.data_admins_by_pk.email);
+      setEmail(res.data.data?.email);
     });
   }, [idUser]);
 
@@ -27,8 +27,7 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
 
   // remove data using axios delete
   const handleDelete = () => {
-    hasuraApi
-      .delete(`/newadmins/${idUser}`)
+    AxiosInstance.delete(`/admin/admins/${idUser}`)
       .then((res) => {
         console.log("berhasill  hapus data admin", res);
         setLoading(true);

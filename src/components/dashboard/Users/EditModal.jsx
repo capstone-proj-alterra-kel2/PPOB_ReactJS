@@ -11,7 +11,6 @@ import { AxiosInstance } from "../../../apis/api";
 import Cookies from "js-cookie";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
-  const [token, setToken] = useState(Cookies.get("token"));
   const idUser = id;
   console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
@@ -22,29 +21,10 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   });
   const [isSubmit, setIsSubmit] = useState(false);
 
-  const [file, setFile] = useState("");
-  // const DataUsers = useSelector((state) => state.users.users);
-  // const [dataPost, setDataPost] = useState(DataUsers);
-
-  // useEffect(() => {
-  //   DataUsers.map((data) => {
-  //     setDataPost(data);
-  //   });
-  // });
-
-  // console.log(
-  //   "data user Array object",
-  //   DataUsers,
-  //   "data user hasil mapping",
-  //   dataPost
-  // );
+  const [image, setImage] = useState("");
 
   useEffect(() => {
-    AxiosInstance(`/admin/users/${idUser}`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }).then((res) => {
+    AxiosInstance.get(`/admin/users/${idUser}`).then((res) => {
       console.log("data get by id", res.data.data);
       setFormData({
         name: res.data.data?.name,
@@ -55,7 +35,8 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     });
   }, [idUser]);
 
-  console.log("form data", formData);
+  console.log("form data prev image", formData.image);
+  console.log("form data next image", image);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -72,34 +53,19 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     });
   };
 
-  //onchange data by id user
-  // const data = {
-  //   name: formData.name,
-  //   email: formData.email,
-  //   phone_number: formData.phone_number,
-  //   image: file,
-  // };
+  const dataAdmins = new FormData();
+  dataAdmins.append("name", formData.name);
+  dataAdmins.append("email", formData.email);
+  dataAdmins.append("phone_number", formData.phone_number);
+  dataAdmins.append("image", image);
 
-  // update to date use axios.post
-  const Update = (e) => {
+  // update to date use axios put
+  const Update = async (e) => {
     e.preventDefault();
     const errors = validate(formData);
     setIsSubmit(true);
     if (Object.keys(errors).length === 0 && isSubmit) {
-      AxiosInstance.put(
-        `/admin/users/${idUser}`,
-        {
-          name: formData.name,
-          email: formData.email,
-          phone_number: formData.phone_number,
-          image: formData.image,
-        },
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      )
+      await AxiosInstance.put(`/admin/users/${idUser}`, dataAdmins)
         .then(() => {
           setLoading(true);
           onClose(true);
@@ -164,8 +130,8 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <img
                   alt=""
                   src={
-                    file
-                      ? URL.createObjectURL(file)
+                    image
+                      ? URL.createObjectURL(image)
                       : formData.image ||
                         "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                   }
@@ -182,7 +148,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   name="file"
                   id="file"
                   onChange={(e) => {
-                    setFile(e.target.files[0]);
+                    setImage(e.target.files[0]);
                   }}
                   style={{ display: "none" }}
                 />

@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import background from "../../../assets/img/add-pengguna.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
-import { hasuraApi } from "../../../apis/user";
 import telpIcon from "../../../assets/img/icon-telp.png";
 import emailIcon from "../../../assets/img/icon-email.png";
 import userIcon from "../../../assets/img/icon-user.png";
 import lockIcon from "../../../assets/img/icon-lock.png";
 import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../apis/api";
-import Cookies from "js-cookie";
 
 const AddModal = ({ isVisible, onClose, setLoading }) => {
-  const [token, setToken] = useState(Cookies.get("token"));
-
-  const [avatar, setAvatar] = useState("");
+  const [image, setImage] = useState("");
   const DataUsers = useSelector((state) => state.users.users);
 
   const initialValues = {
@@ -22,7 +18,6 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
     email: "",
     password: "",
     phone_number: "",
-    image: "",
   };
 
   const [formValues, setFormValues] = useState(initialValues);
@@ -35,37 +30,24 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
 
   const imageUpload = (e) => {
     const data = e.target.files[0];
-    setAvatar(data);
-    console.log("data2a", avatar);
+    setImage(data);
+    console.log("data2a", image);
   };
-
-  // useEffect(() => {
-  //   console.log(formErrors);
-  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
-  //     console.log(formValues);
-  //   }
-  // }, [formErrors]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validate(formValues);
     setIsSubmit(true);
+
+    const datauser = new FormData();
+    datauser.append("name", formValues.name);
+    datauser.append("email", formValues.email);
+    datauser.append("phone_number", formValues.phone_number);
+    datauser.append("password", formValues.password);
+    datauser.append("image", image);
+
     if (Object.keys(errors).length === 0 && isSubmit) {
-      await AxiosInstance.post(
-        "/admin/users",
-        {
-          name: formValues.name,
-          email: formValues.email,
-          phone_number: formValues.phone_number,
-          password: formValues.password,
-          image: avatar,
-        },
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      )
+      await AxiosInstance.post("/admin/users", datauser)
         .then((res) => {
           // console.log("data succes", res);
           setLoading(true);
@@ -152,8 +134,8 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
               <div className="w-[100%] h-35 bg-midblue pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
                   src={
-                    avatar
-                      ? URL.createObjectURL(avatar)
+                    image
+                      ? URL.createObjectURL(image)
                       : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                   }
                   style={{ width: "80px", height: "80px", borderRadius: "50%" }}

@@ -113,7 +113,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[2300px] bg-lightblue mt-3 absolute">
+        <div className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[2300px] bg-red2 mt-3 absolute">
           <div>
             <p className="font-bold text-5xl mx-[217] text-center text-white1">
               Download Aplikasi Kami Sekarang Juga dan Nikmati Produk Utama
@@ -121,7 +121,11 @@ const LandingPage = () => {
             </p>
           </div>
           <div className=" flex justify-center items-center">
-            <img className="mt-[20px] w-[248px] mr-[8px]" src={downloadps} alt=""></img>
+            <img
+              className="mt-[20px] w-[248px] mr-[8px]"
+              src={downloadps}
+              alt=""
+            ></img>
             <img className="mt-[20px] w-[248px]" src={downloadaps} alt=""></img>
           </div>
         </div>
