@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../../assets/styles/modal.css";
 import telp from "../../../assets/img/icon-telp.png";
 import email from "../../../assets/img/icon-email.png";
@@ -7,49 +6,37 @@ import user from "../../../assets/img/icon-user.png";
 import background from "../../../assets/img/Group 606.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
-import { hasuraApi, usersApi } from "../../../apis/user";
+// import { useSelector } from "react-redux";
+import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
-    handphone: "",
-    avatar: "",
+    phone_number: "",
+    image: "",
   });
-  const [file, setFile] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
 
-  // masih belum implementasi untuk axios instance get data by id
-  // const getUsersbyid = async (id) => {
-  //   const response = await usersApi.get(`/${id}`);
-  //   return response.data;
-  // };
+  const [image, setImage] = useState("");
 
-  // get data by id
   useEffect(() => {
-    hasuraApi(`/newusers/${idUser}`).then((res) => {
-      // console.log("id user", res.data.users_by_pk);
+    AxiosInstance.get(`/admin/users/${idUser}`).then((res) => {
+      console.log("data get by id", res.data.data);
       setFormData({
-        username: res.data.users_by_pk?.username,
-        email: res.data.users_by_pk?.email,
-        handphone: res.data.users_by_pk?.handphone,
-        avatar: res.data.users_by_pk?.avatar,
+        name: res.data.data?.name,
+        email: res.data.data?.email,
+        phone_number: res.data.data?.phone_number,
+        image: res.data.data?.image,
       });
     });
   }, [idUser]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:3000/users/${idUser}`)
-  //     .then((res) => {
-  //       setFormData({
-  //         nama: res.data.name,
-  //         email: res.data.email,
-  //         avatar: res.data.avatar,
-  //       });
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [idUser]);
+
+  console.log("form data prev image", formData.image);
+  console.log("form data next image", image);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -66,33 +53,64 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     });
   };
 
-  //onchange data by id user
-  // const data = {
-  //   username: formData.username,
-  //   email: formData.email,
-  //   handphone: formData.handphone,
-  //   avatar: file,
-  // };
+  const dataAdmins = new FormData();
+  dataAdmins.append("name", formData.name);
+  dataAdmins.append("email", formData.email);
+  dataAdmins.append("phone_number", formData.phone_number);
+  dataAdmins.append("image", image);
 
-  // update to date use axios.post
-  const Update = () => {
-    hasuraApi
-      .put(`users/${idUser}`, {
-        username: formData.username,
-        email: formData.email,
-        handphone: formData.handphone,
-        avatar: formData.avatar,
-      })
-      .then(() => {
-        setLoading(true);
-        onClose(true);
-        toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
-      })
-      .catch((err) => {
-        console.log(err);
+  // update to date use axios put
+  const Update = async (e) => {
+    e.preventDefault();
+    const errors = validate(formData);
+    setIsSubmit(true);
+    if (Object.keys(errors).length === 0 && isSubmit) {
+      await AxiosInstance.put(`/admin/users/${idUser}`, dataAdmins)
+        .then(() => {
+          setLoading(true);
+          onClose(true);
+          toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
+        })
+        .catch((err) => {
+          console.log(err);
 
-        toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
-      });
+          toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
+        });
+    } else {
+      Object.values(errors).map((err) => alert(err));
+    }
+  };
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    // DataUsers.map((user) => {
+    //   if (values.name === user.name) {
+    //     errors.name = "Username has been ";
+    //   }
+    //   if (values.email === user.email) {
+    //     errors.email = "email has been ";
+    //   }
+    //   if (values.phone_number === user.phone_number) {
+    //     errors.phone_number = "Handphone has been ";
+    //   }
+    // });
+    if (values.name === null || values.name === "") {
+      errors.name = "Username is required!";
+    }
+
+    if (!values.email) {
+      errors.email = "Email is required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format!";
+    }
+
+    if (!values.phone_number) {
+      errors.phone_number = "phone_number is required!";
+    }
+
+    return errors;
   };
 
   return (
@@ -106,14 +124,15 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} />
+                <img src={background} alt="" />
               </div>
-              <div className="pt-6 pb-7 flex flex-col justify-center items-center">
+              <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
+                  alt=""
                   src={
-                    file
-                      ? URL.createObjectURL(file)
-                      : formData.avatar ||
+                    image
+                      ? URL.createObjectURL(image)
+                      : formData.image ||
                         "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                   }
                   style={{ width: "80px", height: "80px", borderRadius: "50%" }}
@@ -121,19 +140,15 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   // alt="gambar.png"
                 />
 
-                <label htmlFor="file">
-                  <img
-                    src={iconEdit}
-                    alt="edit"
-                    className="fixed w-8 h-8 top-[210px] left-[670px]"
-                  />
+                <label htmlFor="file" className="absolute">
+                  <img src={iconEdit} alt="edit" className="z-50 w-8 h-8 " />
                 </label>
                 <input
                   type="file"
                   name="file"
                   id="file"
                   onChange={(e) => {
-                    setFile(e.target.files[0]);
+                    setImage(e.target.files[0]);
                   }}
                   style={{ display: "none" }}
                 />
@@ -143,10 +158,9 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={user} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    className="w-[300px]"
-                    value={formData.username}
+                    value={formData.name}
                     onChange={onChangeData}
-                    name="username"
+                    name="name"
                     type="text"
                   />
                 </div>
@@ -156,7 +170,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={email} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    className="w-[300px]"
                     value={formData.email}
                     onChange={onChangeData}
                     name="email"
@@ -169,11 +182,10 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={telp} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input
-                    className="w-[300px]"
-                    value={formData.handphone}
+                    value={formData.phone_number}
                     onChange={onChangeData}
-                    name="handphone"
-                    type="text"
+                    name="phone_number"
+                    type="number"
                   />
                 </div>
               </div>
@@ -183,7 +195,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <button
                 onClick={() => {
                   onClose();
-
                   toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
                 }}
                 className="bg-grey p-[10px] w-[200px] mr-[12px] gap-[10px] text-midblue border-solid border-2 border-midblue rounded"

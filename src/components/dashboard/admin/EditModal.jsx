@@ -5,26 +5,28 @@ import shield from "../../../assets/img/icon-shield.png";
 import background from "../../../assets/img/edit-admin.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
-import { hasuraApi } from "../../../apis/user";
+import { AxiosInstance } from "../../../apis/api";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  // console.log("ada id nya admin", id);
   const [formData, setFormData] = useState({
-    nama_lengkap: "",
+    name: "",
     email: "",
-    avatar: "",
+    phone_number: "",
+    image: "",
   });
-  const [file, setFile] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [image, setImage] = useState("");
 
   // get data by id
   useEffect(() => {
-    hasuraApi(`/admins/${idUser}`).then((res) => {
+    AxiosInstance.get(`/admin/admins/${idUser}`).then((res) => {
       // console.log("id user", res.data.data_admins_by_pk);
       setFormData({
-        nama_lengkap: res.data.data_admins_by_pk.nama_lengkap,
-        email: res.data.data_admins_by_pk.email,
-        avatar: res.data.data_admins_by_pk.avatar,
+        name: res.data.data?.name,
+        email: res.data.data?.email,
+        phone_number: res.data.data?.phone_number,
+        image: res.data.data?.image,
       });
     });
   }, [idUser]);
@@ -45,23 +47,64 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   };
 
   // update to date use axios.post
-  const Update = () => {
-    hasuraApi
-      .put(`/admins/${idUser}`, {
-        nama_lengkap: formData.nama_lengkap,
-        email: formData.email,
-        avatar: formData.avatar,
-      })
-      .then(() => {
-        setLoading(true);
-        onClose(true);
-        toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
-      })
-      .catch((err) => {
-        console.log(err);
+  const Update = (e) => {
+    e.preventDefault();
+    const errors = validate(formData);
+    setIsSubmit(true);
 
-        toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
-      });
+    const dataAdmins = new FormData();
+    dataAdmins.append("name", formData.name);
+    dataAdmins.append("email", formData.email);
+    dataAdmins.append("phone_number", formData.phone_number);
+    dataAdmins.append("image", image);
+
+    if (Object.keys(errors).length === 0 && isSubmit) {
+      AxiosInstance.put(`/admin/admins/${idUser}`, dataAdmins)
+        .then((res) => {
+          setLoading(true);
+          onClose(true);
+          toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
+        })
+        .catch((err) => {
+          console.log(err);
+
+          toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
+        });
+    } else {
+      Object.values(errors).map((err) => alert(err));
+    }
+  };
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    // DataUsers.map((user) => {
+    //   if (values.name === user.name) {
+    //     errors.name = "Username has been ";
+    //   }
+    //   if (values.email === user.email) {
+    //     errors.email = "email has been ";
+    //   }
+    //   if (values.phone_number === user.phone_number) {
+    //     errors.phone_number = "Handphone has been ";
+    //   }
+    // });
+    if (values.name === null || values.name === "") {
+      errors.name = "Username is required!";
+    }
+
+    if (!values.email) {
+      errors.email = "Email is required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format!";
+    }
+
+    if (!values.phone_number) {
+      errors.phone_number = "phone_number is required!";
+    }
+
+    return errors;
   };
 
   return (
@@ -77,12 +120,12 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <div className="h-[68px] w-[100%] ">
                 <img src={background} />
               </div>
-              <div className="pt-6 pb-7 flex flex-col justify-center items-center">
+              <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
                   src={
-                    file
-                      ? URL.createObjectURL(file)
-                      : formData.avatar ||
+                    image
+                      ? URL.createObjectURL(image)
+                      : formData.image ||
                         "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                   }
                   style={{ width: "80px", height: "80px", borderRadius: "50%" }}
@@ -90,19 +133,15 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   // alt="gambar.png"
                 />
 
-                <label htmlFor="file">
-                  <img
-                    src={iconEdit}
-                    alt="edit"
-                    className="absolute w-8 h-8 top-[290px] left-[745px]"
-                  />
+                <label htmlFor="file" className="absolute">
+                  <img src={iconEdit} alt="edit" className="z-50 w-8 h-8 " />
                 </label>
                 <input
                   type="file"
-                  name="file"
+                  name="image"
                   id="file"
                   onChange={(e) => {
-                    setFile(e.target.files[0]);
+                    setImage(e.target.files[0]);
                   }}
                   style={{ display: "none" }}
                 />
@@ -113,9 +152,9 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   <img src={shield} alt="nama.icon" className="w-5 h-5 mr-2" />
                   <input
                     className="w-[300px]"
-                    value={formData.nama_lengkap}
+                    value={formData.name}
                     onChange={onChangeData}
-                    name="nama_lengkap"
+                    name="name"
                     type="text"
                   />
                 </div>

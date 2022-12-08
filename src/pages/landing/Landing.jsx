@@ -180,7 +180,9 @@ const LandingPage = () => {
                   marginTop: "20px",
                 }}
               />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>BPJS</b></h1>
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
+                <b>BPJS</b>
+              </h1>
               <p style={{ marginLeft: "20px" }}>
                 Pembayaran BPJS secara online, berbagai metode pembayaran
               </p>
@@ -199,9 +201,12 @@ const LandingPage = () => {
                   marginTop: "20px",
                 }}
               />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>Tagihan Listrik</b></h1>
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
+                <b>Tagihan Listrik</b>
+              </h1>
               <p style={{ marginLeft: "20px" }}>
-              Pembayaran tagihan listrik secara online, dengan berbagai metode pembayaran
+                Pembayaran tagihan listrik secara online, dengan berbagai metode
+                pembayaran
               </p>
             </div>
 
@@ -218,9 +223,12 @@ const LandingPage = () => {
                   marginTop: "20px",
                 }}
               />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>Token Listrik</b></h1>
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
+                <b>Token Listrik</b>
+              </h1>
               <p style={{ marginLeft: "20px" }}>
-                Pembayaran token listrik secara online, dengan berbagai metode pembayaran
+                Pembayaran token listrik secara online, dengan berbagai metode
+                pembayaran
               </p>
             </div>
 
@@ -237,7 +245,9 @@ const LandingPage = () => {
                   marginTop: "20px",
                 }}
               />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}><b>PDAM</b></h1>
+              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
+                <b>PDAM</b>
+              </h1>
               <p style={{ marginLeft: "20px" }}>
                 Pembayaran PDAM secara online, berbagai metode pembayaran
               </p>
@@ -254,7 +264,11 @@ const LandingPage = () => {
             </p>
           </div>
           <div className=" flex justify-center items-center">
-            <img className="mt-[20px] w-[248px] mr-[8px]" src={downloadps} alt=""></img>
+            <img
+              className="mt-[20px] w-[248px] mr-[8px]"
+              src={downloadps}
+              alt=""
+            ></img>
             <img className="mt-[20px] w-[248px]" src={downloadaps} alt=""></img>
           </div>
         </div>
