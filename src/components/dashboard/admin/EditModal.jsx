@@ -6,9 +6,11 @@ import background from "../../../assets/img/edit-admin.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
 import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
+  const token = Cookies.get("token");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,7 +22,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
 
   // get data by id
   useEffect(() => {
-    AxiosInstance.get(`/admin/admins/${idUser}`).then((res) => {
+    AxiosInstance.get(`/admin/admins/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
       // console.log("id user", res.data.data_admins_by_pk);
       setFormData({
         name: res.data.data?.name,
@@ -59,7 +65,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     dataAdmins.append("image", image);
 
     if (Object.keys(errors).length === 0 && isSubmit) {
-      AxiosInstance.put(`/admin/admins/${idUser}`, dataAdmins)
+      AxiosInstance.put(`/admin/admins/${idUser}`, dataAdmins, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
         .then((res) => {
           setLoading(true);
           onClose(true);

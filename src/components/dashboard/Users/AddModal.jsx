@@ -8,8 +8,10 @@ import userIcon from "../../../assets/img/icon-user.png";
 import lockIcon from "../../../assets/img/icon-lock.png";
 import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const AddModal = ({ isVisible, onClose, setLoading }) => {
+  const token = Cookies.get("token");
   const [image, setImage] = useState("");
   const DataUsers = useSelector((state) => state.users.users);
 
@@ -47,7 +49,11 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
     datauser.append("image", image);
 
     if (Object.keys(errors).length === 0 && isSubmit) {
-      await AxiosInstance.post("/admin/users", datauser)
+      await AxiosInstance.post("/admin/users", datauser, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
         .then((res) => {
           // console.log("data succes", res);
           setLoading(true);

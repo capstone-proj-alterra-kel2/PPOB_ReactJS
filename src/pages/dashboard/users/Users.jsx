@@ -20,7 +20,7 @@ import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
 import Search from "../../../components/dashboard/search/Search";
 
 const UsersPage = () => {
-  const [token, setToken] = useState(Cookies.get("token"));
+  const token = Cookies.get("token");
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataUsers = useSelector((state) => state.users.users);
@@ -39,7 +39,11 @@ const UsersPage = () => {
   const [id, setID] = useState("");
 
   useEffect(() => {
-    AxiosInstance.get("/admin/users?sort=name&size=50").then((res) => {
+    AxiosInstance.get("/admin/users?sort=name&size=50", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
       console.log("masuk ya user", res.data.data.items);
       setLoading(false);
       dispatch(setUsers(res.data.data.items));

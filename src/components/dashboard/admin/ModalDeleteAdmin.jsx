@@ -3,14 +3,20 @@ import "../../../assets/styles/modal.css";
 import backgroundDel from "../../../assets/img/del-admin.png";
 import { toast } from "react-toastify";
 import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
+  const token = Cookies.get("token");
   const [email, setEmail] = useState("");
 
   // get data email user
   useEffect(() => {
-    AxiosInstance(`/admin/admins/${idUser}`).then((res) => {
+    AxiosInstance(`/admin/admins/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
       console.log("delete data admin", res.data.data_admins_by_pk);
       setEmail(res.data.data?.email);
     });
@@ -27,7 +33,11 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
 
   // remove data using axios delete
   const handleDelete = () => {
-    AxiosInstance.delete(`/admin/admins/${idUser}`)
+    AxiosInstance.delete(`/admin/admins/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
       .then((res) => {
         console.log("berhasill  hapus data admin", res);
         setLoading(true);

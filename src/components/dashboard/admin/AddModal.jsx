@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import background from "../../../assets/img/add-admin.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
-import { hasuraApi } from "../../../apis/user";
 import telpIcon from "../../../assets/img/icon-telp.png";
 import emailIcon from "../../../assets/img/icon-email.png";
 import userIcon from "../../../assets/img/icon-user.png";
 import lockIcon from "../../../assets/img/icon-lock.png";
 import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
+  const token = Cookies.get("token");
   const [image, setImage] = useState("");
 
   const initialValues = {
@@ -53,7 +54,11 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
     // console.log("data untuk post", datauser);
 
     if (Object.keys(errors).length === 0 && isSubmit) {
-      await AxiosInstance.post("/admin/admins", datauser)
+      await AxiosInstance.post("/admin/admins", datauser, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
         .then((res) => {
           console.log("data succes", res);
           setLoading(true);
@@ -98,6 +103,9 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
     // else if (values.password.length > 10) {
     //   errors.password = "Password cannot exceed more than 10 characters";
     // }
+    if (!values.phone_number) {
+      errors.phone_number = "phone_number is required!";
+    }
 
     return errors;
   };
@@ -209,7 +217,7 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
                     required
                     name="phone_number"
                     value={formValues.phone_number}
-                    placeholder="Masukan Password..."
+                    placeholder="Masukan phone number..."
                     onChange={handleChange}
                   />
                 </div>

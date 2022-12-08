@@ -1,15 +1,9 @@
 // api configurasi
 
 import axios from "axios";
-import Cookies from "js-cookie";
-
-const token = Cookies.get("token");
 
 export const AxiosInstance = axios.create({
   baseURL: "http://108.136.220.111/v1",
-  headers: {
-    Authorization: "Bearer " + token,
-  },
 });
 
 export const loginAdmin = async () => {

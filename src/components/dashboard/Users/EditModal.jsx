@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
+  const token = Cookies.get("token");
   console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
     name: "",
@@ -24,7 +25,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    AxiosInstance.get(`/admin/users/${idUser}`).then((res) => {
+    AxiosInstance.get(`/admin/users/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
       console.log("data get by id", res.data.data);
       setFormData({
         name: res.data.data?.name,
@@ -65,7 +70,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     const errors = validate(formData);
     setIsSubmit(true);
     if (Object.keys(errors).length === 0 && isSubmit) {
-      await AxiosInstance.put(`/admin/users/${idUser}`, dataAdmins)
+      await AxiosInstance.put(`/admin/users/${idUser}`, dataAdmins, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
         .then(() => {
           setLoading(true);
           onClose(true);

@@ -3,14 +3,20 @@ import "../../../assets/styles/modal.css";
 import backgroundDel from "../../../assets/img/del-pengguna.png";
 import { toast } from "react-toastify";
 import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   const [email, setEmail] = useState("");
+  const token = Cookies.get("token");
 
   // get data email user
   useEffect(() => {
-    AxiosInstance(`/admin/users/${idUser}`).then((res) => {
+    AxiosInstance(`/admin/users/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
       // console.log("delete data", res.data);
       setEmail(res.data.data?.email);
     });
@@ -25,7 +31,11 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
 
   // remove data using axios delete
   const handleDelete = () => {
-    AxiosInstance.delete(`/admin/users/${idUser}`)
+    AxiosInstance.delete(`/admin/users/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
       .then((res) => {
         console.log("berhasill  hapus data users", res);
         setLoading(true);

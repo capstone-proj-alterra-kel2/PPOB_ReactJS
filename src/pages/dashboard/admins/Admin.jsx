@@ -25,6 +25,8 @@ const AdminPage = () => {
   const [id, setID] = useState("");
   const [currentItems, setcurrentItems] = useState(DataAdmins);
 
+  // const token = Cookies.get("token");
+
   // loading
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +38,11 @@ const AdminPage = () => {
   const [showModalDelAdmin, setShowModalDelAdmin] = useState(false);
 
   useEffect(() => {
-    AxiosInstance("/admin/admins?size=100&sort=name").then((res) => {
+    AxiosInstance("/admin/admins?size=100&sort=name", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
       setLoading(false);
       dispatch(setAdmins(res.data.data.items));
       console.log("data admins", res.data.data.items);
