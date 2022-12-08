@@ -37,6 +37,12 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     });
   }, [idUser]);
 
+  const imageUpload = (e) => {
+    const dataImage = e.target.files[0];
+    setImage(dataImage);
+    setFormData((prev) => ({ ...prev, image: dataImage }));
+  };
+
   // pop up / modals
   if (!isVisible) return null;
 
@@ -62,7 +68,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     dataAdmins.append("name", formData.name);
     dataAdmins.append("email", formData.email);
     dataAdmins.append("phone_number", formData.phone_number);
-    dataAdmins.append("image", image);
+    dataAdmins.append("image", formData.image);
 
     if (Object.keys(errors).length === 0 && isSubmit) {
       AxiosInstance.put(`/admin/admins/${idUser}`, dataAdmins, {
@@ -100,7 +106,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     //     errors.phone_number = "Handphone has been ";
     //   }
     // });
-    if (values.name === null || values.name === "") {
+    if (!values.name) {
       errors.name = "Username is required!";
     }
 
@@ -108,10 +114,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
       errors.email = "Email is required!";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
-    }
-
-    if (!values.phone_number) {
-      errors.phone_number = "phone_number is required!";
     }
 
     return errors;
@@ -150,9 +152,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   type="file"
                   name="image"
                   id="file"
-                  onChange={(e) => {
-                    setImage(e.target.files[0]);
-                  }}
+                  onChange={(e) => imageUpload(e)}
                   style={{ display: "none" }}
                 />
               </div>

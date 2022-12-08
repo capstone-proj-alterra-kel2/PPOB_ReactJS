@@ -90,6 +90,12 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
     }
   };
 
+  const imageUpload = (e) => {
+    const dataImage = e.target.files[0];
+    setImage(dataImage);
+    setFormData((prev) => ({ ...prev, image: dataImage }));
+  };
+
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -156,9 +162,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   type="file"
                   name="file"
                   id="file"
-                  onChange={(e) => {
-                    setImage(e.target.files[0]);
-                  }}
+                  onChange={(e) => imageUpload(e)}
                   style={{ display: "none" }}
                 />
               </div>
