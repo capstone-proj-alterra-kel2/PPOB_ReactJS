@@ -125,7 +125,7 @@ const UsersPage = () => {
                       />
                     </div>
                     <div className="pr-[25px] w-60">
-                      <div className="text-grey2">Username</div>
+                      <div className="text-grey2">Nama Lengkap</div>
                       <div>{item.name}</div>
                     </div>
                     <div className="pr-[25px] w-60">
