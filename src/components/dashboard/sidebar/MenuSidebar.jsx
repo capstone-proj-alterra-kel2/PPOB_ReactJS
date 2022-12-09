@@ -2,13 +2,14 @@ import iconProducts from "../../../assets/img/icon-products.png";
 import iconHistory from "../../../assets/img/icon-history.png";
 import iconUsers from "../../../assets/img/icon-users.png";
 import iconAdmin from "../../../assets/img/icon-admin.png";
-import { FaConnectdevelop, FaBars } from "react-icons/fa";
+import { FaConnectdevelop } from "react-icons/fa";
+import HistorySharpIcon from "@mui/icons-material/HistorySharp";
 
 export const menuItem = [
   {
     path: "/",
     name: "Dashboard",
-    icon: <FaConnectdevelop />,
+    icon: <FaConnectdevelop className="w-7 h-7" />,
   },
   {
     path: "/users",

@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import imageLogin from "../../assets/img/image-login.png";
 import "../../assets/styles/login.css";
@@ -68,6 +68,9 @@ export const Login = () => {
   return (
     <div className="login-container ">
       <img src={imageLogin} alt="login" className="left-content-login" />
+      <Link to="/landing" className="absolute top-10 left-10 bg-white p-5">
+        Landing
+      </Link>
 
       <div className="right-content-login bg-grey">
         <div className="w-[400px] flex flex-col justify-center items-center mb-7">

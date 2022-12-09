@@ -27,7 +27,7 @@ const ProductsPage = () => {
                 <NavLink key={data.id} to={data.path}>
                   <div className="card-product">
                     <div className="flex justify-center items-center pl-4 relative">
-                      <div className="absolute justify-center items-center">
+                      <div className="absolute justify-center items-center right-6">
                         <img
                           src={logoRounded}
                           alt=""
@@ -50,48 +50,75 @@ const ProductsPage = () => {
           <div className="cards-product">
             {tagihan.map((data) => {
               return (
-                <div className="card-product">
-                  <div className="flex justify-center items-center pl-4">
-                    <div className="mr-4">{data.logo}</div>
-                    <div className="text-semibold text-white text-2xl">
-                      {data.produk}
+                <NavLink key={data.id} to={data.path}>
+                  <div className="card-product">
+                    <div className="flex justify-center items-center pl-4 relative">
+                      <div className="absolute justify-center items-center right-6">
+                        <img
+                          src={logoRounded}
+                          alt=""
+                          className=" w-10 h-10 -z-[50px]"
+                        />
+                      </div>
+                      <div className="mr-4">{data.logo}</div>
+                      <div className="text-semibold  text-2xl">
+                        {data.produk}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </NavLink>
               );
             })}
           </div>
         </div>
         <div>
-          <h1 className="pt-6 pb-6 font-semibold text-2xl ">Voucher</h1>
+          <h1 className="pt-6 pb-6 font-semibold text-2xl ">Hiburan</h1>
           <div className="cards-product">
             {voucher.map((data) => {
               return (
-                <div className="card-product">
-                  <div className="flex justify-center items-center pl-4">
-                    <div className="mr-4">{data.logo}</div>
-                    <div className="text-semibold text-white text-2xl">
-                      {data.produk}
+                <NavLink key={data.id} to={data.path}>
+                  <div className="card-product">
+                    <div className="flex justify-center items-center pl-4 relative">
+                      <div className="absolute justify-end items-center right-6">
+                        <img
+                          src={logoRounded}
+                          alt=""
+                          className=" w-10 h-10 -z-[50px]"
+                        />
+                      </div>
+                      <div className="mr-4">{data.logo}</div>
+                      <div className="text-semibold  text-2xl">
+                        {data.produk}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </NavLink>
               );
             })}
           </div>
         </div>
         <div>
-          <h1 className="pt-6 pb-6 font-semibold text-2xl ">Tagihan</h1>
+          <h1 className="pt-6 pb-6 font-semibold text-2xl ">e-Wallet</h1>
           <div className="cards-product">
             {keuangan.map((data) => {
               return (
-                <div className="card-product mb-6">
-                  <div className="flex justify-center items-center pl-4 ">
-                    <div className="mr-4">{data.logo}</div>
-                    <div className="text-semibold text-white text-2xl">
-                      {data.produk}
+                <NavLink key={data.id} to={data.path}>
+                  <div className="card-product mb-6">
+                    <div className="flex justify-center items-center pl-4 relative">
+                      <div className="absolute justify-end items-center right-6">
+                        <img
+                          src={logoRounded}
+                          alt=""
+                          className=" w-10 h-10 -z-[50px]"
+                        />
+                      </div>
+                      <div className="mr-4">{data.logo}</div>
+                      <div className="text-semibold  text-2xl">
+                        {data.produk}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </NavLink>
               );
             })}
           </div>

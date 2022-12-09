@@ -4,10 +4,10 @@ import indihome from "../../../assets/img/products/Indihome.png";
 import bpjs from "../../../assets/img/products/BPJS.png";
 import dana from "../../../assets/img/products/dana.png";
 import game from "../../../assets/img/products/game.png";
-import googlePLay from "../../../assets/img/products/GooglePlay.png";
+// import googlePLay from "../../../assets/img/products/GooglePlay.png";
 import gopay from "../../../assets/img/products/gopay.png";
 import linkAja from "../../../assets/img/products/LinkAja.png";
-import ovo from "../../../assets/img/products/ovo.png";
+// import ovo from "../../../assets/img/products/ovo.png";
 import pdam from "../../../assets/img/products/PDAM.png";
 import shopee from "../../../assets/img/products/shopee.png";
 import tagihanListrik from "../../../assets/img/products/Tagihan_listrik.png";
@@ -106,12 +106,12 @@ export const voucher = [
   },
   {
     id: 2,
-    path: "google-play",
-    produk: "Google Play",
+    path: "streaming",
+    produk: "Streaming",
     logo: (
       <img
-        src={googlePLay}
-        alt="Google Play"
+        src={game}
+        alt="streaming"
         style={{ width: "48px", height: "48px" }}
       />
     ),
@@ -131,18 +131,7 @@ export const keuangan = [
       />
     ),
   },
-  {
-    id: 2,
-    path: "linkaja",
-    produk: "Linkaja",
-    logo: (
-      <img
-        src={linkAja}
-        alt="LinkAja"
-        style={{ width: "48px", height: "48px" }}
-      />
-    ),
-  },
+
   {
     id: 3,
     path: "dana",
@@ -160,9 +149,21 @@ export const keuangan = [
     ),
   },
   {
-    id: 5,
-    path: "ovo",
-    produk: "Ovo",
-    logo: <img src={ovo} alt="OVO" style={{ width: "48px", height: "48px" }} />,
+    id: 2,
+    path: "linkaja",
+    produk: "Linkaja",
+    logo: (
+      <img
+        src={linkAja}
+        alt="LinkAja"
+        style={{ width: "48px", height: "48px" }}
+      />
+    ),
   },
+  // {
+  //   id: 5,
+  //   path: "ovo",
+  //   produk: "Ovo",
+  //   logo: <img src={ovo} alt="OVO" style={{ width: "48px", height: "48px" }} />,
+  // },
 ];
