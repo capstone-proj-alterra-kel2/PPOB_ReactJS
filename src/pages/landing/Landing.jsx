@@ -29,9 +29,9 @@ const LandingPage = () => {
         </div>
         <div className="circle3 w-[421px] h-[421px] absolute rounded-full right-0 top-[455px] z-[-10]"></div>
         <Hero />
-        <AboutUsLanding />
+        <AboutUsLanding/>
 
-        <div className="flex flex-col items-center mt-80">
+        <div className="flex flex-col items-center mt-80" id="produk">
           <div className="">
             <p style={{ fontSize: 24, textAlign: "center", color: "#8C8E93" }}>
               PRODUK TELEKOMUNIKASI
@@ -256,7 +256,7 @@ const LandingPage = () => {
         </div>
 
         {/* cta */}
-        <div className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3300px] mt-[50px] absolute">
+        <div id="download" className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3300px] mt-[50px] absolute">
           <div>
             <p className="font-bold text-5xl mx-[217] text-center text-white1">
               Download Aplikasi Kami Sekarang Juga dan Nikmati Produk Utama
@@ -273,7 +273,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <Footer />
+        <Footer id="kontak"/>
       </div>
     </>
   );

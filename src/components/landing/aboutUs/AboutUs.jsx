@@ -6,7 +6,7 @@ const AboutUsLanding = () => {
       <div className="segitiga1"></div>
       <div className="h-[270px] top-[871px] tentangkami-hero absolute z-[-100] mx-6">
         <div className="circle2 w-[220px] h-[220px] absolute m-12"></div>
-        <div className="flex mx-auto">
+        <div className="flex mx-auto" id="about">
           <div className="flex-2 ">
             <div className="image-tentangkami absolute z-[10]">
               <img

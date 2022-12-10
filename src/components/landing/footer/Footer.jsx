@@ -9,7 +9,7 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <div className="justify-start flex items-end w-[100%] h-[700px] bg-blackfooter text-white1">
+      <div className="justify-start flex items-end w-[100%] h-[700px] bg-blackfooter text-white1" id="kontak">
         <div className="flex mx-[120px] mb-[40px]">
           {/* deskripsi mycuan */}
           <div className="about mycuan">
