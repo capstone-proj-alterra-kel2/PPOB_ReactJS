@@ -4,12 +4,13 @@ import iconLogout from "../../../assets/img/icon-logout.png";
 import { menuItem } from "./MenuSidebar";
 
 import { FaBars } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import NavbarDashboard from "../navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import { AxiosInstance } from "../../../apis/api";
 import { Auth } from "../../../utils/Auth";
+import SidebarMenu from "./SidebarMenu";
 
 const SidebarPage = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,31 +74,13 @@ const SidebarPage = ({ children }) => {
           <div className="flex flex-col  h-[90vh] justify-between">
             <div>
               {menuItem.map((item, index) => (
-                <NavLink
-                  to={item.path}
-                  key={index}
-                  className="group  flex mt-[10px] mb-[10px] list-none text-white h-[48px] items-center content-center px-[10px] hover:bg-white hover:text-midblue"
-                  activeclassname="active"
-                >
-                  <div className="font-menu p-2">{item.icon}</div>
-                  <div
-                    style={{
-                      display: isOpen ? "block" : "none",
-                      transitionDelay: `${index + 3}00ms`,
-                    }}
-                    // className={`whitespace-pre duration-500 ${
-                    //   !isOpen && "  overflow-hidden"
-                    // }`}
-                    className="font-menu p-1 text-base font-semibold not-italic whitespace-pre duration-500"
-                  >
-                    {item?.name}
-                  </div>
-                  <h2
-                    style={{ display: isOpen ? "none" : "block" }}
-                    className={`z-50 absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
-                  >
-                    {item?.name}
-                  </h2>
+                <NavLink to={item.path} key={index}>
+                  <SidebarMenu
+                    title={item.name}
+                    icon={item.icon}
+                    isOpen={isOpen}
+                    index={index}
+                  />
                 </NavLink>
               ))}
             </div>
