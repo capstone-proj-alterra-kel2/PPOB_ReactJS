@@ -70,45 +70,6 @@ const TransactionsPage = () => {
             </div>
 
             <div className="flex flex-col cards">
-              {/* {currentItems.map((data) => {
-                return (
-                  <div
-                    key={data.id}
-                    className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px]"
-                  >
-                    <div className="flex items-center w-full">
-                      <div style={{ flex: "1" }}>
-                        <div className="text-grey2">ID</div>
-                        <div>{data.id}</div>
-                      </div>
-                      <div style={{ flex: "1" }}>
-                        <div className="text-grey2">Tanggal</div>
-                        <div>{data.tanggal} </div>
-                      </div>
-                      <div style={{ flex: "3" }}>
-                        <div className="text-grey2">Email</div>
-                        <div>{data.email}</div>
-                      </div>
-                      <div style={{ flex: "2" }}>
-                        <div className="text-grey2">Produk</div>
-                        <div>{data.products}</div>
-                      </div>
-                      <div style={{ flex: "2" }}>
-                        <div className="text-grey2">Disc Voucher</div>
-                        <div>{data.disc_voucher}</div>
-                      </div>
-                      <div style={{ flex: "2" }}>
-                        <div className="text-grey2">Total Pembayaran</div>
-                        <div>{data.total_pembayaran}</div>
-                      </div>
-                      <div style={{ flex: "3" }}>
-                        <div className="text-grey2">Keterangan</div>
-                        <div>{data.keterangan}</div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })} */}
               {showData ? <PendingTransaction /> : <SuccesTransaction />}
             </div>
           </div>

@@ -32,7 +32,38 @@ const PendingTransaction = () => {
           </select>
         </div>
       </div>
-      <h1>Pending Transaksi</h1>
+      <div className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px]">
+        <div className="flex items-center w-full">
+          <div style={{ flex: "1" }} className="bg-midblue">
+            <div className="text-grey2">ID</div>
+            <div>1234</div>
+          </div>
+          <div style={{ flex: "2" }} className="bg-red2">
+            <div className="text-grey2">Tanggal</div>
+            <div>18/12/2022 {"08:12 Wib"} </div>
+          </div>
+          <div style={{ flex: "2" }} className="bg-midblue">
+            <div className="text-grey2">Email</div>
+            <div>email</div>
+          </div>
+          <div style={{ flex: "2" }} className="bg-red2">
+            <div className="text-grey2">Produk</div>
+            <div>produts</div>
+          </div>
+          <div style={{ flex: "2" }} className="bg-midblue">
+            <div className="text-grey2">Disc Voucher</div>
+            <div>disc voucher</div>
+          </div>
+          <div style={{ flex: "2" }} className="bg-red2">
+            <div className="text-grey2">Total Pembayaran</div>
+            <div>Rp 502.000</div>
+          </div>
+          <div style={{ flex: "3" }} className="bg-midblue">
+            <div className="text-grey2">Keterangan</div>
+            <div>Telkomsel 200.000</div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
