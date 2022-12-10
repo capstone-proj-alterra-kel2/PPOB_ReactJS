@@ -4,13 +4,13 @@ import iconLogout from "../../../assets/img/icon-logout.png";
 import { menuItem } from "./MenuSidebar";
 
 import { FaBars } from "react-icons/fa";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import NavbarDashboard from "../navbar/Navbar";
-import { ToastContainer } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import { AxiosInstance } from "../../../apis/api";
 import { Auth } from "../../../utils/Auth";
 import SidebarMenu from "./SidebarMenu";
+import ToastifyComponent from "../toasttify";
 
 const SidebarPage = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,24 +106,7 @@ const SidebarPage = ({ children }) => {
       <div className="w-[100%] max-h-screen bg-grey3 overflow-auto">
         <NavbarDashboard />
 
-        <ToastContainer
-          position="top-left"
-          autoClose={3000}
-          newestOnTop={false}
-          style={{
-            width: "95%",
-            marginLeft: "40px",
-
-            position: "absolute",
-            top: 0,
-            right: 0,
-          }}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          theme="colored"
-        />
+        <ToastifyComponent />
 
         <div className="">{children}</div>
       </div>
