@@ -58,7 +58,7 @@ export const Login = () => {
   };
 
   if (navigate) {
-    return <Navigate to="/" />;
+    return <Navigate to="/dashboard" />;
   }
 
   const handleShow = () => {
@@ -68,7 +68,7 @@ export const Login = () => {
   return (
     <div className="login-container ">
       <img src={imageLogin} alt="login" className="left-content-login" />
-      <Link to="/landing" className="absolute top-10 left-10 bg-white p-5">
+      <Link to="/" className="absolute top-10 left-10 bg-white p-5">
         Landing
       </Link>
 

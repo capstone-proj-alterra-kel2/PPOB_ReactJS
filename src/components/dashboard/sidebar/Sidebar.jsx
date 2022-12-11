@@ -44,7 +44,7 @@ const SidebarPage = ({ children }) => {
   };
 
   if (navigate) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/dashboard/login" />;
   }
   return (
     <div className="flex">

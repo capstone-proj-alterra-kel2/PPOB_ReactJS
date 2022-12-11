@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 const DashboardPage = () => {
   return (
     <SidebarPage>
-      <section>
+      <section className="m-3">
+        <div className="title">
+          <h1>MYCUAN</h1>
+          <p>welcome to you dashboard</p>
+        </div>
         <div className="widget flex justify-between flex-wrap">
           <div className="flex w-[50%] justify-around flex-wrap">
             <div className="text1 w-80 h-[130px] bg-midblue m-3">h</div>

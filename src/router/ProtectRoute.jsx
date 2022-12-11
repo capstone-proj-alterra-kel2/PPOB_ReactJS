@@ -3,7 +3,7 @@ import Auth from "../utils/Auth";
 
 export default function ProtectedRoute() {
   if (Auth.isAuthorization()) {
-    return <Navigate to="/admin" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <Outlet />;
