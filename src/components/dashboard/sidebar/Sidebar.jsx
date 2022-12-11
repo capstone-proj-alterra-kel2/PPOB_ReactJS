@@ -73,8 +73,8 @@ const SidebarPage = ({ children }) => {
                   to={item.path}
                   key={index}
                   className="group  flex mt-[10px] mb-[10px] list-none
-                text-white h-[48px] items-center content-center 
-                px-[10px] hover:bg-white hover:text-midblue"
+                  text-white h-[48px] items-center content-center
+                  px-[10px] hover:bg-white hover:text-midblue"
                   activeclassname="active"
                 >
                   <SidebarMenu

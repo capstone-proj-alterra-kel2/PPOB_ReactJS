@@ -6,11 +6,11 @@ import { FaConnectdevelop } from "react-icons/fa";
 import HistorySharpIcon from "@mui/icons-material/HistorySharp";
 
 export const menuItem = [
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: <FaConnectdevelop className="w-7 h-7" />,
-  },
+  // {
+  //   path: "/dashboard/",
+  //   name: "Dashboard",
+  //   icon: <FaConnectdevelop className="w-7 h-7" />,
+  // },
   {
     path: "/dashboard/users",
     name: "Pengguna",

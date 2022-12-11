@@ -58,7 +58,7 @@ export const Login = () => {
   };
 
   if (navigate) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/dashboard/users" />;
   }
 
   const handleShow = () => {
