@@ -17,14 +17,14 @@ import { BreadcrumbAdmin } from "../../../components/dashboard/breadcrumbs/Bread
 import { AxiosInstance } from "../../../apis/api";
 import Cookies from "js-cookie";
 
-const AdminPage = () => {
+const AdminPage = ({ isOpen }) => {
   const token = Cookies.get("token");
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataAdmins = useSelector((state) => state.admins.admins);
   const [id, setID] = useState("");
   const [currentItems, setcurrentItems] = useState(DataAdmins);
-
+  console.log(isOpen, "oepn");
   // const token = Cookies.get("token");
 
   // loading
