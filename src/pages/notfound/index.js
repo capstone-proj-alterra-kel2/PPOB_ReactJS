@@ -9,7 +9,7 @@ const NotFound = () => {
       <p className="text-base font-medium text-grey2 mb-10">
         Halaman yang anda cari mungkin telah dihapus atau sedang terjadi error
       </p>
-      <Link to="/dashboard">
+      <Link to="/dashboard/users">
         <button className="rounded bg-primary50 text-white py-[10px] px-5 gap-[10px]">
           Kembali ke dashboard
         </button>
