@@ -32,9 +32,9 @@ export function BreadcrumbUser() {
   return (
     <nav>
       <Link
-        to="/users"
+        to="/dashboard/users"
         className={
-          location.pathname === "/users"
+          location.pathname === "/dashboard/users"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -52,9 +52,9 @@ export function BreadcrumbAdmin() {
   return (
     <nav>
       <Link
-        to="/admins"
+        to="/dashboard/admins"
         className={
-          location.pathname === "/admins"
+          location.pathname === "/dashboard/admins"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -72,9 +72,9 @@ export function BreadcrumbTransaction() {
   return (
     <nav>
       <Link
-        to="/transactions"
+        to="/dashboard/transactions"
         className={
-          location.pathname === "/transactions"
+          location.pathname === "/dashboard/transactions"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -92,9 +92,9 @@ export function BreadcrumbProduts() {
   return (
     <nav>
       <Link
-        to="/products"
+        to="/dashboard/products"
         className={
-          location.pathname === "/products"
+          location.pathname === "/dashboard/products"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -113,9 +113,9 @@ export function BreadcrumbPulsa() {
   return (
     <nav>
       <Link
-        to="/products"
+        to="/dashboard/products"
         className={
-          location.pathname === "/products"
+          location.pathname === "/dashboard/products"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -125,9 +125,9 @@ export function BreadcrumbPulsa() {
       <span className="breadcrumb-arrow">&gt;</span>
 
       <Link
-        to="/products/pulsa"
+        to="/dashboard/products/pulsa"
         className={
-          location.pathname === "/products/pulsa"
+          location.pathname === "/dashboard/products/pulsa"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -145,9 +145,9 @@ export function BreadcrumbTelkomsel() {
   return (
     <nav>
       <Link
-        to="/products"
+        to="/dashboard/products"
         className={
-          location.pathname === "/products"
+          location.pathname === "/dashboard/products"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -157,9 +157,9 @@ export function BreadcrumbTelkomsel() {
       <span className="breadcrumb-arrow">&gt;</span>
 
       <Link
-        to="/products/pulsa"
+        to="/dashboard/products/pulsa"
         className={
-          location.pathname === "/products/pulsa"
+          location.pathname === "/dashboard/products/pulsa"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }
@@ -168,9 +168,9 @@ export function BreadcrumbTelkomsel() {
       </Link>
       <span className="breadcrumb-arrow">&gt;</span>
       <Link
-        to="/products/pulsa/telkomsel"
+        to="/dashboard/products/pulsa/telkomsel"
         className={
-          location.pathname === "/products/pulsa/telkomsel"
+          location.pathname === "/dashboard/products/pulsa/telkomsel"
             ? "breadcrumb-active"
             : "breadcrumb-not-active"
         }

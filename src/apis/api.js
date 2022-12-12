@@ -3,7 +3,7 @@
 import axios from "axios";
 
 export const AxiosInstance = axios.create({
-  baseURL: "http://108.136.220.111/v1",
+  baseURL: "https://foodnih.com/v1",
 });
 
 export const loginAdmin = async () => {

@@ -19,10 +19,6 @@ export const Login = () => {
   const errRef = useRef();
   const [show, setShow] = useState(false);
 
-  console.log(
-    `email dan password admin, email: ${email}  password: ${password}`
-  );
-
   const submit = async (e) => {
     // const { setAuth } = useAuth();
     e.preventDefault();
@@ -38,6 +34,7 @@ export const Login = () => {
       .then((res) => {
         console.log("data login", res);
         Cookies.set("token", res.data.token);
+        Cookies.set("data", res.data.data);
         setNavigate(true);
         setEmail("");
         setPassword("");
@@ -58,7 +55,7 @@ export const Login = () => {
   };
 
   if (navigate) {
-    return <Navigate to="/" />;
+    return <Navigate to="/dashboard/users" />;
   }
 
   const handleShow = () => {
@@ -68,7 +65,7 @@ export const Login = () => {
   return (
     <div className="login-container ">
       <img src={imageLogin} alt="login" className="left-content-login" />
-      <Link to="/landing" className="absolute top-10 left-10 bg-white p-5">
+      <Link to="/" className="absolute top-10 left-10 bg-white p-5">
         Landing
       </Link>
 

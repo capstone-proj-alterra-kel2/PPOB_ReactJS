@@ -158,6 +158,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                   onChange={(event) => {
                     imageUpload(event);
                   }}
+                  accept="image/*"
                   style={{ display: "none" }}
                 />
               </div>

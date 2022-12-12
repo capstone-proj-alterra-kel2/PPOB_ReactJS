@@ -14,4 +14,8 @@ export const Auth = {
   signOut() {
     return Cookies.remove("token");
   },
+
+  currentUser() {
+    return Cookies.get("data");
+  },
 };

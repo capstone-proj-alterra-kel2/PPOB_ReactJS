@@ -19,17 +19,17 @@ const Routing = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/landing" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard/login" element={<Login />} />
+          <Route path="/*" element={<NotFound />} />
           <Route element={<PrivateRoute />}>
-            <Route path="/">
+            <Route path="/dashboard">
               <Route index element={<DashboardPage />} />
-              <Route path="/*" element={<NotFound />} />
             </Route>
-            <Route path="/users">
+            <Route path="/dashboard/users">
               <Route index element={<UsersPage />} />
             </Route>
-            <Route path="/products">
+            <Route path="/dashboard/products">
               <Route index element={<ProductsPage />} />
               <Route path="pulsa">
                 <Route index element={<PulsaPage />} />
@@ -42,10 +42,10 @@ const Routing = () => {
               </Route>
               <Route path="paket-data" element={<PaketData />} />
             </Route>
-            <Route path="/transactions">
+            <Route path="/dashboard/transactions">
               <Route index element={<TransactionsPage />} />
             </Route>
-            <Route path="/admins">
+            <Route path="/dashboard/admins">
               <Route index element={<AdminsPage />} />
             </Route>
           </Route>

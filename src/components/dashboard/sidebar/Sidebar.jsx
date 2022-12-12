@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import logo from "../../../assets/img/logo4.png";
+import logo from "../../../assets/img/logo.png";
+import logoText from "../../../assets/img/MYCUAN.png";
 import iconLogout from "../../../assets/img/icon-logout.png";
 import { menuItem } from "./MenuSidebar";
 
-import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavbarDashboard from "../navbar/Navbar";
 import { Navigate } from "react-router-dom";
@@ -44,7 +44,7 @@ const SidebarPage = ({ children }) => {
   };
 
   if (navigate) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/dashboard/login" />;
   }
   return (
     <div className="flex">
@@ -53,20 +53,15 @@ const SidebarPage = ({ children }) => {
           className=" h-[100vh] w-[240px]  bg-primary50 flex flex-col"
           style={{ width: isOpen ? "240px" : "60px" }}
         >
-          <div className="top h-[70px] flex items-center ">
+          <div className="top h-[70px] flex items-center justify-center">
+            <img src={logo} style={{ width: "30px", height: "30px" }} />
             <div
-              className="text-lg pl-3"
+              className="text-lg pl-1"
               style={{
                 display: isOpen ? "block" : "none",
               }}
             >
-              <img src={logo} style={{ width: "150px", height: "40px" }} />
-            </div>
-            <div
-              style={{ marginLeft: isOpen ? "60px" : "0px" }}
-              className="flex text-2xl p-[20px] w-auto"
-            >
-              <FaBars onClick={toggle} />
+              <img src={logoText} style={{ width: "100px", height: "20px" }} />
             </div>
           </div>
           <hr />
@@ -74,7 +69,14 @@ const SidebarPage = ({ children }) => {
           <div className="flex flex-col  h-[90vh] justify-between">
             <div>
               {menuItem.map((item, index) => (
-                <NavLink to={item.path} key={index}>
+                <NavLink
+                  to={item.path}
+                  key={index}
+                  className="group  flex mt-[10px] mb-[10px] list-none
+                  text-white h-[48px] items-center content-center
+                  px-[10px] hover:bg-white hover:text-midblue"
+                  activeclassname="active"
+                >
                   <SidebarMenu
                     title={item.name}
                     icon={item.icon}
@@ -104,7 +106,7 @@ const SidebarPage = ({ children }) => {
       </div>
 
       <div className="w-[100%] max-h-screen bg-grey3 overflow-auto">
-        <NavbarDashboard />
+        <NavbarDashboard toggle={toggle} isOpen={isOpen} />
 
         <ToastifyComponent />
 

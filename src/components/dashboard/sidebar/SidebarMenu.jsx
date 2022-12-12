@@ -4,9 +4,8 @@ const SidebarMenu = ({ title, icon, isOpen, index }) => {
       className="group  flex mt-[10px] mb-[10px] list-none
     text-white h-[48px] items-center content-center 
     px-[10px] hover:bg-white hover:text-midblue"
-      activeclassname="active"
     >
-      <div className="font-menu p-1">{icon}</div>
+      <div className="font-menu">{icon}</div>
       <div
         style={{
           display: isOpen ? "block" : "none",

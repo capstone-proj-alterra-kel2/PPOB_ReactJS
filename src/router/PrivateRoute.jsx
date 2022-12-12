@@ -22,7 +22,7 @@ export default function PrivateRoute() {
   let { token } = Auth.isAuthorization();
 
   if (!token) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/dashboard/login" replace />;
   } else {
   }
 
