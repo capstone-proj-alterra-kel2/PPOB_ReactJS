@@ -24,11 +24,12 @@ const UsersPage = () => {
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataUsers = useSelector((state) => state.users.users);
+  // const dataFiltering = DataUsers.filter((data) => (data.role_name = "user"));
   const [search, setSearch] = useState("");
   // console.log("punya data ?", DataUsers);
   // Pagination useState
   const [currentItems, setcurrentItems] = useState(DataUsers);
-
+  // console.log("data users", dataFiltering);
   // loading
   const [loading, setLoading] = useState(true);
 

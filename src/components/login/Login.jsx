@@ -19,10 +19,6 @@ export const Login = () => {
   const errRef = useRef();
   const [show, setShow] = useState(false);
 
-  console.log(
-    `email dan password admin, email: ${email}  password: ${password}`
-  );
-
   const submit = async (e) => {
     // const { setAuth } = useAuth();
     e.preventDefault();
@@ -38,6 +34,7 @@ export const Login = () => {
       .then((res) => {
         console.log("data login", res);
         Cookies.set("token", res.data.token);
+        Cookies.set("data", res.data.data);
         setNavigate(true);
         setEmail("");
         setPassword("");

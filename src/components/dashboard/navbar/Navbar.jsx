@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { FaBars } from "react-icons/fa";
 
 const NavbarDashboard = ({ toggle, isOpen }) => {

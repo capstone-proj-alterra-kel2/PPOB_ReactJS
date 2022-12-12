@@ -163,6 +163,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   name="file"
                   id="file"
                   onChange={(e) => imageUpload(e)}
+                  accept="image/*"
                   style={{ display: "none" }}
                 />
               </div>

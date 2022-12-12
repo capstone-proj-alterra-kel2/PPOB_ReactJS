@@ -149,6 +149,7 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
                   type="file"
                   id="file"
                   onChange={imageUpload}
+                  accept="image/*"
                   style={{ display: "none" }}
                 />
               </div>
