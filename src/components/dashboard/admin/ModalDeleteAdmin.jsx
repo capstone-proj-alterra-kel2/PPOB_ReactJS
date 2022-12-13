@@ -17,12 +17,9 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
         Authorization: "Bearer " + token,
       },
     }).then((res) => {
-      console.log("delete data admin", res.data.data_admins_by_pk);
       setEmail(res.data.data?.email);
     });
-  }, [idUser]);
-
-  // console.log("punya id untuk delete", idUser);
+  }, [idUser, token]);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -39,13 +36,11 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
       },
     })
       .then((res) => {
-        console.log("berhasill  hapus data admin", res);
         setLoading(true);
         onClose(true);
         toast.success("Akun Pengguna BERHASIL DIHAPUS!");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Data Akun  Pengguna GAGAL DIHAPUS!");
       });
   };

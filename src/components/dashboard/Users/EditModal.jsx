@@ -13,7 +13,6 @@ import Cookies from "js-cookie";
 const EditModal = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
   const token = Cookies.get("token");
-  console.log("id user get by id", idUser);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,7 +29,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
         Authorization: "Bearer " + token,
       },
     }).then((res) => {
-      console.log("data get by id", res.data.data);
       setFormData({
         name: res.data.data?.name,
         email: res.data.data?.email,
@@ -38,10 +36,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
         image: res.data.data?.image,
       });
     });
-  }, [idUser]);
-
-  console.log("form data prev image", formData.image);
-  console.log("form data next image", image);
+  }, [idUser, token]);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -81,8 +76,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
           toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
         })
         .catch((err) => {
-          console.log(err);
-
           toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
         });
     } else {

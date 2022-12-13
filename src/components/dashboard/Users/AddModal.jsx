@@ -33,7 +33,6 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
   const imageUpload = (e) => {
     const data = e.target.files[0];
     setImage(data);
-    console.log("data2a", image);
   };
 
   const handleSubmit = async (e) => {
@@ -54,14 +53,19 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
           Authorization: "Bearer " + token,
         },
       })
-        .then((res) => {
-          // console.log("data succes", res);
+        .then(() => {
           setLoading(true);
           onClose(true);
           toast.success("Data Akun BERHASIL DIBUAT!");
+          setFormValues({
+            email: "",
+            password: "",
+            phone_number: "",
+            image: "",
+            name: "",
+          });
         })
         .catch((err) => {
-          console.log(err);
           toast.error("Data Akun GAGAL DIBUAT!");
         });
     } else {
@@ -137,7 +141,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
               <div className="h-[68px] w-[100%] ">
                 <img src={background} alt="" />
               </div>
-              <div className="w-[100%] h-35 bg-midblue pt-6 pb-7 flex flex-col justify-end items-center">
+              <div className="w-[100%] h-35 pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
                   src={
                     image

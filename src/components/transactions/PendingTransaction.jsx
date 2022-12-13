@@ -9,7 +9,7 @@ const PendingTransaction = () => {
   const [search, setSearch] = useState("");
   const dataPending = transactions.filter((data) => data.status === "pending");
 
-  const [dataFilter, setDataFilter] = useState(dataPending);
+  const [dataFilter, setDataFilter] = useState(dataPending); // data yang diolah
   const [currentItems, setcurrentItems] = useState(dataFilter);
   const [counter, setCounter] = useState(0);
 

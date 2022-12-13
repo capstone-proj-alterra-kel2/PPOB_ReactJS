@@ -27,7 +27,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
         Authorization: "Bearer " + token,
       },
     }).then((res) => {
-      // console.log("id user", res.data.data_admins_by_pk);
       setFormData({
         name: res.data.data?.name,
         email: res.data.data?.email,
@@ -35,7 +34,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
         image: res.data.data?.image,
       });
     });
-  }, [idUser]);
+  }, [idUser, token]);
 
   const imageUpload = (e) => {
     const dataImage = e.target.files[0];
@@ -82,8 +81,6 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
           toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
         })
         .catch((err) => {
-          console.log(err);
-
           toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
         });
     } else {
@@ -130,7 +127,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} />
+                <img src={background} alt="" />
               </div>
               <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
@@ -142,7 +139,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                   }
                   style={{ width: "80px", height: "80px", borderRadius: "50%" }}
                   className=" relative"
-                  // alt="gambar.png"
+                  alt="gambar.png"
                 />
 
                 <label htmlFor="file" className="absolute">

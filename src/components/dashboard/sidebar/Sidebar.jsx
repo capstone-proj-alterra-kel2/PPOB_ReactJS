@@ -7,7 +7,6 @@ import { menuItem } from "./MenuSidebar";
 import { NavLink } from "react-router-dom";
 import NavbarDashboard from "../navbar/Navbar";
 import { Navigate } from "react-router-dom";
-import { AxiosInstance } from "../../../apis/api";
 import { Auth } from "../../../utils/Auth";
 import SidebarMenu from "./SidebarMenu";
 import ToastifyComponent from "../toasttify";
@@ -17,34 +16,13 @@ const SidebarPage = ({ children }) => {
   const toggle = () => setIsOpen(!isOpen);
   const [navigate, setNavigate] = useState(false);
 
-  // useEffect(() => {
-  //     (async () => {
-  //         try {
-  //             const {data} = await axios.get('user');
-
-  //             setName(data.name);
-  //         } catch (e) {
-  //             setNavigate(true);
-  //         }
-  //     })();
-  // }, []);
-
-  const logout = () => {
-    AxiosInstance.post("/auth/logout", {}).then((res) => {
-      console.log("berhasil", res);
-      // return Cookies.remove("token");
-    });
-
-    setNavigate(true);
-  };
-
   const handleLogout = () => {
     Auth.signOut();
     setNavigate(true);
   };
 
   if (navigate) {
-    return <Navigate to="/dashboard/login" />;
+    return <Navigate to="/login" />;
   }
   return (
     <div className="flex">
@@ -54,14 +32,22 @@ const SidebarPage = ({ children }) => {
           style={{ width: isOpen ? "240px" : "60px" }}
         >
           <div className="top h-[70px] flex items-center justify-center">
-            <img src={logo} style={{ width: "30px", height: "30px" }} />
+            <img
+              src={logo}
+              style={{ width: "30px", height: "30px" }}
+              alt="logo"
+            />
             <div
               className="text-lg pl-1"
               style={{
                 display: isOpen ? "block" : "none",
               }}
             >
-              <img src={logoText} style={{ width: "100px", height: "20px" }} />
+              <img
+                src={logoText}
+                style={{ width: "100px", height: "20px" }}
+                alt="logoText"
+              />
             </div>
           </div>
           <hr />

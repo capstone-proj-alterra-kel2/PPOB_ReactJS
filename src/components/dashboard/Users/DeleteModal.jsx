@@ -17,10 +17,9 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
         Authorization: "Bearer " + token,
       },
     }).then((res) => {
-      // console.log("delete data", res.data);
       setEmail(res.data.data?.email);
     });
-  }, [idUser]);
+  }, [idUser, token]);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -36,14 +35,12 @@ const DeleteModal = ({ isVisible, onClose, id, setLoading }) => {
         Authorization: "Bearer " + token,
       },
     })
-      .then((res) => {
-        console.log("berhasill  hapus data users", res);
+      .then(() => {
         setLoading(true);
         onClose(true);
         toast.success("Akun Pengguna BERHASIL DIHAPUS!");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         toast.error("Data Akun  Pengguna GAGAL DIHAPUS!");
       });
   };

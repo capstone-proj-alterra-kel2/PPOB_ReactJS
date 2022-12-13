@@ -20,7 +20,6 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
     password: "",
     phone_number: "",
     image: "",
-    role_id: 2,
   };
   const dataAdmins = useSelector((state) => state.admins.admins);
   const [formValues, setFormValues] = useState(initialValues);
@@ -35,9 +34,6 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
     const data = e.target.files[0];
     setImage(data);
   };
-  console.log("data image", image);
-
-  // console.log("form values", formValues);
 
   const handleAddUser = async (e) => {
     e.preventDefault();
@@ -51,8 +47,6 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
     datauser.append("password", formValues.password);
     datauser.append("image", image);
 
-    // console.log("data untuk post", datauser);
-
     if (Object.keys(errors).length === 0 && isSubmit) {
       await AxiosInstance.post("/admin/admins", datauser, {
         headers: {
@@ -60,13 +54,11 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
         },
       })
         .then((res) => {
-          console.log("data succes", res);
           setLoading(true);
           onClose(true);
           toast.success("Data Akun BERHASIL DIBUAT!");
         })
         .catch((err) => {
-          console.log(err);
           toast.error("Data Akun GAGAL DIBUAT!");
         });
     } else {
@@ -129,7 +121,7 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} />
+                <img src={background} alt="" />
               </div>
               <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
@@ -140,6 +132,7 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
                   }
                   style={{ width: "80px", height: "80px", borderRadius: "50%" }}
                   className=" relative"
+                  alt=""
                 />
 
                 <label htmlFor="file" className="absolute">
@@ -209,7 +202,7 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
                 <label className="text-grey2 mb-3">Handphone</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={lockIcon}
+                    src={telpIcon}
                     alt="pass.icon"
                     className="w-5 h-5 mr-2"
                   />
