@@ -36,6 +36,7 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
       },
     })
       .then((res) => {
+        console.log("data terhapus", res);
         setLoading(true);
         onClose(true);
         toast.success("Akun Pengguna BERHASIL DIHAPUS!");

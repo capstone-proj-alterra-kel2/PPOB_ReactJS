@@ -16,6 +16,7 @@ import Loading from "../../../utils/Loading";
 import { BreadcrumbAdmin } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { AxiosInstance } from "../../../apis/api";
 import Cookies from "js-cookie";
+import { GetProductType, GetProviderPulsa } from "../../../apis/produtcs";
 
 const AdminPage = ({ isOpen }) => {
   const token = Cookies.get("token");
@@ -24,7 +25,6 @@ const AdminPage = ({ isOpen }) => {
   const DataAdmins = useSelector((state) => state.admins.admins);
   const [id, setID] = useState("");
   const [currentItems, setcurrentItems] = useState(DataAdmins);
-  console.log(isOpen, "oepn");
   // const token = Cookies.get("token");
 
   // loading
@@ -45,14 +45,12 @@ const AdminPage = ({ isOpen }) => {
     }).then((res) => {
       setLoading(false);
       dispatch(setAdmins(res.data.data.items));
-      console.log("data admins", res.data.data.items);
     });
   }, [loading]);
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {
     const getSearch = e.target.value;
-    console.log("serach value", getSearch);
     setSearch(getSearch);
     if (getSearch !== "") {
       const searchData = DataAdmins.filter((item) =>

@@ -1,3 +1,16 @@
+import { AxiosInstance } from "./api";
+import Cookies from "js-cookie";
+
+const token = Cookies.get("token");
+
+export const GetDataTransactions = () => {
+  AxiosInstance.get("/admin/transactions", {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+};
+
 export const transactions = [
   {
     id: 1,

@@ -24,6 +24,13 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
   const dataAdmins = useSelector((state) => state.admins.admins);
   const [formValues, setFormValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
+  const clearForm = {
+    name: "",
+    email: "",
+    password: "",
+    phone_number: "",
+    image: "",
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -57,8 +64,10 @@ const AddModalAdmin = ({ isVisible, onClose, setLoading }) => {
           setLoading(true);
           onClose(true);
           toast.success("Data Akun BERHASIL DIBUAT!");
+          setFormValues(clearForm);
         })
         .catch((err) => {
+          alert(err.response?.data.message);
           toast.error("Data Akun GAGAL DIBUAT!");
         });
     } else {
