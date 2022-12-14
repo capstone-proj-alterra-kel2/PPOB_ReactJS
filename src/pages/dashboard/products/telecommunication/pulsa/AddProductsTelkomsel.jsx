@@ -2,7 +2,7 @@ import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
 import { Switch } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import moment from 'moment';
+import moment from "moment";
 
 const AddProductsTelkomsel = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const AddProductsTelkomsel = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
   const [Valuedate, setValuedate] = useState("");
-  console.log("test", Valuedate)
+  console.log("test", Valuedate);
 
   console.log("masuk", formValues);
 
@@ -99,26 +99,26 @@ const AddProductsTelkomsel = () => {
   //     errors.produk = "Produk harus diisi";
   //   }
 
-    // if (!values.email) {
-    //   errors.email = "Email is required!";
-    // } else if (!regex.test(values.email)) {
-    //   errors.email = "This is not a valid email format!";
-    // }
+  // if (!values.email) {
+  //   errors.email = "Email is required!";
+  // } else if (!regex.test(values.email)) {
+  //   errors.email = "This is not a valid email format!";
+  // }
 
-    // if (!values.phone_number) {
-    //   errors.phone_number = "phone_number is required!";
-    // }
+  // if (!values.phone_number) {
+  //   errors.phone_number = "phone_number is required!";
+  // }
 
-    // if (!values.password) {
-    //   errors.password = "Password is required";
-    // } else if (values.password.length < 4) {
-    //   errors.password = "Password must be more than 4 characters";
-    // }
-    // else if (values.password.length > 10) {
-    //   errors.password = "Password cannot exceed more than 10 characters";
-    // }
+  // if (!values.password) {
+  //   errors.password = "Password is required";
+  // } else if (values.password.length < 4) {
+  //   errors.password = "Password must be more than 4 characters";
+  // }
+  // else if (values.password.length > 10) {
+  //   errors.password = "Password cannot exceed more than 10 characters";
+  // }
 
-    // return errors;
+  // return errors;
   // };
 
   return (
