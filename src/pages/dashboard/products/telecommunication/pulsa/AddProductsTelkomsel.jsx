@@ -6,6 +6,7 @@ import moment from 'moment';
 import { AxiosInstance } from "../../../../../apis/api";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
+import moment from "moment";
 
 const AddProductsTelkomsel = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const AddProductsTelkomsel = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
   const [Valuedate, setValuedate] = useState("");
-  console.log("test", Valuedate)
+  console.log("test", Valuedate);
 
   console.log("masuk", formValues);
 
@@ -125,6 +126,79 @@ const AddProductsTelkomsel = () => {
 
     return errors;
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const errors = validate(formValues);
+  //   setIsSubmit(true);
+
+  //   const datauser = new FormData();
+  //   datauser.append("name", formValues.namaproduk);
+  //   datauser.append("stock", formValues.stok);
+  //   datauser.append("price", formValues.harga);
+  //   datauser.append("status", formValues.status);
+  //   datauser.append("discount", formValues.hargapromo);
+  //   datauser.append("promo_start_date", formValues.promoperiodeawal);
+  //   datauser.append("promo_end_date", formValues.promoperiodeakhir);
+
+  //   if (Object.keys(errors).length === 0 && isSubmit) {
+  //     await AxiosInstance.post("/admin/users", datauser, {
+  //       headers: {
+  //         Authorization: "Bearer " + token,
+  //       },
+  //     })
+  //       .then(() => {
+  //         setLoading(true);
+  //         onClose(true);
+  //         toast.success("Data Produk Berhasil Ditambahkan");
+  //       })
+  //       .catch((err) => {
+  //         toast.error("Data Produk Gagal Ditambahkan");
+  //       });
+  //   } else {
+  //     Object.values(errors).map((err) => alert(err));
+  //   }
+  // };
+
+  // const validate = (values) => {
+  //   const errors = {};
+  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+  //   // DataUsers.map((user) => {
+  //   //   if (values.name === user.name) {
+  //   //     errors.name = "Username has been ";
+  //   //   }
+  //   //   if (values.email === user.email) {
+  //   //     errors.email = "email has been ";
+  //   //   }
+  //   //   if (values.phone_number === user.phone_number) {
+  //   //     errors.phone_number = "Handphone has been ";
+  //   //   }
+  //   // });
+  //   if (values.produk === null || values.produk === "") {
+  //     errors.produk = "Produk harus diisi";
+  //   }
+
+  // if (!values.email) {
+  //   errors.email = "Email is required!";
+  // } else if (!regex.test(values.email)) {
+  //   errors.email = "This is not a valid email format!";
+  // }
+
+  // if (!values.phone_number) {
+  //   errors.phone_number = "phone_number is required!";
+  // }
+
+  // if (!values.password) {
+  //   errors.password = "Password is required";
+  // } else if (values.password.length < 4) {
+  //   errors.password = "Password must be more than 4 characters";
+  // }
+  // else if (values.password.length > 10) {
+  //   errors.password = "Password cannot exceed more than 10 characters";
+  // }
+
+  // return errors;
+  // };
 
   return (
     <>
