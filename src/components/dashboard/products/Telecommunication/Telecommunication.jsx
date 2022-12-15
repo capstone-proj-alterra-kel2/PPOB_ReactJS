@@ -24,7 +24,7 @@ export const pulsaData = [
   },
   {
     id: 2,
-    path: "/indosat",
+    path: "indosat",
     data_produk: "Indosat",
     stok: 1428,
     logo: (
@@ -37,7 +37,7 @@ export const pulsaData = [
   },
   {
     id: 3,
-    path: "/simpati",
+    path: "simpati",
     data_produk: "Simpati",
     stok: 1428,
     logo: (
@@ -50,7 +50,7 @@ export const pulsaData = [
   },
   {
     id: 4,
-    path: "/three",
+    path: "three",
     data_produk: "Three",
     stok: 1428,
     logo: (
@@ -59,7 +59,7 @@ export const pulsaData = [
   },
   {
     id: 5,
-    path: "/smartfren",
+    path: "smartfren",
     data_produk: "Smartfren",
     stok: 1428,
     logo: (
@@ -72,7 +72,7 @@ export const pulsaData = [
   },
   {
     id: 6,
-    path: "/axis",
+    path: "axis",
     data_produk: "Axis",
     stok: 1428,
     logo: (
@@ -81,14 +81,14 @@ export const pulsaData = [
   },
   {
     id: 7,
-    path: "/xl",
+    path: "xl",
     data_produk: "Xl",
     stok: 1428,
     logo: <img src={xl} alt="xl" style={{ width: "50px", height: "50px" }} />,
   },
   {
     id: 8,
-    path: "/byu",
+    path: "byu",
     data_produk: "By.U",
     stok: 1428,
     logo: <img src={byu} alt="byu" style={{ width: "50px", height: "50px" }} />,
@@ -98,7 +98,7 @@ export const pulsaData = [
 export const paketData = [
   {
     id: 1,
-    path: "/telkomsel",
+    path: "telkomsel",
     data_produk: "Telkomsel",
     stok: 1428,
     logo: (
@@ -111,7 +111,7 @@ export const paketData = [
   },
   {
     id: 2,
-    path: "/indosat",
+    path: "indosat",
     data_produk: "Indosat",
     stok: 1428,
     logo: (

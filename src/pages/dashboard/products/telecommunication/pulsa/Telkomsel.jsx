@@ -1,16 +1,16 @@
-import icondel from "../../../../assets/img/icon-delete.png";
-import iconedit from "../../../../assets/img/icon-edit2.png";
-import iconAdd from "../../../../assets/img/icon-add.png";
+import icondel from "../../../../../assets/img/icon-delete.png";
+import iconedit from "../../../../../assets/img/icon-edit2.png";
+import iconAdd from "../../../../../assets/img/icon-add.png";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import DiscountOutlinedIcon from "@mui/icons-material/DiscountOutlined";
 
 import { useState } from "react";
 // import { produts } from "../../../../apis/produtcs";
 import { AiOutlineSearch } from "react-icons/ai";
-import SidebarPage from "../../../../components/dashboard/sidebar/Sidebar";
-import { BreadcrumbTelkomsel } from "../../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
+import { BreadcrumbTelkomsel } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { Link } from "react-router-dom";
-import DelProductTelkomsel from "./pulsa/DelProductTelkomsel";
+import DelProductTelkomsel from "./DelProductTelkomsel";
 
 const TelkomselPage = () => {
   // const [dataProducts, setDataProducts] = useState(produts);

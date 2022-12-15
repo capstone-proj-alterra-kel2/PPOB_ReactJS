@@ -1,47 +1,58 @@
-import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
-import { Switch } from "antd";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AxiosInstance } from "../../../../../../apis/api";
+import SidebarPage from "../../../../sidebar/Sidebar";
 
-const AddProductsTelkomsel = () => {
+const EditPaketDataTelkomsel = () => {
   const navigate = useNavigate();
-  const [toggle, setToggle] = useState(false);
+  const { id } = useParams();
   const [showPromo, setShowPromo] = useState(false);
-  const [hargaStok, setHargaStok] = useState(0);
+  const [name, setName] = useState("");
 
-  const handleToggle = () => {
-    let data = toggle;
+  const token = Cookies.get("token");
 
-    if (data === false) setToggle(true);
-    else {
-      setToggle(false);
-    }
-  };
+  const [formData, setFormData] = useState({
+    name: "",
+    stock: "",
+    price: "",
+    price_status: "",
+    discount: 0,
+    promo_start_date: "",
+    promo_end_date: "",
+  });
+
+  //   get Data by id
+  useEffect(() => {
+    AxiosInstance.get(`/admin/products/${id}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
+      setFormData({
+        name: res.data.data.name,
+        stock: res.data.data.stock,
+        price: res.data.data.price,
+        price_status: res.data.data.price_status,
+        discount: res.data.data.discount,
+        promo_start_date: res.data.data.promo_start_date,
+        promo_end_date: res.data.data.promo_end_date,
+      });
+    });
+  }, [id, token]);
 
   const backToTelkomsel = () => {
     navigate(-1);
   };
 
-  const _renderNumeric = () => {
-    let number = Number(hargaStok);
-    return number?.toLocaleString("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0,
-      minimumFractionDigits: 0,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    let data = e.target.value.replace(/\d{1,3}/g);
-    setHargaStok(`${_renderNumeric(data)}`);
-  };
+  console.log("data form", formData);
 
   return (
     <>
       <SidebarPage>
         <div className="flex flex-col justify-center items-center h-full">
-          <h1 className="font-bold text-3xl my-3">Tambah Produk</h1>
+          <h1 className="font-bold text-3xl my-3">Edit Produk</h1>
+          <h2> get data by id {id}</h2>
           <div className="h-auto w-[600px] gap-6 bg-white rounded-xl mb-8">
             <div className="p-6">
               <h2 className="text-2xl font-semibold">Detail</h2>
@@ -50,8 +61,9 @@ const AddProductsTelkomsel = () => {
                 <label>Nama Produk</label>
                 <input
                   className="border-solid border border-black w-[328px] h-14 rounded-xl px-2 "
-                  name="produk"
+                  name="name"
                   type="text"
+                  value={formData.name}
                   placeholder="Pulsa Rp. 5.000,00"
                 />
               </div>
@@ -60,16 +72,10 @@ const AddProductsTelkomsel = () => {
                 <input
                   className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
                   name="produk"
-                  type="text"
+                  type="number"
+                  value={formData.stock}
                   placeholder="Jumlah Stok..."
                 />
-              </div>
-              <div className="flex justify-between items-center mb-4">
-                <label>Status Produk</label>
-                <div className="w-[328px] flex">
-                  <Switch onChange={handleToggle} className=" bg-grey2 mr-2" />
-                  {toggle ? <div>Aktif</div> : <div>Non Aktif</div>}
-                </div>
               </div>
 
               {/* Harga*/}
@@ -77,14 +83,11 @@ const AddProductsTelkomsel = () => {
               <div className="flex justify-between items-center mb-4">
                 <label>Harga Produk</label>
                 <input
-                  value={hargaStok}
-                  onChange={(e) => {
-                    handleSubmit(e);
-                  }}
                   className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
                   name="produk"
                   type="text"
                   placeholder="Pulsa Rp. 5.000,00"
+                  value={formData.price}
                 />
               </div>
 
@@ -117,7 +120,8 @@ const AddProductsTelkomsel = () => {
                     <input
                       className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
                       name="produk"
-                      type="text"
+                      type="number"
+                      value={formData.discount}
                       placeholder="Pulsa Rp. 5.000,00"
                     />
                   </div>
@@ -162,4 +166,4 @@ const AddProductsTelkomsel = () => {
   );
 };
 
-export default AddProductsTelkomsel;
+export default EditPaketDataTelkomsel;

@@ -38,7 +38,7 @@ const UsersPage = () => {
   const [id, setID] = useState("");
 
   useEffect(() => {
-    AxiosInstance.get("/admin/users?sort=name&size=50", {
+    AxiosInstance.get("/admin/users?sort=name&size=100", {
       headers: {
         Authorization: "Bearer " + token,
       },
