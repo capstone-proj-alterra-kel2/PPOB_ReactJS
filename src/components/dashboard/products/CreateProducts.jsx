@@ -26,7 +26,6 @@ const CreateProducts = () => {
   console.log("data buat tambaha", Products);
   const navigate = useNavigate();
   const [showPromo, setShowPromo] = useState(false);
-  const [CurrentyIDR, setCurrentyIDR] = useState("");
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -42,21 +41,6 @@ const CreateProducts = () => {
   };
 
   console.log("kelelel", formValues);
-
-  const formatter = (value) => {
-    new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0,
-      minimumFractionDigits: 0,
-    });
-  };
-
-  const handleChangeFormatter = (e) => {
-    const apadlu = e.target.value.replace(/\D/g, "");
-    const output = formatter.format(apadlu);
-    setCurrentyIDR(output);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,10 +73,8 @@ const CreateProducts = () => {
         .then((res) => {
           navigate(-1, toast.success("Data Akun BERHASIL DIBUAT!"));
           setLoading(true);
-          console.log(res);
         })
         .catch((err) => {
-          console.log(err);
           toast.error("Data Akun GAGAL DIBUAT!");
         });
     }
@@ -196,8 +178,8 @@ const CreateProducts = () => {
                     className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
                     name="price"
                     type="number"
-                    onChange={handleChangeFormatter}
-                    value={CurrentyIDR}
+                    onChange={handleChange}
+                    value={formValues.price}
                     placeholder="Rp. 5.000.00"
                   />
                   <p className="text-center text-red2">{formErrors.price}</p>

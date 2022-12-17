@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
-import DelPaketDataTelkomsel from "../../../../../components/dashboard/products/DelPaketDataTelkomsel";
-import icondel from "../../../../../assets/img/icon-delete.png";
-import iconedit from "../../../../../assets/img/icon-edit2.png";
-import iconAdd from "../../../../../assets/img/icon-add.png";
-
-import { AiOutlineSearch } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import Pagination from "../../../../../components/dashboard/pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../../../../utils/Loading";
-import Search from "../../../../../components/dashboard/search/Search";
-import { BreadcrumbPDSimpati } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { setProducts } from "../../../../../redux/feature/ProductSlice";
 import { GetProduct } from "../../../../../apis/produtcs";
+import ICONS from "../../../../../assets/img";
+import {
+  Sidebar,
+  NotFoundSearch,
+  Pagination,
+  DeleteProducts,
+} from "../../../../../components";
+import { AiOutlineSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import Loading from "../../../../../utils/Loading";
+import { BreadcrumbPDSimpati } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 
 const IndosatPagePaketData = () => {
   const Products = useSelector((state) => state.products.products);
@@ -61,7 +60,7 @@ const IndosatPagePaketData = () => {
     setCounter((prev) => prev + 1);
   };
   return (
-    <SidebarPage>
+    <Sidebar>
       <div className="px-10 py-3">
         <div className="pb-5">
           <p className="text-base font-medium text-grey2 mb-4">
@@ -89,7 +88,7 @@ const IndosatPagePaketData = () => {
               className=" gap-2 px-6 py-3  bg-primary50 text-white cursor-pointer flex justify-center items-center rounded"
             >
               <img
-                src={iconAdd}
+                src={ICONS.addIcon}
                 style={{ width: "22px", height: "22px" }}
                 alt="ADD"
               />
@@ -103,7 +102,7 @@ const IndosatPagePaketData = () => {
               <Loading />
             </div>
           ) : currentItems.length === 0 ? (
-            <Search />
+            <NotFoundSearch />
           ) : (
             <>
               {currentItems.map((PaketData) => {
@@ -139,7 +138,7 @@ const IndosatPagePaketData = () => {
                         className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
                       >
                         <img
-                          src={iconedit}
+                          src={ICONS.editIcon}
                           className="w-[20px] h-[20px] mt-1"
                           alt="Edit"
                         />
@@ -152,7 +151,7 @@ const IndosatPagePaketData = () => {
                         }}
                       >
                         <img
-                          src={icondel}
+                          src={ICONS.deleteIcon}
                           className="w-[20px] h-[20px] mt-1 "
                           alt="Delete"
                         />
@@ -165,7 +164,7 @@ const IndosatPagePaketData = () => {
           )}
         </div>
       </div>
-      <DelPaketDataTelkomsel
+      <DeleteProducts
         isVisible={showModalDel}
         onClose={() => setShowModalDel(false)}
         id={id}
@@ -177,7 +176,7 @@ const IndosatPagePaketData = () => {
         currentItems={currentItems}
         loading={loading}
       />
-    </SidebarPage>
+    </Sidebar>
   );
 };
 

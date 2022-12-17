@@ -21,3 +21,7 @@ export { default as DeleteUsers } from "./dashboard/Users/DeleteModal";
 
 // Transactions
 export { default as TransactionsComponent } from "./transactions/PendingTransaction";
+
+// Products crud
+
+export { default as DeleteProducts } from "./dashboard/products/DelPaketDataTelkomsel";

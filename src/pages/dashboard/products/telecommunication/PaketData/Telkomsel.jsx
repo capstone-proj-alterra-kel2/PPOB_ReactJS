@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
-import DelPaketDataTelkomsel from "../../../../../components/dashboard/products/DelPaketDataTelkomsel";
 import icondel from "../../../../../assets/img/icon-delete.png";
 import iconedit from "../../../../../assets/img/icon-edit2.png";
 import iconAdd from "../../../../../assets/img/icon-add.png";
 import { AiOutlineSearch } from "react-icons/ai";
+import {
+  Sidebar,
+  NotFoundSearch,
+  Pagination,
+  DeleteProducts,
+} from "../../../../../components";
 import { Link } from "react-router-dom";
-import Pagination from "../../../../../components/dashboard/pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../../utils/Loading";
-import Search from "../../../../../components/dashboard/search/Search";
 import { setProducts } from "../../../../../redux/feature/ProductSlice";
 import { BreadcrumbPDTelkomsel } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { GetProduct } from "../../../../../apis/produtcs";
+import ICONS from "../../../../../assets/img";
 
 const TelkomselPagePaketData = () => {
   const Products = useSelector((state) => state.products.products);
@@ -62,7 +65,7 @@ const TelkomselPagePaketData = () => {
     setCounter((prev) => prev + 1);
   };
   return (
-    <SidebarPage>
+    <Sidebar>
       <div className="px-10 py-3">
         <div className="pb-5">
           <p className="text-base font-medium text-grey2 mb-4">
@@ -114,7 +117,7 @@ const TelkomselPagePaketData = () => {
               <Loading />
             </div>
           ) : currentItems.length === 0 ? (
-            <Search />
+            <NotFoundSearch />
           ) : (
             <>
               {currentItems.map((PaketData) => {
@@ -156,7 +159,7 @@ const TelkomselPagePaketData = () => {
                         className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
                       >
                         <img
-                          src={iconedit}
+                          src={ICONS.editIcon}
                           className="w-[20px] h-[20px] mt-1"
                           alt="Edit"
                         />
@@ -169,7 +172,7 @@ const TelkomselPagePaketData = () => {
                         }}
                       >
                         <img
-                          src={icondel}
+                          src={ICONS.deleteIcon}
                           className="w-[20px] h-[20px] mt-1 "
                           alt="Delete"
                         />
@@ -182,7 +185,7 @@ const TelkomselPagePaketData = () => {
           )}
         </div>
       </div>
-      <DelPaketDataTelkomsel
+      <DeleteProducts
         isVisible={showModalDel}
         onClose={() => setShowModalDel(false)}
         id={id}
@@ -194,7 +197,7 @@ const TelkomselPagePaketData = () => {
         currentItems={currentItems}
         loading={loading}
       />
-    </SidebarPage>
+    </Sidebar>
   );
 };
 
