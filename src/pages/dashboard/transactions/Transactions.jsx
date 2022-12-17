@@ -70,7 +70,8 @@ const TransactionsPage = () => {
             </div>
 
             <div className="flex flex-col cards">
-              {showData ? <PendingTransaction /> : <SuccesTransaction />}
+              {/* {showData ? <PendingTransaction /> : <SuccesTransaction />} */}
+              <PendingTransaction />
             </div>
           </div>
           {/* <Pagination

@@ -10,11 +10,12 @@ import Pagination from "../../../../../components/dashboard/pagination/Paginatio
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../../utils/Loading";
 import Search from "../../../../../components/dashboard/search/Search";
+
 import { setProducts } from "../../../../../redux/feature/ProductSlice";
-import { BreadcrumbPDTelkomsel } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import { BreadcrumbPDThree } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { GetProduct } from "../../../../../apis/produtcs";
 
-const TelkomselPagePaketData = () => {
+const ThreePagePaketData = () => {
   const Products = useSelector((state) => state.products.products);
   const [filterData, setFilterData] = useState([]);
   const [currentItems, setcurrentItems] = useState(filterData);
@@ -32,12 +33,12 @@ const TelkomselPagePaketData = () => {
     GetProduct().then((res) => {
       setLoading(false);
       dispatch(setProducts(res));
-      console.log("data product telkomsel", res);
+      console.log("data product", res);
     });
   }, [loading]);
 
   useEffect(() => {
-    setFilterData(Products.filter((data) => data.provider_id === 18));
+    setFilterData(Products.filter((data) => data.provider_id === 21));
     setLoading(false);
   }, [Products]);
 
@@ -61,11 +62,11 @@ const TelkomselPagePaketData = () => {
       <div className="px-10 py-3">
         <div className="pb-5">
           <p className="text-base font-medium text-grey2 mb-4">
-            <BreadcrumbPDTelkomsel />
+            <BreadcrumbPDThree />
           </p>
           <div className="mb-5 flex justify-between h-[64px]">
             <div className="not-italic text-2xl font-bold ">
-              Paket Data Telkomsel
+              Paket Data Three
             </div>
             {/* <div className="flex text-white">
               <button className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold">
@@ -119,7 +120,7 @@ const TelkomselPagePaketData = () => {
                     className="card h-[80px] mb-2 bg-white flex items-center justify-between px-6 py-4  rounded-xl"
                   >
                     <div className="flex items-center flex-1 font-medium text-sm">
-                      <div className=" w-80 flex flex-col">
+                      <div className=" w-80 flex flex-col pr-4">
                         <div className="text-grey2">Nama Produk</div>
                         <div className="text-lg font-semibold">
                           {PaketData?.name}
@@ -193,4 +194,4 @@ const TelkomselPagePaketData = () => {
   );
 };
 
-export default TelkomselPagePaketData;
+export default ThreePagePaketData;

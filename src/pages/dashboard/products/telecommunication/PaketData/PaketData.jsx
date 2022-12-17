@@ -1,28 +1,25 @@
 import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
 import { pulsaData } from "../../../../../components/dashboard/products/Telecommunication/Telecommunication";
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
-import { AxiosInstance } from "../../../../../apis/api";
-import { useDispatch } from "react-redux";
-import { setProducts } from "../../../../../redux/feature/ProductSlice";
-import Cookies from "js-cookie";
-import { useState } from "react";
+import { GetProduct } from "../../../../../apis/produtcs";
+// import { useEffect } from "react";
+// import { AxiosInstance } from "../../../../../apis/api";
+// import { useDispatch } from "react-redux";
+// import { setProducts } from "../../../../../redux/feature/ProductSlice";
+// import Cookies from "js-cookie";
+// import { useState } from "react";
 
 const PaketData = () => {
-  const dispatch = useDispatch();
-  const token = Cookies.get("token");
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    AxiosInstance.get("/admin/products?size=1000&sort=name", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }).then((res) => {
-      setLoading(false);
-      dispatch(setProducts(res.data.data.items));
-      console.log("data product", res.data.data.items);
-    });
-  }, [loading]);
+  // const dispatch = useDispatch();
+  // const token = Cookies.get("token");
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   GetProduct.then((res) => {
+  //     setLoading(false);
+  //     dispatch(setProducts(res.data.data.items));
+  //     console.log("data product", res.data.data.items);
+  //   });
+  // }, [loading]);
   return (
     <SidebarPage>
       <div className="p-6">
@@ -42,7 +39,7 @@ const PaketData = () => {
                         <div className="text-semibold text-2xl">
                           {data.data_produk}
                         </div>
-                        <div className="text-base">Total Stok: {data.stok}</div>
+                        {/* <div className="text-base">Total Stok: {data.stok}</div> */}
                       </div>
                     </div>
                   </div>

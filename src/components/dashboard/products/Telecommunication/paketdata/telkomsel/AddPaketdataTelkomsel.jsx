@@ -4,18 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { AxiosInstance } from "../../../../../../apis/api";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-import { integerPropType } from "@mui/utils";
 
 const AddPaketDataTelkomsel = () => {
-  const id_opsi = {
-    provider_id: 18,
-  };
   const initialValues = {
     name: "",
     description: "",
     price: "",
     stock: "",
     status: "Tersedia",
+    prodiver_id: 0,
     is_available: true,
     price_status: "",
     discount: 0,
@@ -53,13 +50,13 @@ const AddPaketDataTelkomsel = () => {
     const data = {
       name: formValues.name,
       description: formValues.name,
-      price: ++formValues.price,
-      provider_id: id_opsi.provider_id,
-      stock: ++formValues.stock,
+      price: Number(formValues.price),
+      provider_id: Number(formValues.prodiver_id),
+      stock: Number(formValues.stock),
       status: "Tersedia",
       is_available: true,
       price_status: formValues.price_status,
-      discount: ++formValues.discount,
+      discount: Number(formValues.discount),
       promo_start_date: formValues.promo_start_date,
       promo_end_date: formValues.promo_end_date,
     };
@@ -73,10 +70,10 @@ const AddPaketDataTelkomsel = () => {
         },
       })
         .then((res) => {
-          setLoading(true);
-          //  onClose(true);
-          console.log(res);
           toast.success("Data Akun BERHASIL DIBUAT!");
+          setLoading(true);
+          console.log(res);
+          navigate(-1);
         })
         .catch((err) => {
           console.log(err);
@@ -141,6 +138,29 @@ const AddPaketDataTelkomsel = () => {
                     placeholder="Jumlah Stok..."
                   />
                   <p className="text-center text-red2">{formErrors.stock}</p>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center mb-4">
+                <label>Provider</label>
+
+                <div className="select-tiket ">
+                  <select
+                    onChange={handleChange}
+                    className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                    name="prodiver_id"
+                  >
+                    <option value={18} selected>
+                      Paket Data Telkomsel
+                    </option>
+                    <option value={19}>Paket Data Indosat</option>
+                    <option value={20}>Paket Data Simpati</option>
+                    <option value={21}>Paket Data Three</option>
+                    <option value={22}>Paket Data Smartfren</option>
+                    <option value={23}>Paket Data Axis</option>
+                    <option value={24}>Paket Data Xl</option>
+                    <option value={25}>Paket Data by.U</option>
+                  </select>
                 </div>
               </div>
 

@@ -4,26 +4,44 @@ import { transactions } from "../../apis/Transactions";
 import Pagination from "../dashboard/pagination/Pagination";
 import { useEffect } from "react";
 import Search from "../dashboard/search/Search";
+import { AxiosInstance } from "../../apis/api";
+import Cookies from "js-cookie";
+import Loading from "../../utils/Loading";
 
 const PendingTransaction = () => {
+  const token = Cookies.get("token");
   const [search, setSearch] = useState("");
-  const dataPending = transactions.filter((data) => data.status === "pending");
-
-  const [dataFilter, setDataFilter] = useState(dataPending); // data yang diolah
+  const [dataTransactions, setDataTransactions] = useState([]);
+  console.log("data transactions", dataTransactions);
+  const [dataFilter, setDataFilter] = useState(dataTransactions); // data yang diolah
   const [currentItems, setcurrentItems] = useState(dataFilter);
+  console.log("data Current", dataFilter);
   const [counter, setCounter] = useState(0);
 
   // loading
   const [loading, setLoading] = useState(false);
 
-  console.log("data pending value", dataPending);
+  console.log("data pending value", dataTransactions);
+
+  useEffect(() => {
+    AxiosInstance.get("/admin/transactions?size=1000&sort=id", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
+      setLoading(false);
+      setDataTransactions(res.data.data.items);
+    });
+  }, [loading]);
+
+  console.log("data transactions", dataTransactions);
 
   const handleSearch = (e) => {
     const getSearch = e.target.value;
     setSearch(getSearch);
     if (getSearch !== "") {
       const searchData = dataFilter.filter((item) =>
-        item.email.toLowerCase().includes(getSearch)
+        item.user_email.toLowerCase().includes(getSearch)
       );
       setcurrentItems(searchData.slice(0, 5));
     } else {
@@ -36,39 +54,48 @@ const PendingTransaction = () => {
     const value = e.target.value;
     console.log("value", value);
     if (value === "all") {
-      setDataFilter(dataPending);
+      setDataFilter(dataTransactions);
     } else if (value === "pulsa") {
-      const Product = dataPending.filter((item) => item.products === "pulsa");
+      const Product = dataTransactions.filter(
+        (item) => item.product_type === "Pulsa"
+      );
       setDataFilter(Product);
       console.log(Product);
-    } else if (value === "paketdata") {
-      const Product = dataPending.filter(
-        (item) => item.products === "paketdata"
+    } else if (value === "Paket Data") {
+      const Product = dataTransactions.filter(
+        (item) => item.product_type === "Paket Data"
       );
       setDataFilter(Product);
     } else if (value === "pdam") {
-      const product = dataPending.filter((item) => item.products === "pdam");
+      const product = dataTransactions.filter(
+        (item) => item.product_type === "pdam"
+      );
       setDataFilter(product);
     } else if (value === "indihome") {
-      const product = dataPending.filter(
-        (item) => item.products === "indihome"
+      const product = dataTransactions.filter(
+        (item) => item.product_type === "indihome"
       );
       setDataFilter(product);
     } else if (value === "bpjs") {
-      const product = dataPending.filter((item) => item.products === "bpjs");
+      const product = dataTransactions.filter(
+        (item) => item.product_type === "bpjs"
+      );
       setDataFilter(product);
     } else if (value === "gopay") {
-      const product = dataPending.filter((item) => item.products === "gopay");
+      const product = dataTransactions.filter(
+        (item) => item.product_type === "gopay"
+      );
       setDataFilter(product);
     } else if (value === "shopepay") {
-      const product = dataPending.filter(
-        (item) => item.products === "shopepay"
+      const product = dataTransactions.filter(
+        (item) => item.product_type === "shopepay"
       );
       setDataFilter(product);
     }
   };
 
-  //   const [token, setToken] = useState(Cookies.get("token"));
+  console.log("data filter ", dataFilter);
+
   return (
     <div>
       <div className="sub-menu flex justify-between  flex-wrap pb-3 pt-5 ">
@@ -91,7 +118,7 @@ const PendingTransaction = () => {
               Semua Produk
             </option>
             <option value="pulsa">Pulsa</option>
-            <option value="paketdata">Paket Data</option>
+            <option value="Paket Data">Paket Data</option>
             <option value="indihome">Indihome</option>
             <option value="bpjs">BPJS</option>
             <option value="pdam">PDAM</option>
@@ -100,46 +127,46 @@ const PendingTransaction = () => {
           </select>
         </div>
       </div>
-      {dataFilter.length === 0 ? (
-        <div>
+      <div className="h-[450px]">
+        {dataFilter.length === 0 ? (
           <Search />
-        </div>
-      ) : currentItems.length === 0 ? (
-        <Search />
-      ) : (
-        <div className="h-[450px]">
-          {currentItems.map((data) => (
-            <div className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px]">
-              <div className="flex items-center w-full">
-                <div style={{ flex: "1" }}>
-                  <div className="text-grey2">ID</div>
-                  <div>{data.id}</div>
-                </div>
-                <div style={{ flex: "2" }}>
-                  <div className="text-grey2">Tanggal</div>
-                  <div>{`${data.date_transaction} (${data.time_transaction})`}</div>
-                </div>
-                <div style={{ flex: "3" }}>
-                  <div className="text-grey2">Email</div>
-                  <div>{data.email}</div>
-                </div>
-                <div style={{ flex: "2" }}>
-                  <div className="text-grey2">Produk</div>
-                  <div>{data.products}</div>
-                </div>
-                <div style={{ flex: "2" }}>
-                  <div className="text-grey2">Total Pembayaran</div>
-                  <div>{data.total}</div>
-                </div>
-                <div style={{ flex: "3" }}>
-                  <div className="text-grey2">Keterangan</div>
-                  <div>Telkomsel 200.000</div>
+        ) : currentItems.length === 0 ? (
+          <Search />
+        ) : (
+          <>
+            {currentItems.map((data) => (
+              <div className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px]">
+                <div className="flex items-center w-full">
+                  <div style={{ flex: "1" }}>
+                    <div className="text-grey2">ID</div>
+                    <div>{data.id}</div>
+                  </div>
+                  <div style={{ flex: "2" }}>
+                    <div className="text-grey2">Tanggal</div>
+                    <div>{data.transaction_date}</div>
+                  </div>
+                  <div style={{ flex: "3" }}>
+                    <div className="text-grey2">Email</div>
+                    <div>{data.user_email}</div>
+                  </div>
+                  <div style={{ flex: "2" }}>
+                    <div className="text-grey2">Produk</div>
+                    <div>{data.product_type}</div>
+                  </div>
+                  <div style={{ flex: "2" }}>
+                    <div className="text-grey2">Total Pembayaran</div>
+                    <div>{data.total_price}</div>
+                  </div>
+                  <div style={{ flex: "3" }}>
+                    <div className="text-grey2">Keterangan</div>
+                    <div>{data.product_name}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </>
+        )}
+      </div>
 
       <Pagination
         Datas={dataFilter}

@@ -161,7 +161,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 />
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Username</label>
+                <label className="text-grey2 mb-3">Nama Lengkap</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img src={user} alt="telp.icon" className="w-5 h-5 mr-2" />
                   <input

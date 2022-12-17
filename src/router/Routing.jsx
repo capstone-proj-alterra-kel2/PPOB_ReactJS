@@ -8,17 +8,17 @@ import LandingPage from "../pages/landing/Landing";
 import PulsaPage from "../pages/dashboard/products/telecommunication/pulsa/Pulsa";
 
 import PaketData from "../pages/dashboard/products/telecommunication/PaketData/PaketData";
-import TelkomselPage from "../pages/dashboard/products/telecommunication/pulsa/Telkomsel";
-import AddProductsTelkomsel from "../pages/dashboard/products/telecommunication/pulsa/AddProductsTelkomsel";
-import EditProductTelkomsel from "../pages/dashboard/products/telecommunication/pulsa/EditProductTelkomsel";
 import PrivateRoute from "./PrivateRoute";
 import { Login } from "../components/login/Login";
 import NotFound from "../pages/notfound";
 import TelkomselPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Telkomsel";
 import AddPaketDataTelkomsel from "../components/dashboard/products/Telecommunication/paketdata/telkomsel/AddPaketdataTelkomsel";
-import EditPaketDataTelkomsel from "../components/dashboard/products/Telecommunication/paketdata/telkomsel/EditPaketDataTelkomsel";
+import EditPaketDataTelkomsel from "../components/dashboard/products/EditPaketDataTelkomsel";
 import IndosatPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Indosat";
 import SimpatiPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Simpati";
+import ThreePagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Three";
+import SmartfrenPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Smartfren";
+import TelkomselPagePulsa from "../pages/dashboard/products/telecommunication/pulsa/Telkomsel";
 
 const Routing = () => {
   return (
@@ -41,11 +41,11 @@ const Routing = () => {
               <Route path="pulsa">
                 <Route index element={<PulsaPage />} />
                 <Route path="telkomsel">
-                  <Route index element={<TelkomselPage />} />
-                  <Route path="new" element={<AddProductsTelkomsel />} />
-                  <Route path="edit" element={<EditProductTelkomsel />} />
+                  {/* TElKOMSEL */}
+                  <Route index element={<TelkomselPagePulsa />} />
+                  <Route path="new" element={<AddPaketDataTelkomsel />} />
+                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
                 </Route>
-                <Route path="simpati" element={"a"} />
               </Route>
               {/* PaketData */}
               <Route path="paket-data">
@@ -59,9 +59,27 @@ const Routing = () => {
                 {/* Indosat */}
                 <Route path="indosat">
                   <Route index element={<IndosatPagePaketData />} />
+                  <Route path="new" element={<AddPaketDataTelkomsel />} />
+                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
                 </Route>
                 {/* Simpati */}
-                <Route path="simpati" element={<SimpatiPagePaketData />} />
+                <Route path="simpati">
+                  <Route index element={<SimpatiPagePaketData />} />
+                  <Route path="new" element={<AddPaketDataTelkomsel />} />
+                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                </Route>
+                {/* Three */}
+                <Route path="three">
+                  <Route index element={<ThreePagePaketData />} />
+                  <Route path="new" element={<AddPaketDataTelkomsel />} />
+                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                </Route>
+                {/* Smartfren */}
+                <Route path="smartfren">
+                  <Route index element={<SmartfrenPagePaketData />} />
+                  <Route path="new" element={<AddPaketDataTelkomsel />} />
+                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                </Route>
               </Route>
               {/* End paket Data */}
             </Route>

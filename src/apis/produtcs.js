@@ -32,80 +32,13 @@ export const GetProviderPaketdata = async () => {
   return res.data.data;
 };
 
-// ==============================================================================================
+// GET DATA PRODUCTS => d
 
-// Get Data Provider Pulsa by Telkomsel
-export const GetProviderPulsaTelkomsel = async () => {
-  const res = await AxiosInstance.get("", {
+export const GetProduct = async () => {
+  const res = await AxiosInstance.get("/admin/products?size=80000&sort=name", {
     headers: {
       Authorization: "Bearer " + token,
     },
   });
-  return res.data.data;
-};
-// Get Data Provider Pulsa by Simpati
-export const GetProviderPulsaSimpati = async () => {
-  const res = await AxiosInstance.get("", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  return res.data.data;
-};
-// Get Data Provider Pulsa by Axis
-export const GetProviderPulsaAxis = async () => {
-  const res = await AxiosInstance.get("", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  return res.data.data;
-};
-// Get Data Provider Pulsa by Three
-export const GetProviderPulsaThree = async () => {
-  const res = await AxiosInstance.get("", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  return res.data.data;
-};
-// Get Data Provider Pulsa by Smartfren
-export const GetProviderPulsaSmartfren = async () => {
-  const res = await AxiosInstance.get("", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  return res.data.data;
-};
-
-// Get Data Provider Pulsa by Xl
-export const GetProviderPulsaXl = async () => {
-  const res = await AxiosInstance.get("", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  return res.data.data;
-};
-
-// Get Data Provider Pulsa by Indosat
-export const GetProviderPulsaIndosat = async () => {
-  const res = await AxiosInstance.get("", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  return res.data.data;
-};
-
-// Get Data Provider Pulsa by BY.u
-export const GetProviderPulsaByu = async () => {
-  const res = await AxiosInstance.get("", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  return res.data.data;
+  return res.data.data.items;
 };

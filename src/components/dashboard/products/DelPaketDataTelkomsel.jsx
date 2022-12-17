@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
-import "../../../../../../assets/styles/modal.css";
-import backgroundDel from "../../../../../../assets/img/del-product.png";
+import "../../../assets/styles/modal.css";
+import backgroundDel from "../../../assets/img/del-product.png";
 import { toast } from "react-toastify";
-// import { hasuraApi } from "../../../apis/user";
+import { AxiosInstance } from "../../../apis/api";
+import Cookies from "js-cookie";
 
 const DelPaketDataTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
   const idUser = id;
-  const [email, setEmail] = useState("");
+  const token = Cookies.get("token");
+  const [name, setName] = useState("");
 
-  // get data Name Product
-  // useEffect(() => {
-  //   hasuraApi(`/get/${idUser}`).then((res) => {
-  //     console.log("id user", res.data.users_by_pk);
-  //     setEmail(res.data.users_by_pk.email);
-  //   });
-  // }, [idUser]);
+  // get data name user
+  useEffect(() => {
+    AxiosInstance(`/admin/products/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }).then((res) => {
+      setName(res.data.data?.name);
+    });
+  }, [idUser, token]);
 
   // pop up / modals
   if (!isVisible) return null;
@@ -24,19 +29,22 @@ const DelPaketDataTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
   };
 
   // remove data using axios delete
-  //   const handleDelete = () => {
-  //     hasuraApi
-  //       .delete(`delete/${idUser}`)
-  //       .then(() => {
-  //         setLoading(true);
-  //         onClose(true);
-  //         toast.success("Akun Pengguna BERHASIL DIHAPUS!");
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //         toast.error("Data Akun  Pengguna GAGAL DIHAPUS!");
-  //       });
-  //   };
+  const handleDelete = () => {
+    AxiosInstance.delete(`/admin/products/${idUser}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => {
+        console.log("data terhapus", res);
+        setLoading(true);
+        onClose(true);
+        toast.success("Akun Pengguna BERHASIL DIHAPUS!");
+      })
+      .catch((err) => {
+        toast.error("Data Akun  Pengguna GAGAL DIHAPUS!");
+      });
+  };
 
   return (
     <>
@@ -57,7 +65,7 @@ const DelPaketDataTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
                 Anda yakin ingin menghapus Produk ini:
               </h1>
               <div className="bg-lightyellow h-[45px] mb-5 text-center text-sm pt-[10px] pb-[10px]">
-                {email}
+                {name}
               </div>
             </div>
             <div className="flex justify-center items-center mx-auto">
@@ -71,7 +79,7 @@ const DelPaketDataTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
                 Kembali
               </button>
               <button
-                //  onClick={handleDelete}
+                onClick={handleDelete}
                 className="p-[10px] w-[200px] bg-red2 gap-[10px] text-white rounded"
               >
                 Ya, Hapus Sekarang

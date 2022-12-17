@@ -131,12 +131,6 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
       >
         <div className="w-[454px] flex flex-col">
           <div className="bg-grey3 p-2 rounded">
-            {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
-              <div className="ui message success">Signed in successfully</div>
-            ) : (
-              <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
-            )} */}
-
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
                 <img src={background} alt="" />
@@ -167,7 +161,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 />
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Masukan Username</label>
+                <label className="text-grey2 mb-3">Nama Lengkap</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={userIcon}
@@ -187,7 +181,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 {/* <p>{formErrors.username}</p> */}
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Masukan Email</label>
+                <label className="text-grey2 mb-3">Email</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={emailIcon}
@@ -206,9 +200,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 {/* <p>{formErrors.email}</p> */}
               </div>
               <div className="flex flex-col form-input  mb-[24px]">
-                <label className="text-grey2 mb-3">
-                  Masukan Nomor Handphone
-                </label>
+                <label className="text-grey2 mb-3">No Handphone</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={telpIcon}
@@ -229,7 +221,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 {/* <p>{formErrors.phone_number}</p> */}
               </div>
               <div className="flex flex-col form-input  mb-[24px]">
-                <label className="text-grey2 mb-3">Masukan Password</label>
+                <label className="text-grey2 mb-3">Password</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
                     src={lockIcon}

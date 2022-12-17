@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { getAdminsHasura } from "../../../apis/user";
+import { GetDataforadmin } from "../../../apis/user";
 import iconAdd from "../../../assets/img/icon-add.png";
 import icondel from "../../../assets/img/icon-delete.png";
 import iconedit from "../../../assets/img/icon-edit2.png";
@@ -14,12 +14,8 @@ import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
 import { setAdmins } from "../../../redux/feature/AdminSlice";
 import Loading from "../../../utils/Loading";
 import { BreadcrumbAdmin } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
-import { AxiosInstance } from "../../../apis/api";
-import Cookies from "js-cookie";
-import { GetProductType, GetProviderPulsa } from "../../../apis/produtcs";
 
 const AdminPage = ({ isOpen }) => {
-  const token = Cookies.get("token");
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataAdmins = useSelector((state) => state.admins.admins);
@@ -38,11 +34,7 @@ const AdminPage = ({ isOpen }) => {
   const [showModalDelAdmin, setShowModalDelAdmin] = useState(false);
 
   useEffect(() => {
-    AxiosInstance("/admin/admins?size=100&sort=name", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }).then((res) => {
+    GetDataforadmin().then((res) => {
       setLoading(false);
       dispatch(setAdmins(res.data.data.items));
     });

@@ -1,48 +1,46 @@
 import { useEffect, useState } from "react";
 import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
-import DelPaketDataTelkomsel from "../../../../../components/dashboard/products/Telecommunication/paketdata/telkomsel/DelPaketDataTelkomsel";
+import DelPaketDataTelkomsel from "../../../../../components/dashboard/products/DelPaketDataTelkomsel";
 import icondel from "../../../../../assets/img/icon-delete.png";
 import iconedit from "../../../../../assets/img/icon-edit2.png";
 import iconAdd from "../../../../../assets/img/icon-add.png";
-import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
-import DiscountOutlinedIcon from "@mui/icons-material/DiscountOutlined";
+
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Pagination from "../../../../../components/dashboard/pagination/Pagination";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../../utils/Loading";
 import Search from "../../../../../components/dashboard/search/Search";
+import { BreadcrumbPDSimpati } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import { setProducts } from "../../../../../redux/feature/ProductSlice";
+import { GetProduct } from "../../../../../apis/produtcs";
 
 const IndosatPagePaketData = () => {
   const Products = useSelector((state) => state.products.products);
   const [filterData, setFilterData] = useState([]);
+  const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [currentItems, setcurrentItems] = useState(filterData);
   const [counter, setCounter] = useState(0);
 
-  console.log("marcell", Products);
   const [showModalDel, setShowModalDel] = useState(false);
   const [id, setID] = useState("");
+
+  useEffect(() => {
+    GetProduct().then((res) => {
+      setLoading(false);
+      dispatch(setProducts(res));
+      console.log("data product", res);
+    });
+  }, [loading]);
 
   useEffect(() => {
     setFilterData(Products.filter((data) => data.provider_id === 20));
   }, [Products]);
 
   console.log("data", filterData);
-
-  // const FilterData = () => {
-  //   const data ={...Products}
-  //   const Filtering =  data.filter((data) => data.provider_id === 18)
-  //   setFilterData(Filtering)
-  // }
-
-  // const filteringDatabyProvider = Products.filter(
-  //   (data) => data.provider_id === 18
-  // );
-  // setFilterData(filteringDatabyProvider);
-  // console.log(filterData);
 
   const handleSearch = (e) => {
     const getSearch = e.target.value;
@@ -61,20 +59,12 @@ const IndosatPagePaketData = () => {
     <SidebarPage>
       <div className="px-10 py-3">
         <div className="pb-5">
-          <p className="text-base font-medium text-grey2 mb-4">BreamCrumbs</p>
+          <p className="text-base font-medium text-grey2 mb-4">
+            <BreadcrumbPDSimpati />
+          </p>
           <div className="mb-5 flex justify-between h-[64px]">
             <div className="not-italic text-2xl font-bold ">
-              Paket Data Indosat
-            </div>
-            <div className="flex text-white">
-              <button className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold">
-                <AttachMoneyOutlinedIcon className="mr-1 w-5 h-5" />
-                <div className="text-sm font-medium">Normal</div>
-              </button>
-              <button className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold">
-                <DiscountOutlinedIcon className="mr-1 w-5 h-5" />
-                <div className="text-sm font-medium">Promo</div>
-              </button>
+              Paket Data Simpati
             </div>
           </div>
           <div className="flex justify-between">

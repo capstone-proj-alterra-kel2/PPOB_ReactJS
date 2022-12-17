@@ -23,7 +23,7 @@ const PulsaPage = () => {
                         <div className="text-semibold text-2xl">
                           {data.data_produk}
                         </div>
-                        <div className="text-base">Total Stok: {data.stok}</div>
+                        {/* <div className="text-base">Total Stok: {data.stok}</div> */}
                       </div>
                     </div>
                   </div>

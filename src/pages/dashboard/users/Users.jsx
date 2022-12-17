@@ -18,13 +18,13 @@ import AddModal from "../../../components/dashboard/Users/AddModal";
 import EditModal from "../../../components/dashboard/Users/EditModal";
 import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
 import Search from "../../../components/dashboard/search/Search";
+import { GetDataUsers } from "../../../apis/user";
 
 const UsersPage = () => {
   const token = Cookies.get("token");
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataUsers = useSelector((state) => state.users.users);
-  // const dataFiltering = DataUsers.filter((data) => (data.role_name = "user"));
   const [search, setSearch] = useState("");
   // Pagination useState
   const [currentItems, setcurrentItems] = useState(DataUsers);
@@ -38,13 +38,9 @@ const UsersPage = () => {
   const [id, setID] = useState("");
 
   useEffect(() => {
-    AxiosInstance.get("/admin/users?sort=name&size=100", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }).then((res) => {
+    GetDataUsers().then((res) => {
       setLoading(false);
-      dispatch(setUsers(res.data.data.items));
+      dispatch(setUsers(res));
     });
   }, [loading]);
 
