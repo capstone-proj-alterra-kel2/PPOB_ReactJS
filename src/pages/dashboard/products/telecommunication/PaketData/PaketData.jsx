@@ -1,5 +1,5 @@
 import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
-import { pulsaData } from "../../../../../components/dashboard/products/Telecommunication/Telecommunication";
+import { pulsaData } from "../../../../../components/dashboard/products/Telecommunication";
 import { NavLink } from "react-router-dom";
 import { GetProduct } from "../../../../../apis/produtcs";
 // import { useEffect } from "react";

@@ -21,7 +21,7 @@ const ProductsPage = () => {
         <div>
           <h1 className="pt-6 pb-6 font-semibold text-2xl ">Telekomunikasi</h1>
 
-          <div className="cards-product">
+          <div className="cards-product -z-30">
             {telekomunikasi.map((data) => {
               return (
                 <NavLink key={data.id} to={data.path}>

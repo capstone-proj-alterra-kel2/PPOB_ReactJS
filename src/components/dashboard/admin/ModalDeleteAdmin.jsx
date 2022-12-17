@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../../assets/styles/modal.css";
-import backgroundDel from "../../../assets/img/del-admin.png";
+import ICONS from "../../../assets/img";
 import { toast } from "react-toastify";
 import { AxiosInstance } from "../../../apis/api";
 import Cookies from "js-cookie";
@@ -57,7 +57,7 @@ const ModalDeleteAdmin = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={backgroundDel} alt="" />
+                <img src={ICONS.delAdmin} alt="" />
               </div>
             </div>
             <div>

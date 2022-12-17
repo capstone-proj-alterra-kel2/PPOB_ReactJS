@@ -1,36 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../../assets/styles/dashboard.css";
-import Pagination from "../../../components/dashboard/pagination/Pagination";
-import { transactions } from "../../../apis/Transactions";
-import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
+import { GetDataTransactions } from "../../../apis/Transactions";
+import { BreadcrumbTransaction } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import { useDispatch } from "react-redux";
+import { setTransactions } from "../../../redux/feature/ProductSlice";
+
+import { Sidebar, TransactionsComponent } from "../../../components";
 
 // Logo assets
 import pending from "../../../../src/assets/img/logo-pending.png";
 import berhasil from "../../../../src/assets/img/logo-berhasil.png";
-import { useEffect } from "react";
-import { AxiosInstance } from "../../../apis/api";
-import { BreadcrumbTransaction } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
-import PendingTransaction from "../../../components/transactions/PendingTransaction";
-import SuccesTransaction from "../../../components/transactions/SuccesTransaction";
 
 const TransactionsPage = () => {
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   // Pagination useState
-  const [currentItems, setcurrentItems] = useState(transactions);
-
   const [showData, setShowData] = useState(false);
-
-  // uji coba api dari be
-  // useEffect(() => {
-  //   AxiosInstance.get("/admin/products?size=50&sort=product", {
-  //     headers: {
-  //       Authorization: "Bearer " + token,
-  //     },
-  //   }).then((res) => console.log("masuk ya", res));
-  // }, []);
+  useEffect(() => {
+    GetDataTransactions().then((res) => {
+      console.log("apapapapap", res);
+      setLoading(false);
+      dispatch(setTransactions(res));
+    });
+  }, [loading]);
 
   return (
-    <SidebarPage>
+    <Sidebar>
       {loading ? (
         "data masih Proses"
       ) : (
@@ -70,19 +65,12 @@ const TransactionsPage = () => {
             </div>
 
             <div className="flex flex-col cards">
-              {/* {showData ? <PendingTransaction /> : <SuccesTransaction />} */}
-              <PendingTransaction />
+              <TransactionsComponent />
             </div>
           </div>
-          {/* <Pagination
-            Datas={transactions}
-            setcurrentItems={setcurrentItems}
-            currentItems={currentItems}
-            loading={loading}
-          /> */}
         </div>
       )}
-    </SidebarPage>
+    </Sidebar>
   );
 };
 

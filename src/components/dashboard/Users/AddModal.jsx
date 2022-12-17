@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import background from "../../../assets/img/add-pengguna.png";
-import iconEdit from "../../../assets/img/icon-edit.png";
 import { toast } from "react-toastify";
-import telpIcon from "../../../assets/img/icon-telp.png";
-import emailIcon from "../../../assets/img/icon-email.png";
-import userIcon from "../../../assets/img/icon-user.png";
-import lockIcon from "../../../assets/img/icon-lock.png";
+import ICONS from "../../../assets/img";
 import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../apis/api";
 import Cookies from "js-cookie";
@@ -76,30 +71,38 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regexfullname = /^[a-zA-Z]+$/;
+    const handphone = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+    const number = /^([^\d\s]{1,}\s?[+-]?)(\d{1,3})(\,\d{3})*(\.\d{1,})?$/;
 
     DataUsers.map((user) => {
       if (values.name === user.name) {
-        errors.name = "Username has been ";
+        errors.name = "nama sudah tersedia, silahkan ganti nama pengguna";
       }
       if (values.email === user.email) {
-        errors.email = "email has been ";
+        errors.email = "email sudah tersedia ";
       }
       if (values.phone_number === user.phone_number) {
-        errors.phone_number = "Handphone has been ";
+        errors.phone_number = "nomor handphone tersedia";
       }
     });
     if (values.name === null || values.name === "") {
-      errors.name = "Username is required!";
+      errors.name = "Harap memasukan nama lengkap";
+    } else if (!regexfullname.test(values.name)) {
+      errors.name =
+        "Tidak Memerlukan angka atau symbol dalam penulisan nama lengkap";
     }
 
     if (!values.email) {
-      errors.email = "Email is required!";
+      errors.email = "Harap memasukan email";
     } else if (!regex.test(values.email)) {
-      errors.email = "This is not a valid email format!";
+      errors.email = "Harap memasukan email sesuai dengan format";
     }
 
     if (!values.phone_number) {
-      errors.phone_number = "phone_number is required!";
+      errors.phone_number = "harap memasukan No handphone";
+    } else if (!handphone.test(values.phone_number)) {
+      errors.phone_number = "Harap memasukan no telp. yang valid 08....";
     }
 
     if (!values.password) {
@@ -133,7 +136,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} alt="" />
+                <img src={ICONS.addUser} alt="" />
               </div>
               <div className="w-[100%] h-35 pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
@@ -147,7 +150,11 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                   alt=""
                 />
                 <label htmlFor="file" className="absolute">
-                  <img src={iconEdit} alt="edit" className="z-50 w-8 h-8 " />
+                  <img
+                    src={ICONS.editPictIcon}
+                    alt="edit"
+                    className="z-50 w-8 h-8 "
+                  />
                 </label>
 
                 <input
@@ -164,7 +171,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 <label className="text-grey2 mb-3">Nama Lengkap</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={userIcon}
+                    src={ICONS.userIcon}
                     alt="user.icon"
                     className="w-5 h-5 mr-2"
                   />
@@ -174,7 +181,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                     type="text"
                     name="name"
                     className="w-[100%]"
-                    placeholder="Masukan username..."
+                    placeholder="Masukan Nama Lengkap..."
                     onChange={handleChange}
                   />
                 </div>
@@ -184,7 +191,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 <label className="text-grey2 mb-3">Email</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={emailIcon}
+                    src={ICONS.emailIcon}
                     alt="email.icon"
                     className="w-5 h-5 mr-2"
                   />
@@ -203,7 +210,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 <label className="text-grey2 mb-3">No Handphone</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={telpIcon}
+                    src={ICONS.telpIcon}
                     alt="telp.icon"
                     className="w-5 h-5 mr-2"
                   />
@@ -224,7 +231,7 @@ const AddModal = ({ isVisible, onClose, setLoading }) => {
                 <label className="text-grey2 mb-3">Password</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
                   <img
-                    src={lockIcon}
+                    src={ICONS.lockIcon}
                     alt="lock.icon"
                     className="w-5 h-5 mr-2"
                   />

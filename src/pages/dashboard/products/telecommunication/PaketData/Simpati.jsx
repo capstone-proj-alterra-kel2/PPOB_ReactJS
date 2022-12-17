@@ -28,6 +28,11 @@ const IndosatPagePaketData = () => {
   const [showModalDel, setShowModalDel] = useState(false);
   const [id, setID] = useState("");
 
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
+
   useEffect(() => {
     GetProduct().then((res) => {
       setLoading(false);
@@ -117,7 +122,7 @@ const IndosatPagePaketData = () => {
                       <div className=" w-60">
                         <div className="text-grey2">Harga Produk</div>
                         <div className="text-lg font-semibold">
-                          {PaketData?.price}
+                          {formatter.format(PaketData?.price)}
                         </div>
                       </div>
                       <div className=" w-60">

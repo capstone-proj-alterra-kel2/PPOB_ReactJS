@@ -40,6 +40,10 @@ const TelkomselPagePulsa = () => {
     setFilterData(Products.filter((data) => data.provider_id === 10));
     setLoading(false);
   }, [Products]);
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
 
   const handleSearch = (e) => {
     const getSearch = e.target.value;
@@ -129,7 +133,7 @@ const TelkomselPagePulsa = () => {
                       <div className=" w-60">
                         <div className="text-grey2">Harga Produk</div>
                         <div className="text-lg font-semibold">
-                          {PaketData?.price}
+                          {formatter.format(PaketData?.price)}
                         </div>
                       </div>
                       <div className=" w-60">

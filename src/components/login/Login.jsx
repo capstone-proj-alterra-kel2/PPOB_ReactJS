@@ -10,7 +10,7 @@ import { useState } from "react";
 import { AxiosInstance } from "../../apis/api";
 import { useRef } from "react";
 
-export const Login = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [token, setToken] = useState(Cookies.get("token"));
   const [password, setPassword] = useState("");
@@ -123,3 +123,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

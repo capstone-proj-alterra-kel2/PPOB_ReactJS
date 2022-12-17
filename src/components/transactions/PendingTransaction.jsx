@@ -1,19 +1,18 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
-import { transactions } from "../../apis/Transactions";
+import { GetDataTransactions, transactions } from "../../apis/Transactions";
 import Pagination from "../dashboard/pagination/Pagination";
 import { useEffect } from "react";
 import Search from "../dashboard/search/Search";
-import { AxiosInstance } from "../../apis/api";
-import Cookies from "js-cookie";
 import Loading from "../../utils/Loading";
+import { useSelector } from "react-redux";
 
 const PendingTransaction = () => {
-  const token = Cookies.get("token");
+  const DataTranactionsRedux = useSelector(
+    (state) => state.products.transactions
+  );
   const [search, setSearch] = useState("");
-  const [dataTransactions, setDataTransactions] = useState([]);
-  console.log("data transactions", dataTransactions);
-  const [dataFilter, setDataFilter] = useState(dataTransactions); // data yang diolah
+  const [dataFilter, setDataFilter] = useState(DataTranactionsRedux); // data yang diolah
   const [currentItems, setcurrentItems] = useState(dataFilter);
   console.log("data Current", dataFilter);
   const [counter, setCounter] = useState(0);
@@ -21,20 +20,12 @@ const PendingTransaction = () => {
   // loading
   const [loading, setLoading] = useState(false);
 
-  console.log("data pending value", dataTransactions);
-
-  useEffect(() => {
-    AxiosInstance.get("/admin/transactions?size=1000&sort=id", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }).then((res) => {
-      setLoading(false);
-      setDataTransactions(res.data.data.items);
-    });
-  }, [loading]);
-
-  console.log("data transactions", dataTransactions);
+  // useEffect(() => {
+  //   GetDataTransactions().then((res) => {
+  //     setLoading(false);
+  //     setDataTransactions(res);
+  //   });
+  // }, [loading]);
 
   const handleSearch = (e) => {
     const getSearch = e.target.value;
@@ -54,40 +45,40 @@ const PendingTransaction = () => {
     const value = e.target.value;
     console.log("value", value);
     if (value === "all") {
-      setDataFilter(dataTransactions);
+      setDataFilter(DataTranactionsRedux);
     } else if (value === "pulsa") {
-      const Product = dataTransactions.filter(
+      const Product = DataTranactionsRedux.filter(
         (item) => item.product_type === "Pulsa"
       );
       setDataFilter(Product);
       console.log(Product);
     } else if (value === "Paket Data") {
-      const Product = dataTransactions.filter(
+      const Product = DataTranactionsRedux.filter(
         (item) => item.product_type === "Paket Data"
       );
       setDataFilter(Product);
     } else if (value === "pdam") {
-      const product = dataTransactions.filter(
+      const product = DataTranactionsRedux.filter(
         (item) => item.product_type === "pdam"
       );
       setDataFilter(product);
     } else if (value === "indihome") {
-      const product = dataTransactions.filter(
+      const product = DataTranactionsRedux.filter(
         (item) => item.product_type === "indihome"
       );
       setDataFilter(product);
     } else if (value === "bpjs") {
-      const product = dataTransactions.filter(
+      const product = DataTranactionsRedux.filter(
         (item) => item.product_type === "bpjs"
       );
       setDataFilter(product);
     } else if (value === "gopay") {
-      const product = dataTransactions.filter(
+      const product = DataTranactionsRedux.filter(
         (item) => item.product_type === "gopay"
       );
       setDataFilter(product);
     } else if (value === "shopepay") {
-      const product = dataTransactions.filter(
+      const product = DataTranactionsRedux.filter(
         (item) => item.product_type === "shopepay"
       );
       setDataFilter(product);
@@ -155,7 +146,12 @@ const PendingTransaction = () => {
                   </div>
                   <div style={{ flex: "2" }}>
                     <div className="text-grey2">Total Pembayaran</div>
-                    <div>{data.total_price}</div>
+                    <div>
+                      {new Intl.NumberFormat("id-ID", {
+                        style: "currency",
+                        currency: "IDR",
+                      }).format(data.total_price)}
+                    </div>
                   </div>
                   <div style={{ flex: "3" }}>
                     <div className="text-grey2">Keterangan</div>

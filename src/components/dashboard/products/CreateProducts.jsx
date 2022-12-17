@@ -1,11 +1,13 @@
-import SidebarPage from "../../../../sidebar/Sidebar";
+import SidebarPage from "../sidebar/Sidebar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AxiosInstance } from "../../../../../../apis/api";
+import { AxiosInstance } from "../../../apis/api";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const AddPaketDataTelkomsel = () => {
+const CreateProducts = () => {
+  const Products = useSelector((state) => state.products.products);
   const initialValues = {
     name: "",
     description: "",
@@ -21,10 +23,10 @@ const AddPaketDataTelkomsel = () => {
   };
 
   const token = Cookies.get("token");
-
+  console.log("data buat tambaha", Products);
   const navigate = useNavigate();
   const [showPromo, setShowPromo] = useState(false);
-  const [hargaStok, setHargaStok] = useState(0);
+  const [CurrentyIDR, setCurrentyIDR] = useState("");
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -40,6 +42,21 @@ const AddPaketDataTelkomsel = () => {
   };
 
   console.log("kelelel", formValues);
+
+  const formatter = (value) => {
+    new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    });
+  };
+
+  const handleChangeFormatter = (e) => {
+    const apadlu = e.target.value.replace(/\D/g, "");
+    const output = formatter.format(apadlu);
+    setCurrentyIDR(output);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,10 +87,9 @@ const AddPaketDataTelkomsel = () => {
         },
       })
         .then((res) => {
-          toast.success("Data Akun BERHASIL DIBUAT!");
+          navigate(-1, toast.success("Data Akun BERHASIL DIBUAT!"));
           setLoading(true);
           console.log(res);
-          navigate(-1);
         })
         .catch((err) => {
           console.log(err);
@@ -87,6 +103,14 @@ const AddPaketDataTelkomsel = () => {
 
   const validate = (values) => {
     const errors = {};
+
+    {
+      Products.map((data) => {
+        if (values.name === data.name) {
+          errors.name = "Nama Telah Tersedia! ";
+        }
+      });
+    }
 
     if (!values.name) {
       errors.name = "Name Produk is required!";
@@ -150,9 +174,8 @@ const AddPaketDataTelkomsel = () => {
                     className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
                     name="prodiver_id"
                   >
-                    <option value={18} selected>
-                      Paket Data Telkomsel
-                    </option>
+                    <option selected>Pilih Provider</option>
+                    <option value={18}>Paket Data Telkomsel</option>
                     <option value={19}>Paket Data Indosat</option>
                     <option value={20}>Paket Data Simpati</option>
                     <option value={21}>Paket Data Three</option>
@@ -173,8 +196,8 @@ const AddPaketDataTelkomsel = () => {
                     className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
                     name="price"
                     type="number"
-                    onChange={handleChange}
-                    value={formValues.price}
+                    onChange={handleChangeFormatter}
+                    value={CurrentyIDR}
                     placeholder="Rp. 5.000.00"
                   />
                   <p className="text-center text-red2">{formErrors.price}</p>
@@ -267,4 +290,4 @@ const AddPaketDataTelkomsel = () => {
   );
 };
 
-export default AddPaketDataTelkomsel;
+export default CreateProducts;

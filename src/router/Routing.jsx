@@ -1,33 +1,35 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DashboardPage from "../pages/dashboard/Dashboard";
-import ProductsPage from "../pages/dashboard/products/ProductsPage";
-import TransactionsPage from "../pages/dashboard/transactions/Transactions";
-import UsersPage from "../pages/dashboard/users/Users";
-import AdminsPage from "../pages/dashboard/admins/Admin";
-import LandingPage from "../pages/landing/Landing";
-import PulsaPage from "../pages/dashboard/products/telecommunication/pulsa/Pulsa";
-
-import PaketData from "../pages/dashboard/products/telecommunication/PaketData/PaketData";
 import PrivateRoute from "./PrivateRoute";
-import { Login } from "../components/login/Login";
-import NotFound from "../pages/notfound";
-import TelkomselPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Telkomsel";
-import AddPaketDataTelkomsel from "../components/dashboard/products/Telecommunication/paketdata/telkomsel/AddPaketdataTelkomsel";
-import EditPaketDataTelkomsel from "../components/dashboard/products/EditPaketDataTelkomsel";
-import IndosatPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Indosat";
-import SimpatiPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Simpati";
-import ThreePagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Three";
-import SmartfrenPagePaketData from "../pages/dashboard/products/telecommunication/PaketData/Smartfren";
-import TelkomselPagePulsa from "../pages/dashboard/products/telecommunication/pulsa/Telkomsel";
+
+import { UpadateProducts, CreateProducts, Login } from "../components";
+
+import {
+  PaketData,
+  IndosatPaketData,
+  TelkomselPaketData,
+  SimpatiPaketData,
+  ThreePaketData,
+  SmartfrenPaketData,
+  TelkomselPulsa,
+  IndosatPulsa,
+  Pulsa,
+  AdminsPage,
+  UsersPage,
+  Landing,
+  ProductsPage,
+  TransactionsPage,
+  DashboardPage,
+  NotFound404,
+} from "../pages/";
 
 const Routing = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/landing" element={<LandingPage />} />
+          <Route path="/landing" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path="/*" element={<NotFound404 />} />
           <Route element={<PrivateRoute />}>
             <Route path="/">
               <Route index element={<DashboardPage />} />
@@ -39,12 +41,18 @@ const Routing = () => {
               <Route index element={<ProductsPage />} />
               {/* Pulsa */}
               <Route path="pulsa">
-                <Route index element={<PulsaPage />} />
+                <Route index element={<Pulsa />} />
                 <Route path="telkomsel">
                   {/* TElKOMSEL */}
-                  <Route index element={<TelkomselPagePulsa />} />
-                  <Route path="new" element={<AddPaketDataTelkomsel />} />
-                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                  <Route index element={<TelkomselPulsa />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
+                </Route>
+                <Route path="indosat">
+                  {/* TElKOMSEL */}
+                  <Route index element={<IndosatPulsa />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
                 </Route>
               </Route>
               {/* PaketData */}
@@ -52,33 +60,33 @@ const Routing = () => {
                 <Route index element={<PaketData />} />
                 {/* Telkomsel */}
                 <Route path="telkomsel">
-                  <Route index element={<TelkomselPagePaketData />} />
-                  <Route path="new" element={<AddPaketDataTelkomsel />} />
-                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                  <Route index element={<TelkomselPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
                 </Route>
                 {/* Indosat */}
                 <Route path="indosat">
-                  <Route index element={<IndosatPagePaketData />} />
-                  <Route path="new" element={<AddPaketDataTelkomsel />} />
-                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                  <Route index element={<IndosatPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
                 </Route>
                 {/* Simpati */}
                 <Route path="simpati">
-                  <Route index element={<SimpatiPagePaketData />} />
-                  <Route path="new" element={<AddPaketDataTelkomsel />} />
-                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                  <Route index element={<SimpatiPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
                 </Route>
                 {/* Three */}
                 <Route path="three">
-                  <Route index element={<ThreePagePaketData />} />
-                  <Route path="new" element={<AddPaketDataTelkomsel />} />
-                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                  <Route index element={<ThreePaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
                 </Route>
                 {/* Smartfren */}
                 <Route path="smartfren">
-                  <Route index element={<SmartfrenPagePaketData />} />
-                  <Route path="new" element={<AddPaketDataTelkomsel />} />
-                  <Route path="edit/:id" element={<EditPaketDataTelkomsel />} />
+                  <Route index element={<SmartfrenPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
                 </Route>
               </Route>
               {/* End paket Data */}
