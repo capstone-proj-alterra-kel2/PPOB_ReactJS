@@ -11,6 +11,9 @@ import BPJS from "../../assets/img/products/BPJS.png";
 import Tagihanlistrik from "../../assets/img/products/Tagihan_listrik.png";
 import Tokenlistrik from "../../assets/img/products/Token_listrik.png";
 import PDAM from "../../assets/img/products/PDAM.png";
+import fitur1 from "../../assets/img/fitur1.png";
+import fitur2 from "../../assets/img/fitur2.png";
+import fitur3 from "../../assets/img/fitur3.png";
 
 const LandingPage = () => {
   return (
@@ -55,12 +58,12 @@ const LandingPage = () => {
           <div className="">
             <img
               className="absolute"
-              src={Group1}
+              src={fitur1}
               alt="a.png"
               style={{
                 width: "330px",
-                height: "300px",
-                top: "1500px",
+                height: "330px",
+                top: "1450px",
                 left: "140px",
               }}
             />
@@ -102,11 +105,11 @@ const LandingPage = () => {
           <div className="">
             <img
               className="absolute"
-              src={Group40}
+              src={fitur2}
               alt="a.png"
               style={{
-                width: "330px",
-                height: "300px",
+                width: "350px",
+                height: "350px",
                 top: "1900px",
                 left: "820px",
               }}
@@ -119,11 +122,11 @@ const LandingPage = () => {
           <div className="">
             <img
               className=""
-              src={Group1}
+              src={fitur3}
               alt="a.png"
               style={{
-                width: "1000px",
-                height: "300px",
+                width: "900px",
+                height: "450px",
                 top: "1500px",
                 left: "140px",
               }}
@@ -131,18 +134,15 @@ const LandingPage = () => {
           </div>
           <div className="ml-[100px] mt-[0px]" style={{ textAlign: "justify" }}>
             <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
-              <b>#INDIHOME</b>
+              <b>#3</b>
             </p>
             <p className="text2" style={{ fontSize: 36 }}>
               <b>
-                Lorem Ipsum is simply dummy<br></br>the setting industry.
+              Bayar tagihan internet indihome<br />kapanpun dan dimanapun
               </b>
             </p>
             <p className="text3" style={{ fontSize: 16 }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+            Melalui fitur ini, pengguna dapat melakukan pengecekan tagihan dan pembayaran Telkom/IndiHome secara online
             </p>
           </div>
         </div>
@@ -256,7 +256,7 @@ const LandingPage = () => {
         </div>
 
         {/* cta */}
-        <div id="download" className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3300px] mt-[50px] absolute">
+        <div id="download" className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3400px] mt-[50px] absolute">
           <div>
             <p className="font-bold text-5xl mx-[217] text-center text-white1">
               Download Aplikasi Kami Sekarang Juga dan Nikmati Produk Utama

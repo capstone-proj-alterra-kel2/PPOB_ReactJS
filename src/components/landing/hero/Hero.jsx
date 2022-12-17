@@ -2,12 +2,15 @@ import heroImage from "../../../assets/img/image-hero-2.png";
 import icon from "../../../assets/img/icon-hero.png";
 import fourstar from "../../../assets/img/4star.png";
 import fivestar from "../../../assets/img/5star.png";
+import useraktif from "../../../assets/img/usertransaksi.png"
+import playstore from "../../../assets/img/playstore.png";
+import appstore from "../../../assets/img/appstore.png";
 
 const Hero = () => {
   return (
     <>
       <img
-        src={icon}
+        src={playstore}
         className="absolute w-[90px] h-[90px] top-[433px] right-[410px]"
       alt ="" />
       <img
@@ -15,11 +18,11 @@ const Hero = () => {
         className="absolute w-[90px] h-[90px] top-[473px] left-[474px]"
       alt =""/>
       <img
-        src={icon}
+        src={useraktif}
         className="absolute w-[90px] h-[90px] top-[661px] left-[425px]"
       alt=""/>
       <img
-        src={icon}
+        src={appstore}
         className="absolute w-[90px] h-[90px] top-[667px] right-[390px]"
       alt=""/>
       <div className="flex justify-around">

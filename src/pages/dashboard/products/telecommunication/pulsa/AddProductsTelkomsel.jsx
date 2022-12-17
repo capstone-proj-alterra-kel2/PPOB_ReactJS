@@ -6,7 +6,7 @@ import moment from 'moment';
 import { AxiosInstance } from "../../../../../apis/api";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import moment from "moment";
+// import moment from "moment";
 
 const AddProductsTelkomsel = () => {
   const navigate = useNavigate();
