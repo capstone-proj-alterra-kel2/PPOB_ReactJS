@@ -1,10 +1,7 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
-import { GetDataTransactions, transactions } from "../../apis/Transactions";
 import Pagination from "../dashboard/pagination/Pagination";
-import { useEffect } from "react";
 import Search from "../dashboard/search/Search";
-import Loading from "../../utils/Loading";
 import { useSelector } from "react-redux";
 
 const PendingTransaction = () => {
@@ -19,13 +16,6 @@ const PendingTransaction = () => {
 
   // loading
   const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   GetDataTransactions().then((res) => {
-  //     setLoading(false);
-  //     setDataTransactions(res);
-  //   });
-  // }, [loading]);
 
   const handleSearch = (e) => {
     const getSearch = e.target.value;
@@ -57,29 +47,24 @@ const PendingTransaction = () => {
         (item) => item.product_type === "Paket Data"
       );
       setDataFilter(Product);
-    } else if (value === "pdam") {
+    } else if (value === "Token Listik") {
       const product = DataTranactionsRedux.filter(
-        (item) => item.product_type === "pdam"
+        (item) => item.product_type === "Token Listik"
       );
       setDataFilter(product);
-    } else if (value === "indihome") {
+    } else if (value === "Tagihan Listrik") {
       const product = DataTranactionsRedux.filter(
-        (item) => item.product_type === "indihome"
+        (item) => item.product_type === "Tagihan Listrik"
       );
       setDataFilter(product);
-    } else if (value === "bpjs") {
+    } else if (value === "Tagihan PDAM") {
       const product = DataTranactionsRedux.filter(
-        (item) => item.product_type === "bpjs"
+        (item) => item.product_type === "Tagihan PDAM"
       );
       setDataFilter(product);
-    } else if (value === "gopay") {
+    } else if (value === "BPJS") {
       const product = DataTranactionsRedux.filter(
-        (item) => item.product_type === "gopay"
-      );
-      setDataFilter(product);
-    } else if (value === "shopepay") {
-      const product = DataTranactionsRedux.filter(
-        (item) => item.product_type === "shopepay"
+        (item) => item.product_type === "BPJS"
       );
       setDataFilter(product);
     }
@@ -106,15 +91,14 @@ const PendingTransaction = () => {
             onChange={(e) => dataFilteringBYProduct(e)}
           >
             <option value="all" selected>
-              Semua Produk
+              Semua
             </option>
-            <option value="pulsa">Pulsa</option>
+            <option value="pulsa">Isi Pulsa</option>
             <option value="Paket Data">Paket Data</option>
-            <option value="indihome">Indihome</option>
-            <option value="bpjs">BPJS</option>
-            <option value="pdam">PDAM</option>
-            <option value="gopay">Gopay</option>
-            <option value="shoopepay">ShopeePay</option>
+            <option value="Token Listik">Token Listrik</option>
+            <option value="Tagihan Listrik">Tagihan Listrik</option>
+            <option value="Tagihan PDAM">Tagihan PDAM</option>
+            <option value="BPJS">BPJS</option>
           </select>
         </div>
       </div>

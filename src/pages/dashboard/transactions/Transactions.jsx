@@ -33,10 +33,12 @@ const TransactionsPage = () => {
           <div className="px-10 pt-5 snap-center">
             <div className="flex justify-between pb-3">
               <div>
-                <p className="text-base font-medium text-grey2">
+                <p className="text-base font-medium text-grey2 mb-6">
                   <BreadcrumbTransaction />
                 </p>
-                <h1 className="text-3xl font-bold pl-1">Menu Riwayat</h1>
+                <h1 className="text-3xl font-bold pl-1">
+                  Menu Riwayat Transaksi
+                </h1>
               </div>
               <div className="flex">
                 <button

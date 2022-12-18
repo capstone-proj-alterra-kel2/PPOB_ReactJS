@@ -55,7 +55,7 @@ export function BreadcrumbTransaction() {
             : "breadcrumb-not-active"
         }
       >
-        Riwayat
+        Riwayat Transaksi
       </Link>
       <span className="breadcrumb-arrow">&gt;</span>
     </nav>

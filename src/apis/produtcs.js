@@ -35,9 +35,10 @@ export const GetProviderPaketdata = async () => {
 // GET DATA PRODUCTS => d
 
 export const GetProduct = async () => {
-  const res = await AxiosInstance.get("/admin/products?size=80000&sort=name", {
+  const tokenas = Cookies.get("token");
+  const res = await AxiosInstance.get("/admin/products?size=800&sort=name", {
     headers: {
-      Authorization: "Bearer " + token,
+      Authorization: "Bearer " + tokenas,
     },
   });
   return res.data.data.items;
