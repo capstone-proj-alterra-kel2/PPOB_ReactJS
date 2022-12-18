@@ -1,9 +1,8 @@
 /* Sidebar Component*/
 .active {
-  background: #f2f3f6;
-  color: #000;
+  background: yellow;
+  color: red;
 }
-
 /* End Sidebar Component */
 
 /* Search */

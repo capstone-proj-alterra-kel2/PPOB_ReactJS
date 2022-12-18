@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../../assets/styles/modal.css";
-import telp from "../../../assets/img/icon-telp.png";
-import email from "../../../assets/img/icon-email.png";
-import user from "../../../assets/img/icon-user.png";
-import background from "../../../assets/img/Group 606.png";
-import iconEdit from "../../../assets/img/icon-edit.png";
+import ICONS from "../../../assets/img";
 import { toast } from "react-toastify";
 // import { useSelector } from "react-redux";
 import { AxiosInstance } from "../../../apis/api";
@@ -132,7 +128,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} alt="" />
+                <img src={ICONS.editUser} alt="" />
               </div>
               <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
@@ -149,7 +145,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 />
 
                 <label htmlFor="file" className="absolute">
-                  <img src={iconEdit} alt="edit" className="z-50 w-8 h-8 " />
+                  <img
+                    src={ICONS.editPictIcon}
+                    alt="edit"
+                    className="z-50 w-8 h-8 "
+                  />
                 </label>
                 <input
                   type="file"
@@ -161,9 +161,13 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 />
               </div>
               <div className="flex flex-col form-input mb-[24px]">
-                <label className="text-grey2 mb-3">Username</label>
+                <label className="text-grey2 mb-3">Nama Lengkap</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img src={user} alt="telp.icon" className="w-5 h-5 mr-2" />
+                  <img
+                    src={ICONS.userIcon}
+                    alt="telp.icon"
+                    className="w-5 h-5 mr-2"
+                  />
                   <input
                     value={formData.name}
                     onChange={onChangeData}
@@ -175,7 +179,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <div className="flex flex-col form-input  mb-[24px]">
                 <label className="text-grey2 mb-3">Email</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img src={email} alt="telp.icon" className="w-5 h-5 mr-2" />
+                  <img
+                    src={ICONS.emailIcon}
+                    alt="telp.icon"
+                    className="w-5 h-5 mr-2"
+                  />
                   <input
                     value={formData.email}
                     onChange={onChangeData}
@@ -187,7 +195,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <div className="flex flex-col form-input  mb-[24px]">
                 <label className="text-grey2 mb-3">No Handphone</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img src={telp} alt="telp.icon" className="w-5 h-5 mr-2" />
+                  <img
+                    src={ICONS.telpIcon}
+                    alt="telp.icon"
+                    className="w-5 h-5 mr-2"
+                  />
                   <input
                     value={formData.phone_number}
                     onChange={onChangeData}

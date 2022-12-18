@@ -1,29 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import useBreadcrumbs from "use-react-router-breadcrumbs";
 import "./breadcrumbs.css";
-
-// export function Breadcrumbs() {
-//   const breadcrumbs = useBreadcrumbs(routes);
-//   const location = useLocation();
-
-//   return (
-//     <nav>
-//       {breadcrumbs.map(({ match, breadcrumb }) => (
-//         <Link
-//           key={match.url}
-//           to={match.url}
-//           className={
-//             match.pathname === location.pathname
-//               ? "breadcrumb-active"
-//               : "breadcrumb-not-active"
-//           }
-//         >
-//           {breadcrumb} /
-//         </Link>
-//       ))}
-//     </nav>
-//   );
-// }
 
 // Sub Menu Sidebar
 export function BreadcrumbUser() {
@@ -79,7 +55,7 @@ export function BreadcrumbTransaction() {
             : "breadcrumb-not-active"
         }
       >
-        Riwayat
+        Riwayat Transaksi
       </Link>
       <span className="breadcrumb-arrow">&gt;</span>
     </nav>
@@ -106,7 +82,8 @@ export function BreadcrumbProduts() {
   );
 }
 
-// Product Menu
+// =================================================================================
+// Product Menu Provider
 export function BreadcrumbPulsa() {
   const location = useLocation();
 
@@ -138,6 +115,40 @@ export function BreadcrumbPulsa() {
     </nav>
   );
 }
+
+export function BreadcrumbPaketdata() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/products"
+        className={
+          location.pathname === "/products"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Products
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data"
+        className={
+          location.pathname === "/products/paket-data"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Paket Data
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+// =======================================================================
 
 export function BreadcrumbTelkomsel() {
   const location = useLocation();
@@ -176,6 +187,278 @@ export function BreadcrumbTelkomsel() {
         }
       >
         Telkomsel
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+// ===============================================================================================
+// Paket Data
+export function BreadcrumbPDTelkomsel() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/products"
+        className={
+          location.pathname === "/products"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Products
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data"
+        className={
+          location.pathname === "/products/paket-data"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Paket Data
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+      <Link
+        to="/products/paket-data/telkomsel"
+        className={
+          location.pathname === "/products/paket-data/telkomsel"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Telkomsel
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+export function BreadcrumbPDSimpati() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/products"
+        className={
+          location.pathname === "/products"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Products
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data"
+        className={
+          location.pathname === "/products/paket-data"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Paket Data
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+      <Link
+        to="/products/paket-data/simpati"
+        className={
+          location.pathname === "/products/paket-data/simpati"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Simpati
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+export function BreadcrumbPDIndosat() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/products"
+        className={
+          location.pathname === "/products"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Products
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data"
+        className={
+          location.pathname === "/products/paket-data"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Paket Data
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+      <Link
+        to="/products/paket-data/indosat"
+        className={
+          location.pathname === "/products/paket-data/indosat"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Indosat
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+export function BreadcrumbPDThree() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/products"
+        className={
+          location.pathname === "/products"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Products
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data"
+        className={
+          location.pathname === "/products/paket-data"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Paket Data
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+      <Link
+        to="/products/paket-data/three"
+        className={
+          location.pathname === "/products/paket-data/three"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Three
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+export function BreadcrumbPDSmartfren() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/products"
+        className={
+          location.pathname === "/products"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Products
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data"
+        className={
+          location.pathname === "/products/paket-data"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Paket Data
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+      <Link
+        to="/products/paket-data/smartfren"
+        className={
+          location.pathname === "/products/paket-data/smartfren"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Smartfren
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+    </nav>
+  );
+}
+
+export function BreadcrumbNewProducts() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/products"
+        className={
+          location.pathname === "/products"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Products
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data"
+        className={
+          location.pathname === "/products/paket-data"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Paket Data
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+      <Link
+        to="/products/paket-data/telkomsel"
+        className={
+          location.pathname === "/products/paket-data/telkomsel"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Smartfren
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/products/paket-data/telkomsel/new"
+        className={
+          location.pathname === "/products/paket-data/telkomsel/new"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Tambah Products
       </Link>
       <span className="breadcrumb-arrow">&gt;</span>
     </nav>

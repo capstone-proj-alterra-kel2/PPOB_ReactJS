@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { getAdminsHasura } from "../../../apis/user";
-import iconAdd from "../../../assets/img/icon-add.png";
-import icondel from "../../../assets/img/icon-delete.png";
-import iconedit from "../../../assets/img/icon-edit2.png";
-import AddModal from "../../../components/dashboard/admin/AddModal";
-import EditModal from "../../../components/dashboard/admin/EditModal";
-import ModalDeleteAdmin from "../../../components/dashboard/admin/ModalDeleteAdmin";
-import Pagination from "../../../components/dashboard/pagination/Pagination";
-import Search from "../../../components/dashboard/search/Search";
-import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
+import { GetDataforadmin } from "../../../apis/user";
+import ICONS from "../../../assets/img";
+import {
+  Pagination,
+  CreateAdmins,
+  UpdateAdmins,
+  DeleteAdmins,
+  NotFoundSearch,
+  Sidebar,
+} from "../../../components";
 import { setAdmins } from "../../../redux/feature/AdminSlice";
 import Loading from "../../../utils/Loading";
 import { BreadcrumbAdmin } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
-import { AxiosInstance } from "../../../apis/api";
-import Cookies from "js-cookie";
-import { GetProductType, GetProviderPulsa } from "../../../apis/produtcs";
 
 const AdminPage = ({ isOpen }) => {
-  const token = Cookies.get("token");
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataAdmins = useSelector((state) => state.admins.admins);
@@ -38,15 +34,20 @@ const AdminPage = ({ isOpen }) => {
   const [showModalDelAdmin, setShowModalDelAdmin] = useState(false);
 
   useEffect(() => {
-    AxiosInstance("/admin/admins?size=100&sort=name", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }).then((res) => {
-      setLoading(false);
-      dispatch(setAdmins(res.data.data.items));
-    });
+    GetDataforadmin()
+      .then((res) => {
+        console.log("data admin", res);
+        setLoading(false);
+        dispatch(setAdmins(res));
+      })
+      .catch((err) => console.log(err));
   }, [loading]);
+
+  // useEffect(() => {
+  //   AxiosInstance.get("/admin/users").then((res) => {
+  //     console.log(res);
+  //   });
+  // });
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {
@@ -64,7 +65,7 @@ const AdminPage = ({ isOpen }) => {
   };
 
   return (
-    <SidebarPage>
+    <Sidebar>
       <div className="px-10 py-5">
         <div className="flex  pb-3 flex-col">
           <div className="mb-5">
@@ -92,7 +93,7 @@ const AdminPage = ({ isOpen }) => {
               }}
             >
               <img
-                src={iconAdd}
+                src={ICONS.addIcon}
                 style={{ width: "22px", height: "22px" }}
                 alt="ADD"
               />
@@ -107,7 +108,7 @@ const AdminPage = ({ isOpen }) => {
               <Loading />
             </div>
           ) : currentItems.length === 0 ? (
-            <Search />
+            <NotFoundSearch />
           ) : (
             currentItems.map((item) => {
               return (
@@ -141,7 +142,7 @@ const AdminPage = ({ isOpen }) => {
                       }}
                     >
                       <img
-                        src={iconedit}
+                        src={ICONS.editIcon}
                         className="w-[20px] h-[20px] mt-1"
                         alt="Edit"
                       />
@@ -154,7 +155,7 @@ const AdminPage = ({ isOpen }) => {
                       }}
                     >
                       <img
-                        src={icondel}
+                        src={ICONS.deleteIcon}
                         className="w-[20px] h-[20px] mt-1 "
                         alt="Delete"
                       />
@@ -165,23 +166,23 @@ const AdminPage = ({ isOpen }) => {
             })
           )}
         </div>
-        <AddModal
+        <CreateAdmins
           isVisible={showModalAddAdmin}
           onClose={() => setShowModalAddAdmin(false)}
           setLoading={setLoading}
-        ></AddModal>
-        <EditModal
+        ></CreateAdmins>
+        <UpdateAdmins
           isVisible={showModalEditAdmin}
           onClose={() => setShowModalEditAdmin(false)}
           setLoading={setLoading}
           id={id}
-        ></EditModal>
-        <ModalDeleteAdmin
+        ></UpdateAdmins>
+        <DeleteAdmins
           isVisible={showModalDelAdmin}
           onClose={() => setShowModalDelAdmin(false)}
           setLoading={setLoading}
           id={id}
-        ></ModalDeleteAdmin>
+        ></DeleteAdmins>
         <Pagination
           Datas={DataAdmins}
           setcurrentItems={setcurrentItems}
@@ -189,7 +190,7 @@ const AdminPage = ({ isOpen }) => {
           loading={loading}
         />
       </div>
-    </SidebarPage>
+    </Sidebar>
   );
 };
 

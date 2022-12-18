@@ -1,27 +1,35 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DashboardPage from "../pages/dashboard/Dashboard";
-import ProductsPage from "../pages/dashboard/products/ProductsPage";
-import TransactionsPage from "../pages/dashboard/transactions/Transactions";
-import UsersPage from "../pages/dashboard/users/Users";
-import AdminsPage from "../pages/dashboard/admins/Admin";
-import LandingPage from "../pages/landing/Landing";
-import PulsaPage from "../pages/dashboard/products/telecommunication/Pulsa";
-import PaketData from "../pages/dashboard/products/telecommunication/PaketData";
-import TelkomselPage from "../pages/dashboard/products/telecommunication/Telkomsel";
-import AddProductsTelkomsel from "../pages/dashboard/products/telecommunication/pulsa/AddProductsTelkomsel";
-import EditProductTelkomsel from "../pages/dashboard/products/telecommunication/pulsa/EditProductTelkomsel";
 import PrivateRoute from "./PrivateRoute";
-import { Login } from "../components/login/Login";
-import NotFound from "../pages/notfound";
+
+import { UpadateProducts, CreateProducts, Login } from "../components";
+
+import {
+  PaketData,
+  IndosatPaketData,
+  TelkomselPaketData,
+  SimpatiPaketData,
+  ThreePaketData,
+  SmartfrenPaketData,
+  TelkomselPulsa,
+  IndosatPulsa,
+  Pulsa,
+  AdminsPage,
+  UsersPage,
+  Landing,
+  ProductsPage,
+  TransactionsPage,
+  DashboardPage,
+  NotFound404,
+} from "../pages/";
 
 const Routing = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/landing" element={<LandingPage />} />
+          <Route path="/landing" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path="/*" element={<NotFound404 />} />
           <Route element={<PrivateRoute />}>
             <Route path="/">
               <Route index element={<DashboardPage />} />
@@ -31,16 +39,57 @@ const Routing = () => {
             </Route>
             <Route path="/products">
               <Route index element={<ProductsPage />} />
+              {/* Pulsa */}
               <Route path="pulsa">
-                <Route index element={<PulsaPage />} />
+                <Route index element={<Pulsa />} />
                 <Route path="telkomsel">
-                  <Route index element={<TelkomselPage />} />
-                  <Route path="new" element={<AddProductsTelkomsel />} />
-                  <Route path="edit" element={<EditProductTelkomsel />} />
+                  {/* TElKOMSEL */}
+                  <Route index element={<TelkomselPulsa />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
                 </Route>
-                <Route path="simpati" element={"a"} />
+                <Route path="indosat">
+                  {/* TElKOMSEL */}
+                  <Route index element={<IndosatPulsa />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
+                </Route>
               </Route>
-              <Route path="paket-data" element={<PaketData />} />
+              {/* PaketData */}
+              <Route path="paket-data">
+                <Route index element={<PaketData />} />
+                {/* Telkomsel */}
+                <Route path="telkomsel">
+                  <Route index element={<TelkomselPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
+                </Route>
+                {/* Indosat */}
+                <Route path="indosat">
+                  <Route index element={<IndosatPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
+                </Route>
+                {/* Simpati */}
+                <Route path="simpati">
+                  <Route index element={<SimpatiPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
+                </Route>
+                {/* Three */}
+                <Route path="three">
+                  <Route index element={<ThreePaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
+                </Route>
+                {/* Smartfren */}
+                <Route path="smartfren">
+                  <Route index element={<SmartfrenPaketData />} />
+                  <Route path="new" element={<CreateProducts />} />
+                  <Route path="edit/:id" element={<UpadateProducts />} />
+                </Route>
+              </Route>
+              {/* End paket Data */}
             </Route>
             <Route path="/transactions">
               <Route index element={<TransactionsPage />} />

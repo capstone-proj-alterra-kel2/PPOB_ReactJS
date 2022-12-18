@@ -4,17 +4,18 @@ import iconUsers from "../../../assets/img/icon-users.png";
 import iconAdmin from "../../../assets/img/icon-admin.png";
 import { FaConnectdevelop } from "react-icons/fa";
 import HistorySharpIcon from "@mui/icons-material/HistorySharp";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 
 export const menuItem = [
   // {
-  //   path: "/dashboard/",
+  //   path: "/",
   //   name: "Dashboard",
   //   icon: <FaConnectdevelop className="w-7 h-7" />,
   // },
   {
     path: "/users",
     name: "Pengguna",
-    icon: <img src={iconUsers} alt="" className="w-7 h-7" />,
+    icon: <GroupsOutlinedIcon className="w-7 h-7" />,
   },
   {
     path: "/products",

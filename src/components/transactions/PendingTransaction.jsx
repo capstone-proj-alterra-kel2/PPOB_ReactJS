@@ -1,29 +1,28 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
-import { transactions } from "../../apis/Transactions";
 import Pagination from "../dashboard/pagination/Pagination";
-import { useEffect } from "react";
 import Search from "../dashboard/search/Search";
+import { useSelector } from "react-redux";
 
 const PendingTransaction = () => {
+  const DataTranactionsRedux = useSelector(
+    (state) => state.products.transactions
+  );
   const [search, setSearch] = useState("");
-  const dataPending = transactions.filter((data) => data.status === "pending");
-
-  const [dataFilter, setDataFilter] = useState(dataPending); // data yang diolah
+  const [dataFilter, setDataFilter] = useState(DataTranactionsRedux); // data yang diolah
   const [currentItems, setcurrentItems] = useState(dataFilter);
+  console.log("data Current", dataFilter);
   const [counter, setCounter] = useState(0);
 
   // loading
   const [loading, setLoading] = useState(false);
-
-  console.log("data pending value", dataPending);
 
   const handleSearch = (e) => {
     const getSearch = e.target.value;
     setSearch(getSearch);
     if (getSearch !== "") {
       const searchData = dataFilter.filter((item) =>
-        item.email.toLowerCase().includes(getSearch)
+        item.user_email.toLowerCase().includes(getSearch)
       );
       setcurrentItems(searchData.slice(0, 5));
     } else {
@@ -36,39 +35,43 @@ const PendingTransaction = () => {
     const value = e.target.value;
     console.log("value", value);
     if (value === "all") {
-      setDataFilter(dataPending);
+      setDataFilter(DataTranactionsRedux);
     } else if (value === "pulsa") {
-      const Product = dataPending.filter((item) => item.products === "pulsa");
+      const Product = DataTranactionsRedux.filter(
+        (item) => item.product_type === "Pulsa"
+      );
       setDataFilter(Product);
       console.log(Product);
-    } else if (value === "paketdata") {
-      const Product = dataPending.filter(
-        (item) => item.products === "paketdata"
+    } else if (value === "Paket Data") {
+      const Product = DataTranactionsRedux.filter(
+        (item) => item.product_type === "Paket Data"
       );
       setDataFilter(Product);
-    } else if (value === "pdam") {
-      const product = dataPending.filter((item) => item.products === "pdam");
-      setDataFilter(product);
-    } else if (value === "indihome") {
-      const product = dataPending.filter(
-        (item) => item.products === "indihome"
+    } else if (value === "Token Listik") {
+      const product = DataTranactionsRedux.filter(
+        (item) => item.product_type === "Token Listik"
       );
       setDataFilter(product);
-    } else if (value === "bpjs") {
-      const product = dataPending.filter((item) => item.products === "bpjs");
+    } else if (value === "Tagihan Listrik") {
+      const product = DataTranactionsRedux.filter(
+        (item) => item.product_type === "Tagihan Listrik"
+      );
       setDataFilter(product);
-    } else if (value === "gopay") {
-      const product = dataPending.filter((item) => item.products === "gopay");
+    } else if (value === "Tagihan PDAM") {
+      const product = DataTranactionsRedux.filter(
+        (item) => item.product_type === "Tagihan PDAM"
+      );
       setDataFilter(product);
-    } else if (value === "shopepay") {
-      const product = dataPending.filter(
-        (item) => item.products === "shopepay"
+    } else if (value === "BPJS") {
+      const product = DataTranactionsRedux.filter(
+        (item) => item.product_type === "BPJS"
       );
       setDataFilter(product);
     }
   };
 
-  //   const [token, setToken] = useState(Cookies.get("token"));
+  console.log("data filter ", dataFilter);
+
   return (
     <div>
       <div className="sub-menu flex justify-between  flex-wrap pb-3 pt-5 ">
@@ -88,58 +91,62 @@ const PendingTransaction = () => {
             onChange={(e) => dataFilteringBYProduct(e)}
           >
             <option value="all" selected>
-              Semua Produk
+              Semua
             </option>
-            <option value="pulsa">Pulsa</option>
-            <option value="paketdata">Paket Data</option>
-            <option value="indihome">Indihome</option>
-            <option value="bpjs">BPJS</option>
-            <option value="pdam">PDAM</option>
-            <option value="gopay">Gopay</option>
-            <option value="shoopepay">ShopeePay</option>
+            <option value="pulsa">Isi Pulsa</option>
+            <option value="Paket Data">Paket Data</option>
+            <option value="Token Listik">Token Listrik</option>
+            <option value="Tagihan Listrik">Tagihan Listrik</option>
+            <option value="Tagihan PDAM">Tagihan PDAM</option>
+            <option value="BPJS">BPJS</option>
           </select>
         </div>
       </div>
-      {dataFilter.length === 0 ? (
-        <div>
+      <div className="h-[450px]">
+        {dataFilter.length === 0 ? (
           <Search />
-        </div>
-      ) : currentItems.length === 0 ? (
-        <Search />
-      ) : (
-        <div className="h-[450px]">
-          {currentItems.map((data) => (
-            <div className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px]">
-              <div className="flex items-center w-full">
-                <div style={{ flex: "1" }}>
-                  <div className="text-grey2">ID</div>
-                  <div>{data.id}</div>
-                </div>
-                <div style={{ flex: "2" }}>
-                  <div className="text-grey2">Tanggal</div>
-                  <div>{`${data.date_transaction} (${data.time_transaction})`}</div>
-                </div>
-                <div style={{ flex: "3" }}>
-                  <div className="text-grey2">Email</div>
-                  <div>{data.email}</div>
-                </div>
-                <div style={{ flex: "2" }}>
-                  <div className="text-grey2">Produk</div>
-                  <div>{data.products}</div>
-                </div>
-                <div style={{ flex: "2" }}>
-                  <div className="text-grey2">Total Pembayaran</div>
-                  <div>{data.total}</div>
-                </div>
-                <div style={{ flex: "3" }}>
-                  <div className="text-grey2">Keterangan</div>
-                  <div>Telkomsel 200.000</div>
+        ) : currentItems.length === 0 ? (
+          <Search />
+        ) : (
+          <>
+            {currentItems.map((data) => (
+              <div className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px]">
+                <div className="flex items-center w-full">
+                  <div style={{ flex: "1" }}>
+                    <div className="text-grey2">ID</div>
+                    <div>{data.id}</div>
+                  </div>
+                  <div style={{ flex: "2" }}>
+                    <div className="text-grey2">Tanggal</div>
+                    <div>{data.transaction_date}</div>
+                  </div>
+                  <div style={{ flex: "3" }}>
+                    <div className="text-grey2">Email</div>
+                    <div>{data.user_email}</div>
+                  </div>
+                  <div style={{ flex: "2" }}>
+                    <div className="text-grey2">Produk</div>
+                    <div>{data.product_type}</div>
+                  </div>
+                  <div style={{ flex: "2" }}>
+                    <div className="text-grey2">Total Pembayaran</div>
+                    <div>
+                      {new Intl.NumberFormat("id-ID", {
+                        style: "currency",
+                        currency: "IDR",
+                      }).format(data.total_price)}
+                    </div>
+                  </div>
+                  <div style={{ flex: "3" }}>
+                    <div className="text-grey2">Keterangan</div>
+                    <div>{data.product_name}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </>
+        )}
+      </div>
 
       <Pagination
         Datas={dataFilter}

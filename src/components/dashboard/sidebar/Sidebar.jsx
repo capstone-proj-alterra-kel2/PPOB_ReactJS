@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import logo from "../../../assets/img/logo.png";
-import logoText from "../../../assets/img/MYCUAN.png";
 import iconLogout from "../../../assets/img/icon-logout.png";
 import { menuItem } from "./MenuSidebar";
 
@@ -12,7 +11,7 @@ import SidebarMenu from "./SidebarMenu";
 import ToastifyComponent from "../toasttify";
 
 const SidebarPage = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
   const [navigate, setNavigate] = useState(false);
 
@@ -31,24 +30,20 @@ const SidebarPage = ({ children }) => {
           className=" h-[100vh] w-[240px]  bg-primary50 flex flex-col"
           style={{ width: isOpen ? "240px" : "60px" }}
         >
-          <div className="top h-[70px] flex items-center justify-center">
+          <div className="flex gap-x-4 items-center my-4">
             <img
               src={logo}
-              style={{ width: "30px", height: "30px" }}
-              alt="logo"
+              className={`cursor-pointer duration-500 ${
+                isOpen && "rotate-[360deg]"
+              }`}
             />
-            <div
-              className="text-lg pl-1"
-              style={{
-                display: isOpen ? "block" : "none",
-              }}
+            <h1
+              className={`text-white origin-left font-medium text-xl duration-200 ${
+                !isOpen && "scale-0"
+              }`}
             >
-              <img
-                src={logoText}
-                style={{ width: "100px", height: "20px" }}
-                alt="logoText"
-              />
-            </div>
+              MYCUAN
+            </h1>
           </div>
           <hr />
 
@@ -61,7 +56,7 @@ const SidebarPage = ({ children }) => {
                   className="group  flex mt-[10px] mb-[10px] list-none
                   text-white h-[48px] items-center content-center
                   px-[10px] hover:bg-white hover:text-midblue"
-                  activeclassname="active"
+                  activeClassName="active"
                 >
                   <SidebarMenu
                     title={item.name}

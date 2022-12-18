@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../../assets/styles/modal.css";
-import email from "../../../assets/img/icon-email.png";
-import shield from "../../../assets/img/icon-shield.png";
-import background from "../../../assets/img/edit-admin.png";
-import iconEdit from "../../../assets/img/icon-edit.png";
+import ICONS from "../../../assets/img";
 import { toast } from "react-toastify";
 import { AxiosInstance } from "../../../apis/api";
 import Cookies from "js-cookie";
@@ -127,7 +124,7 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
           <div className="bg-grey3 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
-                <img src={background} alt="" />
+                <img src={ICONS.editAdmin} alt="" />
               </div>
               <div className="pt-6 pb-7 flex flex-col justify-end items-center">
                 <img
@@ -143,7 +140,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
                 />
 
                 <label htmlFor="file" className="absolute">
-                  <img src={iconEdit} alt="edit" className="z-50 w-8 h-8 " />
+                  <img
+                    src={ICONS.editPictIcon}
+                    alt="edit"
+                    className="z-50 w-8 h-8 "
+                  />
                 </label>
                 <input
                   type="file"
@@ -157,7 +158,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <div className="flex flex-col form-input mb-[24px]">
                 <label className="text-grey2 mb-3">Nama Lengkap</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img src={shield} alt="nama.icon" className="w-5 h-5 mr-2" />
+                  <img
+                    src={ICONS.shieldIcon}
+                    alt="nama.icon"
+                    className="w-5 h-5 mr-2"
+                  />
                   <input
                     className="w-[300px]"
                     value={formData.name}
@@ -170,7 +175,11 @@ const EditModal = ({ isVisible, onClose, id, setLoading }) => {
               <div className="flex flex-col form-input  mb-[24px]">
                 <label className="text-grey2 mb-3">Email</label>
                 <div className="flex w-[100%] bg-white items-center pl-3">
-                  <img src={email} alt="telp.icon" className="w-5 h-5 mr-2" />
+                  <img
+                    src={ICONS.emailIcon}
+                    alt="telp.icon"
+                    className="w-5 h-5 mr-2"
+                  />
                   <input
                     className="w-[300px]"
                     value={formData.email}

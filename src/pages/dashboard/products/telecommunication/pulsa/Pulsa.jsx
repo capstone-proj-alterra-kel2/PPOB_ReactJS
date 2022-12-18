@@ -1,7 +1,7 @@
-import { pulsaData } from "../../../../components/dashboard/products/Telecommunication/Telecommunication";
+import { pulsaData } from "../../../../../components/dashboard/products/Telecommunication";
 import { NavLink } from "react-router-dom";
-import SidebarPage from "../../../../components/dashboard/sidebar/Sidebar";
-import { BreadcrumbPulsa } from "../../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
+import { BreadcrumbPulsa } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 
 const PulsaPage = () => {
   return (
@@ -23,7 +23,7 @@ const PulsaPage = () => {
                         <div className="text-semibold text-2xl">
                           {data.data_produk}
                         </div>
-                        <div className="text-base">Total Stok: {data.stok}</div>
+                        {/* <div className="text-base">Total Stok: {data.stok}</div> */}
                       </div>
                     </div>
                   </div>

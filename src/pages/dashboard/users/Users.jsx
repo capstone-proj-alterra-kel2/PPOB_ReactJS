@@ -2,30 +2,29 @@ import { useEffect, useState } from "react";
 import "../../../assets/styles/dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../../redux/feature/UsersSlice";
-import { AiOutlineSearch } from "react-icons/ai";
-import { AxiosInstance } from "../../../apis/api";
-import Pagination from "../../../components/dashboard/pagination/Pagination";
-import Loading from "../../../utils/Loading";
-import SidebarPage from "../../../components/dashboard/sidebar/Sidebar";
-import { BreadcrumbUser } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
-import Cookies from "js-cookie";
+import { GetDataUsers } from "../../../apis/user";
 
+import Loading from "../../../utils/Loading";
+import { BreadcrumbUser } from "../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import {
+  CreateUsers,
+  UpdateUsers,
+  DeleteUsers,
+  Pagination,
+  Sidebar,
+  NotFoundSearch,
+} from "../../../components";
 // assets logo / icon
-import icondel from "../../../assets/img/icon-delete.png";
-import iconedit from "../../../assets/img/icon-edit2.png";
-import iconAdd from "../../../assets/img/icon-add.png";
-import AddModal from "../../../components/dashboard/Users/AddModal";
-import EditModal from "../../../components/dashboard/Users/EditModal";
-import DeleteModal from "../../../components/dashboard/Users/DeleteModal";
-import Search from "../../../components/dashboard/search/Search";
+import ICONS from "../../../assets/img";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const UsersPage = () => {
-  const token = Cookies.get("token");
   const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const DataUsers = useSelector((state) => state.users.users);
-  // const dataFiltering = DataUsers.filter((data) => (data.role_name = "user"));
   const [search, setSearch] = useState("");
+  const [id, setID] = useState("");
+
   // Pagination useState
   const [currentItems, setcurrentItems] = useState(DataUsers);
   // loading
@@ -35,16 +34,11 @@ const UsersPage = () => {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showModalAdd, setShowModalAdd] = useState(false);
   const [showModalDel, setShowModalDel] = useState(false);
-  const [id, setID] = useState("");
 
   useEffect(() => {
-    AxiosInstance.get("/admin/users?sort=name&size=50", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }).then((res) => {
+    GetDataUsers().then((res) => {
       setLoading(false);
-      dispatch(setUsers(res.data.data.items));
+      dispatch(setUsers(res));
     });
   }, [loading]);
 
@@ -64,7 +58,7 @@ const UsersPage = () => {
   };
 
   return (
-    <SidebarPage>
+    <Sidebar>
       <div className="px-10 pt-5 h-[100%]">
         <div className="pb-5">
           <div className="mb-5">
@@ -92,7 +86,7 @@ const UsersPage = () => {
               }}
             >
               <img
-                src={iconAdd}
+                src={ICONS.addIcon}
                 style={{ width: "22px", height: "22px" }}
                 alt="ADD"
               />
@@ -106,7 +100,7 @@ const UsersPage = () => {
               <Loading />
             </div>
           ) : currentItems.length === 0 ? (
-            <Search />
+            <NotFoundSearch />
           ) : (
             currentItems.map((item) => {
               return (
@@ -144,7 +138,7 @@ const UsersPage = () => {
                       }}
                     >
                       <img
-                        src={iconedit}
+                        src={ICONS.editIcon}
                         className="w-[20px] h-[20px] mt-1"
                         alt="Edit"
                       />
@@ -157,7 +151,7 @@ const UsersPage = () => {
                       }}
                     >
                       <img
-                        src={icondel}
+                        src={ICONS.deleteIcon}
                         className="w-[20px] h-[20px] mt-1 "
                         alt="Delete"
                       />
@@ -168,18 +162,18 @@ const UsersPage = () => {
             })
           )}
         </div>
-        <EditModal
+        <UpdateUsers
           isVisible={showModalEdit}
           onClose={() => setShowModalEdit(false)}
           id={id}
           setLoading={setLoading}
         />
-        <AddModal
+        <CreateUsers
           isVisible={showModalAdd}
           onClose={() => setShowModalAdd(false)}
           setLoading={setLoading}
         />
-        <DeleteModal
+        <DeleteUsers
           isVisible={showModalDel}
           onClose={() => setShowModalDel(false)}
           id={id}
@@ -193,13 +187,7 @@ const UsersPage = () => {
           loading={loading}
         />
       </div>
-
-      {/* {loading || currentItems.length === 0
-        ? null
-        : counter === 0
-        ? "No data"
-        : null} */}
-    </SidebarPage>
+    </Sidebar>
   );
 };
 

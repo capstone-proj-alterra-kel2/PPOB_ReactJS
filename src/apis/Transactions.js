@@ -1,14 +1,15 @@
 import { AxiosInstance } from "./api";
 import Cookies from "js-cookie";
 
-const token = Cookies.get("token");
+export const GetDataTransactions = async () => {
+  const token = Cookies.get("token");
 
-export const GetDataTransactions = () => {
-  AxiosInstance.get("/admin/transactions", {
+  const res = await AxiosInstance.get("/admin/transactions?size=8000&sort=id", {
     headers: {
       Authorization: "Bearer " + token,
     },
   });
+  return res.data.data.items;
 };
 
 export const transactions = [
