@@ -15,12 +15,12 @@ import fitur1 from "../../assets/img/fitur1.png";
 import fitur2 from "../../assets/img/fitur2.png";
 import fitur3 from "../../assets/img/fitur3.png";
 import { useEffect } from "react";
-import { AiOutlineArrowUp } from 'react-icons/ai';
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 const LandingPage = () => {
   useEffect(() => {
     // 👇️ scroll to top on page load
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
   return (
@@ -132,8 +132,8 @@ const LandingPage = () => {
               src={fitur3}
               alt="a.png"
               style={{
-                width: "900px",
-                height: "450px",
+                width: "545px",
+                height: "443px",
                 top: "1500px",
                 left: "140px",
               }}
