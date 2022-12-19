@@ -38,8 +38,6 @@ const SmartfrenPagePaketData = () => {
     setFilterData(Products.filter((data) => data.provider_id === 11));
   }, [Products]);
 
-  console.log("data", filterData);
-
   const formatter = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",

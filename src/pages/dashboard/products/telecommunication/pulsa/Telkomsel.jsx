@@ -32,7 +32,7 @@ const TelkomselPagePulsa = () => {
     GetProduct().then((res) => {
       setLoading(false);
       dispatch(setProducts(res));
-      console.log("data product telkomsel", res);
+      // console.log("data product telkomsel", res);
     });
   }, [loading]);
 

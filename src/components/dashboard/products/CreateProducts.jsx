@@ -68,7 +68,6 @@ const CreateProducts = () => {
         },
       })
         .then((res) => {
-          console.log("faafaf", res);
           navigate(-1);
           toast.success("Data Akun BERHASIL DIBUAT!");
           setLoading(true);
@@ -112,7 +111,7 @@ const CreateProducts = () => {
     <>
       <SidebarPage>
         <div className="flex flex-col justify-center items-center h-full">
-          <h1 className="font-bold text-3xl my-3">Tambah Produk Paket Data</h1>
+          <h1 className="font-bold text-3xl my-3">Tambah Produk</h1>
           <div className="h-auto w-[600px] gap-6 bg-white rounded-xl mb-8">
             <div className="p-6">
               <h2 className="text-2xl font-semibold">Detail</h2>

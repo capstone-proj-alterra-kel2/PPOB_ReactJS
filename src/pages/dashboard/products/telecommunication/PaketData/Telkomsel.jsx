@@ -64,27 +64,6 @@ const TelkomselPagePaketData = () => {
     setCounter((prev) => prev + 1);
   };
 
-  console.log("DATA FILTER", filterData);
-
-  // const filteringByStatus = (e) => {
-  //   //pending, approve
-  //   const value = e.target.value;
-  //   console.log("value1", value);
-  //   // if (value === "all") {
-  //   //   setDataStatus(Products);
-  //   // } else
-  //   if (value === "normal") {
-  //     const status = filterData.filter(
-  //       (item) => item.price_status === "normal"
-  //     );
-  //     setDataStatus(status);
-  //     console.log(status);
-  //   } else if (value === "promo") {
-  //     const status = filterData.filter((item) => item.price_status === "promo");
-  //     setDataStatus(status);
-  //   }
-  // };
-
   return (
     <Sidebar>
       <div className="px-10 py-3">
@@ -173,7 +152,7 @@ const TelkomselPagePaketData = () => {
                         </div>
                       </div>
                       <div className=" w-60">
-                        <div className="text-grey2">Produk</div>
+                        <div className="text-grey2">Status</div>
                         <div className="text-lg font-semibold">
                           {PaketData.price_status}
                         </div>

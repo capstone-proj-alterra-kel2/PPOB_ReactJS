@@ -129,6 +129,12 @@ const SmartfrenPagePaketData = () => {
                           {PaketData.stock}
                         </div>
                       </div>
+                      <div className=" w-60">
+                        <div className="text-grey2">Status</div>
+                        <div className="text-lg font-semibold">
+                          {PaketData.price_status}
+                        </div>
+                      </div>
                     </div>
                     <div className="flex justify-center items-center">
                       {/* Edit  */}
