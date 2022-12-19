@@ -2,6 +2,7 @@ import { Link, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import imageLogin from "../../assets/img/image-login.png";
 import "../../assets/styles/login.css";
+import swal from "sweetalert";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import emailIcon from "../../assets/img/icon-email.png";
 import lockIcon from "../../assets/img/icon-lock.png";
@@ -32,6 +33,10 @@ const Login = () => {
       // { withCredentials: true }
     )
       .then((res) => {
+        swal({
+          text: "Selamat Datang Admin!",
+          icon: "success",
+        });
         console.log("data login", res);
         Cookies.set("token", res.data.token);
         Cookies.set("data", res.data.data);

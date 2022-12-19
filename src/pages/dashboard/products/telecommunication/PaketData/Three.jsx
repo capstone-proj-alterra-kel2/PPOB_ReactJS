@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
-import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
-import DelPaketDataTelkomsel from "../../../../../components/dashboard/products/DelPaketDataTelkomsel";
-import icondel from "../../../../../assets/img/icon-delete.png";
-import iconedit from "../../../../../assets/img/icon-edit2.png";
 import iconAdd from "../../../../../assets/img/icon-add.png";
 import { AiOutlineSearch } from "react-icons/ai";
+import {
+  Sidebar,
+  NotFoundSearch,
+  Pagination,
+  DeleteProducts,
+} from "../../../../../components";
 import { Link } from "react-router-dom";
-import Pagination from "../../../../../components/dashboard/pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../../utils/Loading";
-import Search from "../../../../../components/dashboard/search/Search";
-
 import { setProducts } from "../../../../../redux/feature/ProductSlice";
-import { BreadcrumbPDThree } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
+import { BreadcrumbPDTelkomsel } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { GetProduct } from "../../../../../apis/produtcs";
+import ICONS from "../../../../../assets/img";
 
-const ThreePagePaketData = () => {
+const TelkomselPagePaketData = () => {
   const Products = useSelector((state) => state.products.products);
   const [filterData, setFilterData] = useState([]);
+  // const [dataStatus, setDataStatus] = useState(filterData);
   const [currentItems, setcurrentItems] = useState(filterData);
 
   const [search, setSearch] = useState("");
@@ -33,7 +34,7 @@ const ThreePagePaketData = () => {
     GetProduct().then((res) => {
       setLoading(false);
       dispatch(setProducts(res));
-      console.log("data product", res);
+      console.log("data product telkomsel", res);
     });
   }, [loading]);
 
@@ -62,24 +63,31 @@ const ThreePagePaketData = () => {
     }
     setCounter((prev) => prev + 1);
   };
+
   return (
-    <SidebarPage>
+    <Sidebar>
       <div className="px-10 py-3">
         <div className="pb-5">
           <p className="text-base font-medium text-grey2 mb-4">
-            <BreadcrumbPDThree />
+            <BreadcrumbPDTelkomsel />
           </p>
           <div className="mb-5 flex justify-between h-[64px]">
             <div className="not-italic text-2xl font-bold ">
-              Paket Data Three
+              Paket Data Telkomsel
             </div>
             {/* <div className="flex text-white">
-              <button className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold">
-                <AttachMoneyOutlinedIcon className="mr-1 w-5 h-5" />
+              <button
+                onClick={filteringByStatus}
+                value="normal"
+                className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold"
+              >
                 <div className="text-sm font-medium">Normal</div>
               </button>
-              <button className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold">
-                <DiscountOutlinedIcon className="mr-1 w-5 h-5" />
+              <button
+                onClick={filteringByStatus}
+                value="promo"
+                className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold"
+              >
                 <div className="text-sm font-medium">Promo</div>
               </button>
             </div> */}
@@ -115,7 +123,7 @@ const ThreePagePaketData = () => {
               <Loading />
             </div>
           ) : currentItems.length === 0 ? (
-            <Search />
+            <NotFoundSearch />
           ) : (
             <>
               {currentItems.map((PaketData) => {
@@ -125,7 +133,7 @@ const ThreePagePaketData = () => {
                     className="card h-[80px] mb-2 bg-white flex items-center justify-between px-6 py-4  rounded-xl"
                   >
                     <div className="flex items-center flex-1 font-medium text-sm">
-                      <div className=" w-80 flex flex-col pr-4">
+                      <div className=" w-80 flex flex-col">
                         <div className="text-grey2">Nama Produk</div>
                         <div className="text-lg font-semibold">
                           {PaketData?.name}
@@ -144,7 +152,7 @@ const ThreePagePaketData = () => {
                         </div>
                       </div>
                       <div className=" w-60">
-                        <div className="text-grey2">Produk</div>
+                        <div className="text-grey2">Status</div>
                         <div className="text-lg font-semibold">
                           {PaketData.price_status}
                         </div>
@@ -157,7 +165,7 @@ const ThreePagePaketData = () => {
                         className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
                       >
                         <img
-                          src={iconedit}
+                          src={ICONS.editIcon}
                           className="w-[20px] h-[20px] mt-1"
                           alt="Edit"
                         />
@@ -170,7 +178,7 @@ const ThreePagePaketData = () => {
                         }}
                       >
                         <img
-                          src={icondel}
+                          src={ICONS.deleteIcon}
                           className="w-[20px] h-[20px] mt-1 "
                           alt="Delete"
                         />
@@ -183,7 +191,7 @@ const ThreePagePaketData = () => {
           )}
         </div>
       </div>
-      <DelPaketDataTelkomsel
+      <DeleteProducts
         isVisible={showModalDel}
         onClose={() => setShowModalDel(false)}
         id={id}
@@ -195,8 +203,8 @@ const ThreePagePaketData = () => {
         currentItems={currentItems}
         loading={loading}
       />
-    </SidebarPage>
+    </Sidebar>
   );
 };
 
-export default ThreePagePaketData;
+export default TelkomselPagePaketData;

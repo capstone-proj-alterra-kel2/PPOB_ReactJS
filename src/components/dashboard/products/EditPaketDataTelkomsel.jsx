@@ -72,8 +72,6 @@ const EditPaketDataTelkomsel = () => {
       promo_end_date: formData.promo_end_date,
     };
 
-    console.log("lalalal", data);
-
     if (Object.keys(errors).length === 0 && isSubmit) {
       await AxiosInstance.put(`/admin/products/${id}`, data, {
         headers: {
@@ -81,13 +79,11 @@ const EditPaketDataTelkomsel = () => {
         },
       })
         .then((res) => {
-          console.log(res);
           // setLoading(true);
           toast.success("Data Akun Pengguna BERHASIL DIPERBARUI!");
           Redirect(-1);
         })
         .catch((err) => {
-          console.log(err);
           toast.error("Data Akun  Pengguna GAGAL DIPERBARUI!");
         });
     } else {
@@ -112,8 +108,6 @@ const EditPaketDataTelkomsel = () => {
     }
     return errors;
   };
-
-  console.log("data form", formData);
 
   return (
     <>

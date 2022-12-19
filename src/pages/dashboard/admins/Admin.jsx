@@ -36,18 +36,11 @@ const AdminPage = ({ isOpen }) => {
   useEffect(() => {
     GetDataforadmin()
       .then((res) => {
-        console.log("data admin", res);
         setLoading(false);
         dispatch(setAdmins(res));
       })
       .catch((err) => console.log(err));
   }, [loading]);
-
-  // useEffect(() => {
-  //   AxiosInstance.get("/admin/users").then((res) => {
-  //     console.log(res);
-  //   });
-  // });
 
   // Filter search to example manage users ==>
   const handleSearch = (e) => {
