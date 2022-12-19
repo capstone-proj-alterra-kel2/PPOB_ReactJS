@@ -14,8 +14,15 @@ import PDAM from "../../assets/img/products/PDAM.png";
 import fitur1 from "../../assets/img/fitur1.png";
 import fitur2 from "../../assets/img/fitur2.png";
 import fitur3 from "../../assets/img/fitur3.png";
+import { useEffect } from "react";
+import { AiOutlineArrowUp } from 'react-icons/ai';
 
 const LandingPage = () => {
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  }, []);
+
   return (
     <>
       <div
@@ -32,7 +39,7 @@ const LandingPage = () => {
         </div>
         <div className="circle3 w-[421px] h-[421px] absolute rounded-full right-0 top-[455px] z-[-10]"></div>
         <Hero />
-        <AboutUsLanding/>
+        <AboutUsLanding />
 
         <div className="flex flex-col items-center mt-80" id="produk">
           <div className="">
@@ -138,11 +145,14 @@ const LandingPage = () => {
             </p>
             <p className="text2" style={{ fontSize: 36 }}>
               <b>
-              Bayar tagihan internet indihome<br />kapanpun dan dimanapun
+                Bayar tagihan internet indihome
+                <br />
+                kapanpun dan dimanapun
               </b>
             </p>
             <p className="text3" style={{ fontSize: 16 }}>
-            Melalui fitur ini, pengguna dapat melakukan pengecekan tagihan dan pembayaran Telkom/IndiHome secara online
+              Melalui fitur ini, pengguna dapat melakukan pengecekan tagihan dan
+              pembayaran Telkom/IndiHome secara online
             </p>
           </div>
         </div>
@@ -256,7 +266,10 @@ const LandingPage = () => {
         </div>
 
         {/* cta */}
-        <div id="download" className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3400px] mt-[50px] absolute">
+        <div
+          id="download"
+          className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3400px] mt-[50px] absolute"
+        >
           <div>
             <p className="font-bold text-5xl mx-[217] text-center text-white1">
               Download Aplikasi Kami Sekarang Juga dan Nikmati Produk Utama
@@ -273,7 +286,25 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <Footer id="kontak"/>
+        <button
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          }}
+          style={{
+            position: "fixed",
+            padding: "1rem 1rem",
+            fontSize: "20px",
+            bottom: "40px",
+            right: "40px",
+            backgroundColor: "#0D40C6",
+            color: "#fff",
+            textAlign: "center",
+          }}
+        >
+          <AiOutlineArrowUp />
+        </button>
+
+        <Footer id="kontak" />
       </div>
     </>
   );
