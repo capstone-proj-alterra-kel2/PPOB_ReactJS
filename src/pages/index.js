@@ -1,10 +1,10 @@
 // Paket Data
-export { default as PaketData } from "./dashboard/products/telecommunication/paketdata/PaketData";
-export { default as IndosatPaketData } from "./dashboard/products/telecommunication/paketdata/Indosat";
-export { default as TelkomselPaketData } from "./dashboard/products/telecommunication/paketdata/Telkomsel";
-export { default as SimpatiPaketData } from "./dashboard/products/telecommunication/paketdata/Simpati";
-export { default as ThreePaketData } from "./dashboard/products/telecommunication/paketdata/Three";
-export { default as SmartfrenPaketData } from "./dashboard/products/telecommunication/paketdata/Smartfren";
+export { default as PaketData } from "./dashboard/products/telecommunication/PaketData/PaketData";
+export { default as IndosatPaketData } from "./dashboard/products/telecommunication/PaketData/Indosat";
+export { default as TelkomselPaketData } from "./dashboard/products/telecommunication/PaketData/Telkomsel";
+export { default as SimpatiPaketData } from "./dashboard/products/telecommunication/PaketData/Simpati";
+export { default as ThreePaketData } from "./dashboard/products/telecommunication/PaketData/Three";
+export { default as SmartfrenPaketData } from "./dashboard/products/telecommunication/PaketData/Smartfren";
 
 // Pulsa
 export { default as IndosatPulsa } from "./dashboard/products/telecommunication/pulsa/Indosat";

@@ -11,7 +11,6 @@ const PendingTransaction = () => {
   const [search, setSearch] = useState("");
   const [dataFilter, setDataFilter] = useState(DataTranactionsRedux); // data yang diolah
   const [currentItems, setcurrentItems] = useState(dataFilter);
-  console.log("data Current", dataFilter);
   const [counter, setCounter] = useState(0);
 
   // loading
@@ -33,7 +32,6 @@ const PendingTransaction = () => {
 
   const dataFilteringBYProduct = (e) => {
     const value = e.target.value;
-    console.log("value", value);
     if (value === "all") {
       setDataFilter(DataTranactionsRedux);
     } else if (value === "pulsa") {
@@ -41,7 +39,6 @@ const PendingTransaction = () => {
         (item) => item.product_type === "Pulsa"
       );
       setDataFilter(Product);
-      console.log(Product);
     } else if (value === "Paket Data") {
       const Product = DataTranactionsRedux.filter(
         (item) => item.product_type === "Paket Data"
@@ -69,8 +66,6 @@ const PendingTransaction = () => {
       setDataFilter(product);
     }
   };
-
-  console.log("data filter ", dataFilter);
 
   return (
     <div>

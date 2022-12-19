@@ -23,7 +23,6 @@ const CreateProducts = () => {
   };
 
   const token = Cookies.get("token");
-  console.log("data buat tambaha", Products);
   const navigate = useNavigate();
   const [showPromo, setShowPromo] = useState(false);
   const [formValues, setFormValues] = useState(initialValues);
@@ -39,8 +38,6 @@ const CreateProducts = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
-
-  console.log("kelelel", formValues);
 
   const data = {
     name: formValues.name,

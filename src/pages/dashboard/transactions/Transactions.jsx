@@ -18,7 +18,6 @@ const TransactionsPage = () => {
   const [showData, setShowData] = useState(false);
   useEffect(() => {
     GetDataTransactions().then((res) => {
-      console.log("apapapapap", res);
       setLoading(false);
       dispatch(setTransactions(res));
     });
