@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/Store";
 import { PersistGate } from "redux-persist/integration/react";
+import "./assets/styles/dashboard.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

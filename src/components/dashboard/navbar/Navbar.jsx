@@ -1,16 +1,13 @@
-import Cookies from "js-cookie";
-import { FaBars } from "react-icons/fa";
-
 const NavbarDashboard = ({ toggle, isOpen }) => {
   return (
     <>
-      <div className=" flex items-center justify-between p-5 text-lg h-[10vh] w-[100%] bg-white sticky top-0">
-        <div
+      <div className=" flex items-center justify-end p-5 text-lg h-[10vh] w-[100%] bg-white sticky top-0">
+        {/* <div
           style={{ marginLeft: isOpen ? "60px" : "0px" }}
           className="flex text-2xl p-[20px] w-auto"
         >
           <FaBars onClick={toggle} />
-        </div>
+        </div> */}
         <div className="flex items-center">
           <div className="mr-5">Monkey D. Luffy</div>
           <img

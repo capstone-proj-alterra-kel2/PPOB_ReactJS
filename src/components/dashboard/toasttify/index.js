@@ -8,12 +8,13 @@ const ToastifyComponent = () => {
         autoClose={3000}
         newestOnTop={false}
         style={{
-          width: "95%",
+          width: "80%",
           marginLeft: "40px",
 
           position: "absolute",
           top: 0,
           right: 0,
+          left: 200,
         }}
         closeOnClick={false}
         rtl={false}

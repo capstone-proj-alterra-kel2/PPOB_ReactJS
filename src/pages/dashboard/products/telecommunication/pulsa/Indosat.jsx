@@ -1,45 +1,45 @@
 import { useEffect, useState } from "react";
-import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
-import DelPaketDataTelkomsel from "../../../../../components/dashboard/products/DelPaketDataTelkomsel";
-import icondel from "../../../../../assets/img/icon-delete.png";
-import iconedit from "../../../../../assets/img/icon-edit2.png";
-import iconAdd from "../../../../../assets/img/icon-add.png";
+import ICONS from "../../../../../assets/img";
 import { AiOutlineSearch } from "react-icons/ai";
+import {
+  Sidebar,
+  NotFoundSearch,
+  Pagination,
+  DeleteProducts,
+} from "../../../../../components";
 import { Link } from "react-router-dom";
-import Pagination from "../../../../../components/dashboard/pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../../utils/Loading";
-import Search from "../../../../../components/dashboard/search/Search";
+import { BreadcrumbPDSmartfren } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { setProducts } from "../../../../../redux/feature/ProductSlice";
-import { BreadcrumbTelkomsel } from "../../../../../components/dashboard/breadcrumbs/BreadCrumbs";
 import { GetProduct } from "../../../../../apis/produtcs";
 
-const IndosatPagePulsa = () => {
+const SmartfrenPagePaketData = () => {
   const Products = useSelector((state) => state.products.products);
   const [filterData, setFilterData] = useState([]);
-  const [currentItems, setcurrentItems] = useState(filterData);
+  const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [currentItems, setcurrentItems] = useState(filterData);
   const [counter, setCounter] = useState(0);
 
   const [showModalDel, setShowModalDel] = useState(false);
   const [id, setID] = useState("");
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     GetProduct().then((res) => {
       setLoading(false);
       dispatch(setProducts(res));
-      console.log("data product telkomsel", res);
     });
   }, [loading]);
 
   useEffect(() => {
     setFilterData(Products.filter((data) => data.provider_id === 11));
-    setLoading(false);
   }, [Products]);
+
+  console.log("data", filterData);
+
   const formatter = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
@@ -49,10 +49,8 @@ const IndosatPagePulsa = () => {
     const getSearch = e.target.value;
     setSearch(getSearch);
     if (getSearch !== "") {
-      const searchData = filterData.filter(
-        (item) =>
-          item.name.toLowerCase().includes(getSearch) ||
-          item.price_status.toLowerCase().includes(getSearch)
+      const searchData = filterData.filter((item) =>
+        item.name.toLowerCase().includes(getSearch)
       );
       setcurrentItems(searchData.slice(0, 5));
     } else {
@@ -61,26 +59,14 @@ const IndosatPagePulsa = () => {
     setCounter((prev) => prev + 1);
   };
   return (
-    <SidebarPage>
+    <Sidebar>
       <div className="px-10 py-3">
         <div className="pb-5">
           <p className="text-base font-medium text-grey2 mb-4">
-            <BreadcrumbTelkomsel />
+            <BreadcrumbPDSmartfren />
           </p>
           <div className="mb-5 flex justify-between h-[64px]">
-            <div className="not-italic text-2xl font-bold ">
-              Pulsa Telkomsel
-            </div>
-            {/* <div className="flex text-white">
-              <button className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold">
-                <AttachMoneyOutlinedIcon className="mr-1 w-5 h-5" />
-                <div className="text-sm font-medium">Normal</div>
-              </button>
-              <button className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold">
-                <DiscountOutlinedIcon className="mr-1 w-5 h-5" />
-                <div className="text-sm font-medium">Promo</div>
-              </button>
-            </div> */}
+            <div className="not-italic text-2xl font-bold ">Pulsa Indosat</div>
           </div>
           <div className="flex justify-between">
             <div className="search mr-5 w-[315px] bg-white rounded">
@@ -99,7 +85,7 @@ const IndosatPagePulsa = () => {
               className=" gap-2 px-6 py-3  bg-primary50 text-white cursor-pointer flex justify-center items-center rounded"
             >
               <img
-                src={iconAdd}
+                src={ICONS.addIcon}
                 style={{ width: "22px", height: "22px" }}
                 alt="ADD"
               />
@@ -113,7 +99,7 @@ const IndosatPagePulsa = () => {
               <Loading />
             </div>
           ) : currentItems.length === 0 ? (
-            <Search />
+            <NotFoundSearch />
           ) : (
             <>
               {currentItems.map((PaketData) => {
@@ -123,7 +109,6 @@ const IndosatPagePulsa = () => {
                     className="card h-[80px] mb-2 bg-white flex items-center justify-between px-6 py-4  rounded-xl"
                   >
                     <div className="flex items-center flex-1 font-medium text-sm">
-                      <p></p>
                       <div className=" w-80 flex flex-col">
                         <div className="text-grey2">Nama Produk</div>
                         <div className="text-lg font-semibold">
@@ -142,12 +127,6 @@ const IndosatPagePulsa = () => {
                           {PaketData.stock}
                         </div>
                       </div>
-                      <div className=" w-60">
-                        <div className="text-grey2">Produk</div>
-                        <div className="text-lg font-semibold">
-                          {PaketData.price_status}
-                        </div>
-                      </div>
                     </div>
                     <div className="flex justify-center items-center">
                       {/* Edit  */}
@@ -156,7 +135,7 @@ const IndosatPagePulsa = () => {
                         className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
                       >
                         <img
-                          src={iconedit}
+                          src={ICONS.editIcon}
                           className="w-[20px] h-[20px] mt-1"
                           alt="Edit"
                         />
@@ -169,7 +148,7 @@ const IndosatPagePulsa = () => {
                         }}
                       >
                         <img
-                          src={icondel}
+                          src={ICONS.deleteIcon}
                           className="w-[20px] h-[20px] mt-1 "
                           alt="Delete"
                         />
@@ -182,7 +161,7 @@ const IndosatPagePulsa = () => {
           )}
         </div>
       </div>
-      <DelPaketDataTelkomsel
+      <DeleteProducts
         isVisible={showModalDel}
         onClose={() => setShowModalDel(false)}
         id={id}
@@ -194,8 +173,8 @@ const IndosatPagePulsa = () => {
         currentItems={currentItems}
         loading={loading}
       />
-    </SidebarPage>
+    </Sidebar>
   );
 };
 
-export default IndosatPagePulsa;
+export default SmartfrenPagePaketData;

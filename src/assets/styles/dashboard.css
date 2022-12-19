@@ -1,7 +1,8 @@
 /* Sidebar Component*/
 .active {
-  background: yellow;
+  background: #e7ecf9;
   color: red;
+  border-left-color: goldenrod;
 }
 /* End Sidebar Component */
 
@@ -112,3 +113,5 @@
 input {
   background: transparent;
 }
+
+/* Card Components */

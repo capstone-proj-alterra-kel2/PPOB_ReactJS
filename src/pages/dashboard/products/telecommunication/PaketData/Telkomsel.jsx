@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import icondel from "../../../../../assets/img/icon-delete.png";
-import iconedit from "../../../../../assets/img/icon-edit2.png";
 import iconAdd from "../../../../../assets/img/icon-add.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import {
@@ -20,6 +18,7 @@ import ICONS from "../../../../../assets/img";
 const TelkomselPagePaketData = () => {
   const Products = useSelector((state) => state.products.products);
   const [filterData, setFilterData] = useState([]);
+  // const [dataStatus, setDataStatus] = useState(filterData);
   const [currentItems, setcurrentItems] = useState(filterData);
 
   const [search, setSearch] = useState("");
@@ -64,6 +63,28 @@ const TelkomselPagePaketData = () => {
     }
     setCounter((prev) => prev + 1);
   };
+
+  console.log("DATA FILTER", filterData);
+
+  // const filteringByStatus = (e) => {
+  //   //pending, approve
+  //   const value = e.target.value;
+  //   console.log("value1", value);
+  //   // if (value === "all") {
+  //   //   setDataStatus(Products);
+  //   // } else
+  //   if (value === "normal") {
+  //     const status = filterData.filter(
+  //       (item) => item.price_status === "normal"
+  //     );
+  //     setDataStatus(status);
+  //     console.log(status);
+  //   } else if (value === "promo") {
+  //     const status = filterData.filter((item) => item.price_status === "promo");
+  //     setDataStatus(status);
+  //   }
+  // };
+
   return (
     <Sidebar>
       <div className="px-10 py-3">
@@ -76,12 +97,18 @@ const TelkomselPagePaketData = () => {
               Paket Data Telkomsel
             </div>
             {/* <div className="flex text-white">
-              <button className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold">
-                <AttachMoneyOutlinedIcon className="mr-1 w-5 h-5" />
+              <button
+                onClick={filteringByStatus}
+                value="normal"
+                className="bg-green py-3 px-4 rounded gap-2 flex justify-center items-center text-sm mr-5 font-semibold"
+              >
                 <div className="text-sm font-medium">Normal</div>
               </button>
-              <button className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold">
-                <DiscountOutlinedIcon className="mr-1 w-5 h-5" />
+              <button
+                onClick={filteringByStatus}
+                value="promo"
+                className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold"
+              >
                 <div className="text-sm font-medium">Promo</div>
               </button>
             </div> */}

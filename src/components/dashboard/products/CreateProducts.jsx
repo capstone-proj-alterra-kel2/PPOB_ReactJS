@@ -42,36 +42,35 @@ const CreateProducts = () => {
 
   console.log("kelelel", formValues);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const data = {
+    name: formValues.name,
+    description: formValues.name,
+    price: Number(formValues.price),
+    provider_id: Number(formValues.prodiver_id),
+    stock: Number(formValues.stock),
+    status: "Tersedia",
+    is_available: true,
+    price_status: formValues.price_status,
+    discount: Number(formValues.discount),
+    promo_start_date: formValues.promo_start_date,
+    promo_end_date: formValues.promo_end_date,
+  };
+
+  const handleSubmit = () => {
     setFormErrors(validate(formValues));
     const errors = validate(formValues);
     setIsSubmit(true);
 
-    const data = {
-      name: formValues.name,
-      description: formValues.name,
-      price: Number(formValues.price),
-      provider_id: Number(formValues.prodiver_id),
-      stock: Number(formValues.stock),
-      status: "Tersedia",
-      is_available: true,
-      price_status: formValues.price_status,
-      discount: Number(formValues.discount),
-      promo_start_date: formValues.promo_start_date,
-      promo_end_date: formValues.promo_end_date,
-    };
-
-    console.log(data);
-
     if (Object.keys(errors).length === 0 && isSubmit) {
-      await AxiosInstance.post("/admin/products", data, {
+      AxiosInstance.post("/admin/products", data, {
         headers: {
           Authorization: "Bearer " + token,
         },
       })
         .then((res) => {
-          navigate(-1, toast.success("Data Akun BERHASIL DIBUAT!"));
+          console.log("faafaf", res);
+          navigate(-1);
+          toast.success("Data Akun BERHASIL DIBUAT!");
           setLoading(true);
         })
         .catch((err) => {
@@ -165,6 +164,11 @@ const CreateProducts = () => {
                     <option value={23}>Paket Data Axis</option>
                     <option value={24}>Paket Data Xl</option>
                     <option value={25}>Paket Data by.U</option>
+                    <option value={10}>Pulsa Telkomsel</option>
+                    <option value={11}>Pulsa Indosat</option>
+                    <option value={12}>Pulsa Simpati</option>
+                    <option value={13}>Pulsa Three</option>
+                    <option value={14}>Pulsa Smarfren</option>
                   </select>
                 </div>
               </div>

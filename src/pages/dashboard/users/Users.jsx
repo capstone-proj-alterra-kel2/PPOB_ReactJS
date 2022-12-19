@@ -26,7 +26,7 @@ const UsersPage = () => {
   const [id, setID] = useState("");
 
   // Pagination useState
-  const [currentItems, setcurrentItems] = useState(DataUsers);
+  const [currentItems, setcurrentItems] = useState(DataUsers); //5
   // loading
   const [loading, setLoading] = useState(true);
 
@@ -94,7 +94,7 @@ const UsersPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col cards h-[450px]">
+        <div className="flex flex-col cards h-[450px] flex-wrap">
           {loading ? (
             <div className="h-[100vh] flex justify-center items-center">
               <Loading />
