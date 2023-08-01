@@ -109,7 +109,7 @@ const CreateProducts = () => {
       <SidebarPage>
         <div className="flex flex-col justify-center items-center h-full">
           <h1 className="font-bold text-3xl my-3">Tambah Produk</h1>
-          <div className="h-auto w-[600px] gap-6 bg-white rounded-xl mb-8">
+          <div className="h-auto w-[600px] gap-6 bg-grayScale-10 rounded-xl mb-8">
             <div className="p-6">
               <h2 className="text-2xl font-semibold">Detail</h2>
               <div className="flex justify-between items-center mb-4">
@@ -117,28 +117,30 @@ const CreateProducts = () => {
                 <label>Nama Produk</label>
                 <div>
                   <input
-                    className="border-solid border border-black w-[328px] h-14 rounded-xl px-2 "
+                    className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2 "
                     name="name"
                     value={formValues.name}
                     onChange={handleChange}
                     type="text"
                     placeholder="Pulsa Rp. 5.000,00"
                   />
-                  <p className="text-center text-red2">{formErrors.name}</p>
+                  <p className="text-center text-error-40">{formErrors.name}</p>
                 </div>
               </div>
               <div className="flex justify-between items-center mb-4">
                 <label>Stok</label>
                 <div>
                   <input
-                    className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                    className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                     name="stock"
                     onChange={handleChange}
                     value={formValues.stock}
                     type="number"
                     placeholder="Jumlah Stok..."
                   />
-                  <p className="text-center text-red2">{formErrors.stock}</p>
+                  <p className="text-center text-error-40">
+                    {formErrors.stock}
+                  </p>
                 </div>
               </div>
 
@@ -148,7 +150,7 @@ const CreateProducts = () => {
                 <div className="select-tiket ">
                   <select
                     onChange={handleChange}
-                    className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                    className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                     name="prodiver_id"
                   >
                     <option selected>Pilih Provider</option>
@@ -175,14 +177,16 @@ const CreateProducts = () => {
                 <label>Harga Produk</label>
                 <div>
                   <input
-                    className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                    className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                     name="price"
                     type="number"
                     onChange={handleChange}
                     value={formValues.price}
                     placeholder="Rp. 5.000.00"
                   />
-                  <p className="text-center text-red2">{formErrors.price}</p>
+                  <p className="text-center text-error-40">
+                    {formErrors.price}
+                  </p>
                 </div>
               </div>
 
@@ -191,7 +195,7 @@ const CreateProducts = () => {
                 <label>Status Harga</label>
                 <div className="flex justify-start items-center w-[328px]">
                   <input
-                    className="border-solid border border-black w-5 h-5 rounded-xl px-2 mr-4"
+                    className="border-solid border border-grayScale-100 w-5 h-5 rounded-xl px-2 mr-4"
                     name="price_status"
                     onChange={handleChange}
                     type="radio"
@@ -200,7 +204,7 @@ const CreateProducts = () => {
                   />
                   <label className="pr-10">Normal</label>
                   <input
-                    className="border-solid border border-black w-5 h-5 rounded-xl px-2 mr-4"
+                    className="border-solid border border-grayScale-100 w-5 h-5 rounded-xl px-2 mr-4"
                     name="price_status"
                     onChange={handleChange}
                     type="radio"
@@ -210,13 +214,15 @@ const CreateProducts = () => {
                   <label>Promo</label>
                 </div>
               </div>
-              <p className="ml-60 text-center text-red2">{formErrors.price}</p>
+              <p className="ml-60 text-center text-error-40">
+                {formErrors.price}
+              </p>
               {showPromo ? (
                 <>
                   <div className="flex justify-between items-center mb-4">
                     <label>Harga Promo</label>
                     <input
-                      className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                      className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                       name="discount"
                       onChange={handleChange}
                       type="number"
@@ -228,7 +234,7 @@ const CreateProducts = () => {
                     <label>Periode Promo</label>
                     <div className="flex flex-col justify-end">
                       <input
-                        className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                        className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                         name="promo_start_date"
                         onChange={handleChange}
                         type="date"
@@ -237,7 +243,7 @@ const CreateProducts = () => {
                       />
                       <label className="mb-3">DD/MM/YYYY</label>
                       <input
-                        className=" border-solid border border-black w-[328px] h-14 rounded-xl px-2 "
+                        className=" border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2 "
                         name="promo_end_date"
                         onChange={handleChange}
                         type="date"
@@ -253,13 +259,13 @@ const CreateProducts = () => {
               <div className="flex justify-center items-center">
                 <button
                   onClick={backToTelkomsel}
-                  className=" mr-5 w-[123px] h-12  gap-8 border border-primary50 text-primary50 rounded-full font-semibold text-base"
+                  className=" mr-5 w-[123px] h-12  gap-8 border border-primary-50 text-primary-50 rounded-full font-semibold text-base"
                 >
                   Batalkan
                 </button>
                 <button
                   onClick={handleSubmit}
-                  className=" mr-5 w-[123px] h-12  gap-8 bg-primary50 text-white rounded-full font-semibold text-base"
+                  className=" mr-5 w-[123px] h-12  gap-8 bg-primary-50 text-grayScale-10 rounded-full font-semibold text-base"
                 >
                   Tambahkan
                 </button>

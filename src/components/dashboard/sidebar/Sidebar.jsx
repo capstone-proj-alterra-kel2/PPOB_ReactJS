@@ -28,24 +28,9 @@ const SidebarPage = ({ children }) => {
     <div className="flex">
       <div className="">
         <div
-          className=" h-[100vh] w-[240px]  bg-primary50 flex flex-col"
+          className=" h-[100vh] w-[240px] bg-primary-50 flex flex-col"
           style={{ width: isOpen ? "240px" : "60px" }}
         >
-          {/* <div className="flex items-center justify-center mt-3">
-            <img
-              src={logo}
-              className={`cursor-pointer duration-500 ml-1${
-                isOpen && "rotate-[360deg]"
-              }`}
-            />
-            <h1
-              className={`text-white origin-left font-medium text-xl duration-200 ${
-                !isOpen && "scale-0"
-              }`}
-            >
-              MYCUAN
-            </h1>
-          </div> */}
           <div className="top h-[70px] flex items-center justify-center">
             <img src={logo} style={{ width: "50px", height: "50px" }} alt="" />
             <div
@@ -70,8 +55,8 @@ const SidebarPage = ({ children }) => {
                   to={item.path}
                   key={index}
                   className="group  flex mt-[10px] mb-[10px] list-none
-                  text-white h-[48px] items-center content-center
-                  px-[10px] hover:bg-white hover:text-midblue"
+                  text-grayScale-10 h-[48px] items-center content-center
+                  px-[10px] hover:grayScale-10 hover:text-midblue"
                   activeClassName="active"
                 >
                   <SidebarMenu
@@ -85,7 +70,7 @@ const SidebarPage = ({ children }) => {
             </div>
             <div
               onClick={handleLogout}
-              className="flex mt-[50px] mb-[10px] list-none text-white h-[48px] items-center  px-[10px] hover:bg-white hover:text-midblue"
+              className="flex mt-[50px] mb-[10px] list-none text-grayScale-10 h-[48px] items-center  px-[10px] hover:bg-grayScale-10 hover:text-midblue"
             >
               <div className="font-menu p-2">
                 <img src={iconLogout} alt="" className="w-7 h-7" />
@@ -102,7 +87,7 @@ const SidebarPage = ({ children }) => {
         </div>
       </div>
 
-      <div className="w-[100%] max-h-screen bg-grey3 overflow-auto">
+      <div className="w-[100%] max-h-screen overflow-auto bg-grayScale-20">
         <NavbarDashboard toggle={toggle} isOpen={isOpen} />
 
         <ToastifyComponent />

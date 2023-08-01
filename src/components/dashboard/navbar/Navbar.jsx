@@ -1,7 +1,7 @@
 const NavbarDashboard = ({ toggle, isOpen }) => {
   return (
     <>
-      <div className=" flex items-center justify-end p-5 text-lg h-[10vh] w-[100%] bg-white sticky top-0">
+      <div className=" flex items-center justify-end p-5 text-lg h-[10vh] w-[100%] bg-grayScale-10 sticky top-0">
         {/* <div
           style={{ marginLeft: isOpen ? "60px" : "0px" }}
           className="flex text-2xl p-[20px] w-auto"

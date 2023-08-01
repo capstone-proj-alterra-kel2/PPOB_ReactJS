@@ -27,11 +27,11 @@ const Routing = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/landing" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={<NotFound404 />} />
           <Route element={<PrivateRoute />}>
-            <Route path="/">
+            <Route path="/admin">
               <Route index element={<DashboardPage />} />
             </Route>
             <Route path="/users">

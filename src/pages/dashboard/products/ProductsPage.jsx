@@ -14,7 +14,7 @@ const ProductsPage = () => {
   return (
     <SidebarPage>
       <div className="p-8">
-        <p className="text-base font-medium text-grey2">
+        <p className="text-base font-medium text-grayScale-60">
           <BreadcrumbProduts />
         </p>
         <h1 className="text-3xl font-bold">Produk Kami</h1>

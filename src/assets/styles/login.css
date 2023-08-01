@@ -1,18 +1,19 @@
 /* css styleing page */
 
-.login-container {
-  display: flex;
-  height: 100vh;
+.login-form-input{
+  @apply flex w-[100%] bg-primary-10 items-center pl-3 h-11 rounded
+}
+
+/* Error submit login */
+.error-submit{
+  @apply text-error-40 flex justify-center items-center bg-error-40 mt-5 h-10
 }
 
 .left-content-login {
-  width: 50vw;
+  @apply w-1/2
 }
 
 .right-content-login {
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @apply w-1/2 flex flex-col items-center justify-center
+
 }

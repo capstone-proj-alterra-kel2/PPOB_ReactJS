@@ -2,8 +2,6 @@ import Navbar from "../../components/landing/navbar/Navbar";
 import "../../assets/styles/landing.css";
 import Hero from "../../components/landing/hero/Hero";
 import AboutUsLanding from "../../components/landing/aboutUs/AboutUs";
-import Group1 from "../../assets/img/Group 1.png";
-import Group40 from "../../assets/img/Group 40.png";
 import Footer from "../../components/landing/footer/Footer";
 import downloadps from "../../assets/img/Download Playstore.png";
 import downloadaps from "../../assets/img/Download Appstore.png";
@@ -25,288 +23,155 @@ const LandingPage = () => {
 
   return (
     <>
-      <div
-        className="min-h-screen w-full
-      "
-      >
-        <div className="circle w-[421px] h-[421px] absolute rounded-full"></div>
-        <div className="rectangle" />
+    <main className="min-h-screen w-full ">
+      <section id="banner">
         <Navbar />
-        <div className="mx-auto mt-[50px] mb-[58px] content-navbar ">
-          <h1 className="text-center ">
-            Transaksi Lebih Aman Dan Nyaman Bersama MYCUAN
-          </h1>
-        </div>
-        <div className="circle3 w-[421px] h-[421px] absolute rounded-full right-0 top-[455px] z-[-10]"></div>
         <Hero />
+      </section>
+      <section>
         <AboutUsLanding />
-
-        <div className="flex flex-col items-center mt-80" id="produk">
-          <div className="">
-            <p style={{ fontSize: 24, textAlign: "center", color: "#8C8E93" }}>
-              PRODUK TELEKOMUNIKASI
-            </p>
-          </div>
-
-          <div className="">
-            <p style={{ fontSize: 48, textAlign: "center" }}>
-              <b>
-                Beberapa produk untuk membantu<br></br>layanan telekomunikasi
-                anda
-              </b>
-            </p>
-          </div>
-
-          <div className="w-[70px] h-[8px] bg-blue mt-3 rounded"></div>
+      </section>
+      <section className="py-[120px] px-0 lg:px-[120px]  w-full flex flex-col  items-center gap-16">
+        {/* Title Content */}
+        <div className="flex flex-col gap-3 items-center">
+          <h3 className="text-xl font-bold text-grayScale-60">
+            PRODUK TELEKOMUNIKASI
+          </h3>
+          <h1 className="text-4xl font-bold text-center text-grayScale-90">
+            Beberapa produk untuk membantu <br /> layanan telekomunikasi anda
+          </h1>
+          <hr className="bg-primary-50 w-[70px] h-2 rounded-full" />
         </div>
+        {/* Content */}
+        <section className="mx-[0px]  lg:mx-[120px] w-full flex flex-col gap-10 lg:gap-16 ">
+          {/* 1 */}
+          <section className="flex flex-col lg:flex-row justify-between items-center gap-10 h-auto p-5 lg:p-0 lg:h-[545px]   ">
+            <img className="w-full lg:w-[852px]" src={fitur1} alt="" />
 
-        {/* topup pulsa */}
-        <div className="flex mx-[155px] justify-center items-center">
-          <div className="">
-            <img
-              className="absolute"
-              src={fitur1}
-              alt="a.png"
-              style={{
-                width: "330px",
-                height: "330px",
-                top: "1450px",
-                left: "140px",
-              }}
-            />
-          </div>
-          <div
-            className="ml-[400px] mt-[150px]"
-            style={{ textAlign: "justify" }}
-          >
-            <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
-              <b>#1</b>
-            </p>
-            <p className="text2" style={{ fontSize: 36 }}>
-              <b>Makin mudah Isi pulsa ke berbagai macam operator</b>
-            </p>
-            <p className="text3" style={{ fontSize: 16 }}>
-              Melalui fitur ini, pembeli dapat membeli pulsa prabayar dari
-              berbagai operator dan memilih nominal pulsa sesuai kebutuhan
-            </p>
-          </div>
-        </div>
-
-        {/* topup game */}
-        <div className="flex justify-center items-center mx-[155px] mb-[200px]">
-          <div
-            className="ml-[30px] mr-[400px] mt-[150px]"
-            style={{ textAlign: "justify" }}
-          >
-            <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
-              <b>#2</b>
-            </p>
-            <p className="text2" style={{ fontSize: 36 }}>
-              <b>Berbagai macam paket data yang memiliki banyak bonus</b>
-            </p>
-            <p className="text3" style={{ fontSize: 16 }}>
-              Melalui fitur ini, pembeli dapat memilih paket data yang tersedia
-              sesuai kebutuhan
-            </p>
-          </div>
-          <div className="">
-            <img
-              className="absolute"
-              src={fitur2}
-              alt="a.png"
-              style={{
-                width: "350px",
-                height: "350px",
-                top: "1900px",
-                left: "820px",
-              }}
-            />
-          </div>
-        </div>
-
-        {/* indihome */}
-        <div className="flex mx-[155px] justify-center items-center mb-[100px]">
-          <div className="">
-            <img
-              className=""
-              src={fitur3}
-              alt="a.png"
-              style={{
-                width: "545px",
-                height: "443px",
-                top: "1500px",
-                left: "140px",
-              }}
-            />
-          </div>
-          <div className="ml-[100px] mt-[0px]" style={{ textAlign: "justify" }}>
-            <p className="text1" style={{ color: "#2A8010", fontSize: 24 }}>
-              <b>#3</b>
-            </p>
-            <p className="text2" style={{ fontSize: 36 }}>
-              <b>
-                Bayar tagihan internet indihome
-                <br />
-                kapanpun dan dimanapun
-              </b>
-            </p>
-            <p className="text3" style={{ fontSize: 16 }}>
-              Melalui fitur ini, pengguna dapat melakukan pengecekan tagihan dan
-              pembayaran Telkom/IndiHome secara online
-            </p>
-          </div>
-        </div>
-
-        {/* produk tagihan */}
-        <div className="flex flex-col items-center bg-grey3 h-[800px]">
-          <div className="mt-[80px]">
-            <p style={{ fontSize: 24, textAlign: "center", color: "#8C8E93" }}>
-              PRODUK TAGIHAN
-            </p>
-          </div>
-
-          <div className="">
-            <p style={{ fontSize: 48, textAlign: "center" }}>
-              <b>
-                Beberapa produk untuk membantu<br></br>berbagai macam tagihan
-                anda
-              </b>
-            </p>
-          </div>
-
-          <div className="w-[70px] h-[8px] bg-blue mt-3 rounded"></div>
-
-          <div className="flex flex-row gap-4 mt-20 mb-10">
-            {/* bpjs */}
-            <div class="w-[285px] h-[208px] mt-[20px] mb-[20px] rounded-md dropshadow-sm bg-white">
-              <img
-                className=""
-                src={BPJS}
-                alt="a.png"
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  marginLeft: "20px",
-                  marginTop: "20px",
-                }}
-              />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
-                <b>BPJS</b>
-              </h1>
-              <p style={{ marginLeft: "20px" }}>
-                Pembayaran BPJS secara online, berbagai metode pembayaran
+            <div className="flex flex-col justify-start gap-7">
+              <div className="flex flex-col gap-3 ">
+                <h3 className="text-xl font-bold text-succes-70">#1</h3>
+                <h1 className="text-4xl font-bold  text-grayScale-90">
+                  Makin mudah Isi pulsa ke berbagai macam operator
+                </h1>
+                <hr className="bg-primary-50 w-[70px] h-2 rounded-full" />
+              </div>
+              <p className="text-base">
+                Melalui fitur ini, pembeli dapat membeli pulsa prabayar dari
+                berbagai operator dan memilih nominal pulsa sesuai kebutuhan
               </p>
             </div>
+          </section>
+          {/* 2 */}
+          <section className="flex flex-col lg:flex-row justify-between items-center gap-10 h-auto p-5 lg:p-0 lg:h-[545px]  ">
+            <img className="w-full lg:w-[852px] order-1 lg:order-2" src={fitur2} alt="" />
 
-            {/* listrik */}
-            <div class="rounded-md w-[285px] h-[208px] mt-[20px] mb-[20px] dropshadow=sm bg-white">
-              <img
-                className=""
-                src={Tagihanlistrik}
-                alt="a.png"
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  marginLeft: "20px",
-                  marginTop: "20px",
-                }}
-              />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
-                <b>Tagihan Listrik</b>
-              </h1>
-              <p style={{ marginLeft: "20px" }}>
-                Pembayaran tagihan listrik secara online, dengan berbagai metode
-                pembayaran
+            <div className="flex flex-col justify-start gap-7 order-2 lg:order-1">
+              <div className="flex flex-col gap-3 ">
+                <h3 className="text-xl font-bold text-succes-70">#2</h3>
+                <h1 className="text-4xl font-bold  text-grayScale-90">
+                  Berbagai macam paket data dari berbagai provider
+                </h1>
+                <hr className="bg-primary-50 w-[70px] h-2 rounded-full" />
+              </div>
+              <p className="text-base">
+                Melalui fitur ini, pembeli dapat memilih paket data sesuai
+                kebutuhan dari berbagai provider
               </p>
             </div>
+          </section>
+          {/* 3 */}
+          <section className="flex flex-col lg:flex-row justify-between items-center gap-10 h-auto p-5 lg:p-0 lg:h-[545px]    ">
+            <img className="w-full lg:w-[852px]" src={fitur3} alt="" />
 
-            {/* token listrik */}
-            <div class="rounded-md w-[285px] h-[208px] mt-[20px] mb-[20px] dropshadow=sm bg-white">
-              <img
-                className=""
-                src={Tokenlistrik}
-                alt="a.png"
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  marginLeft: "20px",
-                  marginTop: "20px",
-                }}
-              />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
-                <b>Token Listrik</b>
-              </h1>
-              <p style={{ marginLeft: "20px" }}>
-                Pembayaran token listrik secara online, dengan berbagai metode
-                pembayaran
+            <div className="flex flex-col justify-start gap-7">
+              <div className="flex flex-col gap-3 ">
+                <h3 className="text-xl font-bold text-succes-70">#3</h3>
+                <h1 className="text-4xl font-bold  text-grayScale-90">
+                  Bayar tagihan internet indihome kapanpun dan dimanapun
+                </h1>
+                <hr className="bg-primary-50 w-[70px] h-2 rounded-full" />
+              </div>
+              <p className="text-base">
+                Melalui fitur ini, pengguna dapat melakukan pengecekan tagihan
+                dan pembayaran Telkom/IndiHome secara online
               </p>
             </div>
-
-            {/* pdam */}
-            <div class="rounded-md w-[285px] h-[208px] mt-[20px] mb-[20px] dropshadow=sm bg-white">
-              <img
-                className=""
-                src={PDAM}
-                alt="a.png"
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  marginLeft: "20px",
-                  marginTop: "20px",
-                }}
-              />
-              <h1 style={{ marginLeft: "20px", marginTop: "12px" }}>
-                <b>PDAM</b>
-              </h1>
-              <p style={{ marginLeft: "20px" }}>
-                Pembayaran PDAM secara online, berbagai metode pembayaran
-              </p>
-            </div>
-          </div>
+          </section>
+        </section>
+      </section>
+      {/* 4 */}
+      <section className="flex flex-col  w-full items-center bg-grayScale-20 pt-[120px] pb-[304px]">
+        {/* Top */}
+        <div className="flex flex-col gap-3 items-center">
+          <h3 className="text-xl font-bold text-grayScale-60">
+            PRODUK TELEKOMUNIKASI
+          </h3>
+          <h1 className="text-5xl font-bold text-center text-grayScale-90">
+            Beberapa produk untuk membantu <br /> layanan telekomunikasi anda
+          </h1>
+          <hr className="bg-primary-50 w-[70px] h-2 rounded-full" />
         </div>
 
-        {/* cta */}
-        <div
-          id="download"
-          className="download flex flex-col justify-center items-center mx-[40px] w-[95%] h-[468px] top-[3400px] mt-[50px] absolute"
-        >
-          <div>
-            <p className="font-bold text-5xl mx-[217] text-center text-white1">
-              Download Aplikasi Kami Sekarang Juga dan Nikmati Produk Utama
-              Kami.
+        <div className="flex flex-col md:flex-row md:flex-wrap pt-[66px] items-center justify-center md:justify-around  gap-5   w-full">
+          {/* bpjs */}
+          <div class="rounded-md w-[285px] h-[208px] py-[18px] px-4 bg-grayScale-10">
+            <img className="w-12 h-12 mb-3" src={BPJS} alt="a.png" />
+            <h1>BPJS</h1>
+            <p>Pembayaran BPJS secara online, berbagai metode pembayaran</p>
+          </div>
+          {/* listrik */}
+          <div class="rounded-md w-[285px] h-[208px] py-[18px] px-4 bg-grayScale-10">
+            <img className="w-12 h-12 mb-3" src={Tagihanlistrik} alt="a.png" />
+            <h1>Tagihan Listrik</h1>
+            <p>
+              Pembayaran tagihan listrik secara online, dengan berbagai metode
+              pembayaran
             </p>
           </div>
-          <div className=" flex justify-center items-center">
-            <img
-              className="mt-[20px] w-[248px] mr-[8px]"
-              src={downloadps}
-              alt=""
-            ></img>
-            <img className="mt-[20px] w-[248px]" src={downloadaps} alt=""></img>
+
+          {/* token listrik */}
+          <div class="rounded-md w-[285px] h-[208px] py-[18px] px-4 bg-grayScale-10">
+            <img className="w-12 h-12 mb-3" src={Tokenlistrik} alt="a.png" />
+            <h1>Token Listrik</h1>
+            <p>
+              Pembayaran token listrik secara online, dengan berbagai metode
+              pembayaran
+            </p>
+          </div>
+
+          {/* pdam */}
+          <div class="rounded-md w-[285px] h-[208px] py-[18px] px-4 bg-grayScale-10">
+            <img className="w-12 h-12 mb-3" src={PDAM} alt="a.png" />
+            <h1>PDAM</h1>
+            <p>Pembayaran PDAM secara online, berbagai metode pembayaran</p>
           </div>
         </div>
-
-        <button
-          onClick={() => {
-            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-          }}
-          style={{
-            position: "fixed",
-            padding: "1rem 1rem",
-            fontSize: "20px",
-            bottom: "40px",
-            right: "40px",
-            backgroundColor: "#0D40C6",
-            color: "#fff",
-            textAlign: "center",
-          }}
-        >
-          <AiOutlineArrowUp />
-        </button>
-
-        <Footer id="kontak" />
-      </div>
+      </section> 
+    </main>
+    <section className="relative w-full h-[600px] p-0 bg-primary-30 bg-primary left-0">
+      <section id="download" className="absolute download  flex flex-col gap-10 justify-center items-center left-1/2 -top-[200px] px-5  w-[95%] mx-auto h-[468px] ">
+            <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl  text-center text-grayScale-10">
+              Download Aplikasi Kami Sekarang Juga <br/> dan Nikmati Produk Utama Kami.
+            </h1>
+          <div className=" flex flex-col md:flex-row gap-5 justify-center items-center">
+            <img className="w-[248px] " src={downloadps} alt=""/>
+            <img className="w-[248px]" src={downloadaps} alt=""/>
+          </div>
+      </section>
+      <Footer/>
+    </section>
+    <button
+        onClick={() => {
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        }}
+        className="fixed font-bold p-5 text-xl bottom-10 right-10 text-grayScale-10 text-center bg-primary-50 rounded-xl"
+     
+      >
+        <AiOutlineArrowUp />
+      </button>
     </>
+
   );
 };
 

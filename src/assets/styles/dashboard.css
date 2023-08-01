@@ -23,89 +23,41 @@
 /*End  Search */
 
 .pagination {
-  list-style: none;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-bottom: 5rem;
-  margin-right: 5rem;
-  font-size: 1.2rem;
-  gap: 5px;
+  @apply list-none flex justify-end items-center mt-20 mr-20 text-2xl gap-[5px];
 }
 
 .pagination .page-link {
-  padding: 4px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: 500;
-  color: #0d40c6;
-  background-color: #b6c6ee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply cursor-pointer py-1 px-[15px] font-medium rounded text-primary-50 bg-primary-40 flex justify-center items-center;
 }
 .pagination .page-link-next {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: 500;
-  background-color: #0d40c6;
-  color: #fff;
+  @apply flex justify-center items-center py-1 px-[15px] cursor-pointer text-grayScale-10 rounded font-medium bg-primary-50;
 }
 
 .pagination .page-link-data {
-  padding: 4px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: 500;
-  background-color: #fff;
-  color: #0d40c6;
+  @apply py-1 px-[15px] cursor-pointer rounded font-medium bg-grayScale-10 text-primary-50;
 }
 
 .pagination .page-link:hover {
-  background-color: #55b220;
-  color: #000;
+  @apply text-grayScale-100 bg-succes-50;
 }
 
 .pagination .active {
-  background-color: #55b220;
-  color: white;
+  @apply text-grayScale-10 bg-succes-50;
 }
 
 /* Users Page || users Components */
 .title {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 36px;
+  @apply font-["Inter"] font-bold text-2xl;
 }
 
 /* End Users Page || Users Components */
 
 /* Products */
 .cards-product {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+  @apply flex flex-row flex-wrap w-full;
 }
 .card-product {
-  display: flex;
-  margin-right: 24px;
-  margin-bottom: 12px;
-  width: 266px;
-  height: 121px;
-  color: #262729;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
-  background-color: #b5c4fd;
-  /* background: linear-gradient(84.3deg, #0d40c6 1.52%, #4a92e7 95.29%); */
-  border-radius: 12px;
+  @apply flex mr-6 mb-3 w-[266px] h-[121px] text-grayScale-90 font-semibold text-2xl bg-primary-30 rounded-xl;
 }
 
 /* End Produts // Products Components */
@@ -115,3 +67,15 @@ input {
 }
 
 /* Card Components */
+
+.card-component {
+  @apply h-[80px] mb-2 bg-grayScale-10 flex items-center justify-between px-[18px];
+}
+
+.card-component-2 {
+  @apply h-[80px] mb-2 bg-grayScale-10 flex items-center justify-between px-6 py-4  rounded-xl;
+}
+
+.modal-component {
+  @apply fixed inset-0 bg-grayScale-100 bg-opacity-25 backdrop-blur-sm flex justify-center items-center;
+}

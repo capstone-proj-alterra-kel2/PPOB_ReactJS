@@ -68,14 +68,14 @@ const TelkomselPagePaketData = () => {
     <Sidebar>
       <div className="px-10 py-3">
         <div className="pb-5">
-          <p className="text-base font-medium text-grey2 mb-4">
+          <p className="text-base font-medium text-grayScale-60 mb-4">
             <BreadcrumbPDTelkomsel />
           </p>
           <div className="mb-5 flex justify-between h-[64px]">
             <div className="not-italic text-2xl font-bold ">
               Paket Data Telkomsel
             </div>
-            {/* <div className="flex text-white">
+            {/* <div className="flex text-grayScale-10">
               <button
                 onClick={filteringByStatus}
                 value="normal"
@@ -86,14 +86,14 @@ const TelkomselPagePaketData = () => {
               <button
                 onClick={filteringByStatus}
                 value="promo"
-                className="border border-primary50 text-primary50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold"
+                className="border border-primary-50 text-primary-50 py-3 px-4 rounded flex justify-center items-center text-sm font-semibold"
               >
                 <div className="text-sm font-medium">Promo</div>
               </button>
             </div> */}
           </div>
           <div className="flex justify-between">
-            <div className="search mr-5 w-[315px] bg-white rounded">
+            <div className="search mr-5 w-[315px] bg-grayScale-10 rounded">
               <AiOutlineSearch className="mr-2" />
               <input
                 type="text"
@@ -106,7 +106,7 @@ const TelkomselPagePaketData = () => {
             </div>
             <Link
               to="new"
-              className=" gap-2 px-6 py-3  bg-primary50 text-white cursor-pointer flex justify-center items-center rounded"
+              className=" gap-2 px-6 py-3  bg-primary-50 text-grayScale-10 cursor-pointer flex justify-center items-center rounded"
             >
               <img
                 src={iconAdd}
@@ -128,31 +128,28 @@ const TelkomselPagePaketData = () => {
             <>
               {currentItems.map((PaketData) => {
                 return (
-                  <div
-                    key={PaketData.id}
-                    className="card h-[80px] mb-2 bg-white flex items-center justify-between px-6 py-4  rounded-xl"
-                  >
+                  <div key={PaketData.id} className="card-component-2">
                     <div className="flex items-center flex-1 font-medium text-sm">
                       <div className=" w-80 flex flex-col">
-                        <div className="text-grey2">Nama Produk</div>
+                        <div className="text-grayScale-60">Nama Produk</div>
                         <div className="text-lg font-semibold">
                           {PaketData?.name}
                         </div>
                       </div>
                       <div className=" w-60">
-                        <div className="text-grey2">Harga Produk</div>
+                        <div className="text-grayScale-60">Harga Produk</div>
                         <div className="text-lg font-semibold">
                           {formatter.format(PaketData?.price)}
                         </div>
                       </div>
                       <div className=" w-60">
-                        <div className="text-grey2">Stok Produk</div>
+                        <div className="text-grayScale-60">Stok Produk</div>
                         <div className="text-lg font-semibold">
                           {PaketData.stock}
                         </div>
                       </div>
                       <div className=" w-60">
-                        <div className="text-grey2">Status</div>
+                        <div className="text-grayScale-60">Status</div>
                         <div className="text-lg font-semibold">
                           {PaketData.price_status}
                         </div>
@@ -162,7 +159,7 @@ const TelkomselPagePaketData = () => {
                       {/* Edit  */}
                       <Link
                         to={`edit/${PaketData.id}`}
-                        className="px-3 pt-[10px] pb-[10px]  text-primary50 flex mr-2 "
+                        className="px-3 pt-[10px] pb-[10px]  text-primary-50 flex mr-2 "
                       >
                         <img
                           src={ICONS.editIcon}
@@ -171,7 +168,7 @@ const TelkomselPagePaketData = () => {
                         />
                       </Link>
                       <button
-                        className="px-3 pt-[10px] pb-[10px] text-error50 flex"
+                        className="px-3 pt-[10px] pb-[10px] text-error-50 flex"
                         onClick={() => {
                           setID(PaketData.id);
                           setShowModalDel(true);

@@ -1,5 +1,4 @@
 import SidebarPage from "../../components/dashboard/sidebar/Sidebar";
-import { useState, useEffect } from "react";
 
 const DashboardPage = () => {
   return (

@@ -1,25 +1,8 @@
 import SidebarPage from "../../../../../components/dashboard/sidebar/Sidebar";
 import { pulsaData } from "../../../../../components/dashboard/products/Telecommunication";
 import { NavLink } from "react-router-dom";
-import { GetProduct } from "../../../../../apis/produtcs";
-// import { useEffect } from "react";
-// import { AxiosInstance } from "../../../../../apis/api";
-// import { useDispatch } from "react-redux";
-// import { setProducts } from "../../../../../redux/feature/ProductSlice";
-// import Cookies from "js-cookie";
-// import { useState } from "react";
 
 const PaketData = () => {
-  // const dispatch = useDispatch();
-  // const token = Cookies.get("token");
-  // const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   GetProduct.then((res) => {
-  //     setLoading(false);
-  //     dispatch(setProducts(res.data.data.items));
-  //     console.log("data product", res.data.data.items);
-  //   });
-  // }, [loading]);
   return (
     <SidebarPage>
       <div className="p-6">

@@ -32,7 +32,7 @@ const TransactionsPage = () => {
           <div className="px-10 pt-5 snap-center">
             <div className="flex justify-between pb-3">
               <div>
-                <p className="text-base font-medium text-grey2 mb-6">
+                <p className="text-base font-medium text-grayScale-60 mb-6">
                   <BreadcrumbTransaction />
                 </p>
                 <h1 className="text-3xl font-bold pl-1">
@@ -42,7 +42,7 @@ const TransactionsPage = () => {
               <div className="flex">
                 <button
                   onClick={() => setShowData(true)}
-                  className="pending w-[200px] h-[45px] bg-green text-white m-1 flex justify-center items-center rounded"
+                  className="pending w-[200px] h-[45px] bg- text-grayScale-10 m-1 flex justify-center items-center rounded"
                 >
                   <img
                     src={pending}
@@ -53,7 +53,7 @@ const TransactionsPage = () => {
                 </button>
                 <button
                   onClick={() => setShowData(false)}
-                  className="berhasil w-[200px] h-[45px] m-1 border border-midblue text-midblue flex justify-center items-center rounded"
+                  className="berhasil w-[200px] h-[45px] m-1 border border-primary-50 text-primary-50 flex justify-center items-center rounded"
                 >
                   <img
                     src={berhasil}

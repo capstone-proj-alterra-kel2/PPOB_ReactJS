@@ -114,14 +114,14 @@ const EditPaketDataTelkomsel = () => {
       <SidebarPage>
         <div className="flex flex-col justify-center items-center h-full">
           <h1 className="font-bold text-3xl my-3">Edit Produk</h1>
-          <div className="h-auto w-[600px] gap-6 bg-white rounded-xl mb-8">
+          <div className="h-auto w-[600px] gap-6 bg-grayScale-10 rounded-xl mb-8">
             <div className="p-6">
               <h2 className="text-2xl font-semibold">Detail</h2>
               <div className="flex justify-between items-center mb-4">
                 {/* Product */}
                 <label>Nama Produk</label>
                 <input
-                  className="border-solid border border-black w-[328px] h-14 rounded-xl px-2 "
+                  className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2 "
                   name="name"
                   type="text"
                   value={formData.name}
@@ -132,7 +132,7 @@ const EditPaketDataTelkomsel = () => {
               <div className="flex justify-between items-center mb-4">
                 <label>Stok</label>
                 <input
-                  className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                  className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                   name="stock"
                   type="number"
                   value={formData.stock}
@@ -160,7 +160,7 @@ const EditPaketDataTelkomsel = () => {
                 <label>Status Harga</label>
                 <div className="flex justify-start items-center w-[328px]">
                   <input
-                    className="border-solid border border-black w-5 h-5 rounded-xl px-2 mr-4"
+                    className="border-solid border border-grayScale-100 w-5 h-5 rounded-xl px-2 mr-4"
                     name="price_status"
                     type="radio"
                     value="normal"
@@ -169,7 +169,7 @@ const EditPaketDataTelkomsel = () => {
                   />
                   <label className="pr-10">Normal</label>
                   <input
-                    className="border-solid border border-black w-5 h-5 rounded-xl px-2 mr-4"
+                    className="border-solid border border-grayScale-100 w-5 h-5 rounded-xl px-2 mr-4"
                     name="price_status"
                     type="radio"
                     value="promo"
@@ -184,7 +184,7 @@ const EditPaketDataTelkomsel = () => {
                   <div className="flex justify-between items-center mb-4">
                     <label>Harga Promo</label>
                     <input
-                      className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                      className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                       name="discount"
                       type="number"
                       onChange={onChangeData}
@@ -196,14 +196,14 @@ const EditPaketDataTelkomsel = () => {
                     <label>Periode Promo</label>
                     <div className="flex flex-col justify-end">
                       <input
-                        className="border-solid border border-black w-[328px] h-14 rounded-xl px-2"
+                        className="border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2"
                         onChange={onChangeData}
                         name="promo_start_date"
                         type="date"
                       />
                       <label className="mb-3">DD/MM/YYYY</label>
                       <input
-                        className=" border-solid border border-black w-[328px] h-14 rounded-xl px-2 "
+                        className=" border-solid border border-grayScale-100 w-[328px] h-14 rounded-xl px-2 "
                         onChange={onChangeData}
                         name="promo_end_date"
                         type="date"
@@ -217,13 +217,13 @@ const EditPaketDataTelkomsel = () => {
               <div className="flex justify-center items-center">
                 <button
                   onClick={backToTelkomsel}
-                  className=" mr-5 w-[123px] h-12  gap-8 border border-primary50 text-primary50 rounded-full font-semibold text-base"
+                  className=" mr-5 w-[123px] h-12  gap-8 border border-primary-50 text-primary-50 rounded-full font-semibold text-base"
                 >
                   Batalkan
                 </button>
                 <button
                   onClick={Update}
-                  className=" mr-5 w-[123px] h-12  gap-8 bg-primary50 text-white rounded-full font-semibold text-base"
+                  className=" mr-5 w-[123px] h-12  gap-8 bg-primary-50 text-grayScale-10 rounded-full font-semibold text-base"
                 >
                   Tambahkan
                 </button>

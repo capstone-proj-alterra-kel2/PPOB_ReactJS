@@ -13,7 +13,6 @@ import { useRef } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [token, setToken] = useState(Cookies.get("token"));
   const [password, setPassword] = useState("");
   const [navigate, setNavigate] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -68,22 +67,20 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container ">
+    <div className="flex h-screen ">
       <img src={imageLogin} alt="login" className="left-content-login" />
-      <Link to="/landing" className="absolute top-10 left-10 bg-white p-5">
-        Landing
-      </Link>
+      <Link to="/" className="absolute top-10 left-10 bg-grayScale-10 p-5 rounded-xl">Landing</Link>
 
       <div className="right-content-login bg-grey">
         <div className="w-[400px] flex flex-col justify-center items-center mb-7">
           <img src={logo} alt="logo.png" className="w-[100px] h-[100px] mb-5" />
           <h1 className="font-bold text-3xl mb-1">Masuk</h1>
-          <p className=" text-grey2 font-normal text-base">
+          <p className=" text-grayScale-60 font-normal text-base">
             Silahkan masuk Untuk melanjutkan
           </p>
         </div>
-        <form onSubmit={submit} className="w-[400px]">
-          <div className="flex w-[100%] bg-white items-center pl-3 h-11 rounded mb-5">
+        <form onSubmit={submit} className="w-[400px] flex flex-col gap-5">
+          <div className="login-form-input ">
             <img src={emailIcon} alt="email.icon" className="w-5 h-5 mr-2" />
             <input
               placeholder="name.example@gmail.com"
@@ -94,7 +91,7 @@ const Login = () => {
               }}
             />
           </div>
-          <div className="flex w-[100%] bg-white items-center pl-3 h-11 rounded">
+          <div className="login-form-input">
             <img src={lockIcon} alt="email.icon" className="w-5 h-5 mr-2" />
             <input
               placeholder="password"
@@ -110,7 +107,7 @@ const Login = () => {
           </div>
 
           {errMsg && (
-            <p className="text-red2 flex justify-center items-center bg-merah mt-5 h-10 ">
+            <p className="error-submit ">
               {errMsg}
             </p>
           )}
@@ -118,7 +115,7 @@ const Login = () => {
           <div className="flex justify-center ">
             <button
               type="submit"
-              className=" align-center text-center text-sm w-[152px]  bg-primary50 text-white h-11 py-[10px] px-5 mt-8 rounded"
+              className=" align-center text-center text-sm w-[152px]  bg-primary-50 text-grayScale-10 h-11 py-[10px] px-5 mt-8 rounded"
             >
               Masuk Sekarang
             </button>

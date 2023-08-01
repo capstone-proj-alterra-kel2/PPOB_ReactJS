@@ -62,13 +62,13 @@ const AdminPage = ({ isOpen }) => {
       <div className="px-10 py-5">
         <div className="flex  pb-3 flex-col">
           <div className="mb-5">
-            <p className="text-base font-medium text-grey2">
+            <p className="text-base font-medium text-grayScale-60">
               <BreadcrumbAdmin />
             </p>
             <div className="not-italic text-2xl font-bold ">Menu Admin</div>
           </div>
           <div className="flex justify-between">
-            <div className="search mr-5 w-[315px] bg-white rounded">
+            <div className="search mr-5 w-[315px] bg-grayScale-10 rounded">
               <AiOutlineSearch className="mr-2" />
               <input
                 type="text"
@@ -80,7 +80,7 @@ const AdminPage = ({ isOpen }) => {
               />
             </div>
             <div
-              className=" gap-[10px] px-5 pt-[10px] pb-[10px] bg-primary50 text-white cursor-pointer flex justify-center items-center rounded"
+              className=" gap-[10px] px-5 pt-[10px] pb-[10px] bg-primary-50 text-grayScale-10 cursor-pointer flex justify-center items-center rounded"
               onClick={() => {
                 setShowModalAddAdmin(true);
               }}
@@ -105,10 +105,7 @@ const AdminPage = ({ isOpen }) => {
           ) : (
             currentItems.map((item) => {
               return (
-                <div
-                  key={item.id}
-                  className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px] flex-wrap"
-                >
+                <div key={item.id} className="card card-component flex-wrap">
                   <div className="flex items-center text-sm ">
                     <div className=" mr-12 relative">
                       <img
@@ -118,11 +115,11 @@ const AdminPage = ({ isOpen }) => {
                       />
                     </div>
                     <div className="pr-[50px] w-[250px]">
-                      <div className="text-grey2">Nama Lengkap</div>
+                      <div className="text-grayScale-60">Nama Lengkap</div>
                       <div>{item.name}</div>
                     </div>
                     <div className="pr-[50px] w-60">
-                      <div className="text-grey2">Email</div>
+                      <div className="text-grayScale-60">Email</div>
                       <div>{item.email}</div>
                     </div>
                   </div>
@@ -141,7 +138,7 @@ const AdminPage = ({ isOpen }) => {
                       />
                     </button>
                     <button
-                      className="px-3 pt-[10px] pb-[10px] text-error50 flex"
+                      className="px-3 pt-[10px] pb-[10px] text-error-50 flex"
                       onClick={() => {
                         setID(item.id);
                         setShowModalDelAdmin(true);

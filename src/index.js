@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./redux/Store";
 import { PersistGate } from "redux-persist/integration/react";
 import "./assets/styles/dashboard.css";
+import "./assets/styles/landing.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

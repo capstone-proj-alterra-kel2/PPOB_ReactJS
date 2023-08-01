@@ -49,12 +49,12 @@ const DelPaketDataTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
   return (
     <>
       <div
-        className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
+        className="fixed inset-0 bg-grayScale-100 bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
         id="wrapper"
         onClick={handleClose}
       >
         <div className="w-[454px] flex flex-col">
-          <div className="bg-grey3 p-2 rounded">
+          <div className="bg-grayScale-20 p-2 rounded">
             <div className="flex flex-col">
               <div className="h-[68px] w-[100%] ">
                 <img src={backgroundDel} />
@@ -64,7 +64,7 @@ const DelPaketDataTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
               <h1 className="text-lg text-center mb-[10px]">
                 Anda yakin ingin menghapus Produk ini:
               </h1>
-              <div className="bg-lightyellow h-[45px] mb-5 text-center text-sm pt-[10px] pb-[10px]">
+              <div className="bg-warning-10 h-[45px] mb-5 text-center text-sm pt-[10px] pb-[10px]">
                 {name}
               </div>
             </div>
@@ -74,13 +74,13 @@ const DelPaketDataTelkomsel = ({ isVisible, onClose, id, setLoading }) => {
                   onClose();
                   toast.error("Akun Pengguna GAGAL DIHAPUS!");
                 }}
-                className="bg-grey p-[10px] w-[200px] mr-[12px] gap-[10px] text-midblue border-solid border-2 border-midblue rounded"
+                className="bg-primary-10 p-[10px] w-[200px] mr-[12px] gap-[10px] text-primary-50 border-solid border-2 border-primary-50 rounded"
               >
                 Kembali
               </button>
               <button
                 onClick={handleDelete}
-                className="p-[10px] w-[200px] bg-red2 gap-[10px] text-white rounded"
+                className="p-[10px] w-[200px] bg-error-40 gap-[10px] text-grayScale-10 rounded"
               >
                 Ya, Hapus Sekarang
               </button>

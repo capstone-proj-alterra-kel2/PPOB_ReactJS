@@ -70,7 +70,7 @@ const PendingTransaction = () => {
   return (
     <div>
       <div className="sub-menu flex justify-between  flex-wrap pb-3 pt-5 ">
-        <div className="search w-[315px] bg-white rounded h-[45px] m-1">
+        <div className="search w-[315px] bg-grayScale-10 rounded h-[45px] m-1">
           <AiOutlineSearch className="mr-2" />
           <input
             type="text"
@@ -80,7 +80,7 @@ const PendingTransaction = () => {
             }}
           />
         </div>
-        <div className="drop-down w-[154px] bg-white h-[45px] m-1 flex justify-center">
+        <div className="drop-down w-[154px] bg-grayScale-10 h-[45px] m-1 flex justify-center">
           <select
             className=" w-[154px]"
             onChange={(e) => dataFilteringBYProduct(e)}
@@ -105,26 +105,26 @@ const PendingTransaction = () => {
         ) : (
           <>
             {currentItems.map((data) => (
-              <div className="card h-[80px] mb-2 bg-white flex items-center justify-between px-[18px]">
+              <div className="card card-component">
                 <div className="flex items-center w-full">
                   <div style={{ flex: "1" }}>
-                    <div className="text-grey2">ID</div>
+                    <div className="text-grayScale-60">ID</div>
                     <div>{data.id}</div>
                   </div>
                   <div style={{ flex: "2" }}>
-                    <div className="text-grey2">Tanggal</div>
+                    <div className="text-grayScale-60">Tanggal</div>
                     <div>{data.transaction_date}</div>
                   </div>
                   <div style={{ flex: "3" }}>
-                    <div className="text-grey2">Email</div>
+                    <div className="text-grayScale-60">Email</div>
                     <div>{data.user_email}</div>
                   </div>
                   <div style={{ flex: "2" }}>
-                    <div className="text-grey2">Produk</div>
+                    <div className="text-grayScale-60">Produk</div>
                     <div>{data.product_type}</div>
                   </div>
                   <div style={{ flex: "2" }}>
-                    <div className="text-grey2">Total Pembayaran</div>
+                    <div className="text-grayScale-60">Total Pembayaran</div>
                     <div>
                       {new Intl.NumberFormat("id-ID", {
                         style: "currency",
@@ -133,7 +133,7 @@ const PendingTransaction = () => {
                     </div>
                   </div>
                   <div style={{ flex: "3" }}>
-                    <div className="text-grey2">Keterangan</div>
+                    <div className="text-grayScale-60">Keterangan</div>
                     <div>{data.product_name}</div>
                   </div>
                 </div>

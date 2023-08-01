@@ -9,21 +9,25 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <div className="justify-start flex items-end w-[100%] h-[700px] bg-blackfooter text-white1" id="kontak">
-        <div className="flex mx-[120px] mb-[40px]">
+      <div
+        className="p-4 justify-start flex  w-full h-auto lg:h-[600px] bg-grayScale-90 text-grayScale-10 "
+        id="kontak"
+      >
+        <div className="flex w-full justify-around flex-col lg:flex-row mt-[320px] lg:gap-[100px] " >
           {/* deskripsi mycuan */}
-          <div className="about mycuan">
-            <div className="">
+          <div className="flex flex-col gap-5 flex-1">
+            <div className="flex flex-col gap-4">
               <img
-                className="mb-[27px]"
+                className=""
                 src={logomycuan}
                 width="250px"
-                height="63px" alt=""
-              ></img>
-              <p className="text-base w-[378px] font-normal text-justify mb-[20px]">
+                height="63px"
+                alt=""
+              />
+              <p className="text-base w-full md::w-[378px] font-normal text-justify ">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since{" "}
+                text ever since
               </p>
             </div>
 
@@ -43,50 +47,41 @@ const Footer = () => {
               ></img>
             </div>
           </div>
-
-          {/* section */}
-          <div className="about mycuan ml-[100px]">
-            <div className="">
-              <div className="mb-5 text-2xl font-semibold">Section</div>
-              <ul>
-                <li className="mb-5">Tentang Kami</li>
-                <li className="mb-5">Produk Kami</li>
-                <li className="mb-5">Tentang Kami</li>
-                <li className="mb-5">Kontak</li>
+          <section className="flex flex-col md:flex-row pt-7 justify-between gap-12 flex-1">
+            {/* section */}  
+              <div className="flex flex-col gap-5">
+                <h3 className="text-2xl font-semibold">Section</h3>
+                <ul className="flex flex-col gap-5 text-base">
+                  <li className="">Tentang Kami</li>
+                  <li className="">Produk Kami</li>
+                  <li className="">Tentang Kami</li>
+                  <li className="">Kontak</li>
+                </ul>
+              </div>
+            {/* produk */}
+            <div className="flex flex-col gap-5">
+              <h3 className="text-2xl font-semibold">Produk</h3>
+              <ul className="flex flex-col gap-5 text-base">
+                <li >Top Up Pulsa</li>
+                <li >Top Up Game</li>
               </ul>
             </div>
-          </div>
-
-          {/* produk */}
-          <div className="about mycuan ml-[100px]">
-            <div className="">
-              <div className="mb-5 text-2xl font-semibold">Produk</div>
-              <ul>
-                <li className="mb-5">Top Up Pulsa</li>
-                <li className="mb-5">Top Up Game</li>
+            {/* kontak */}
+            <div className="flex flex-col gap-5">
+              <h3 className="text-2xl font-semibold">Kontak</h3>
+              <ul className="flex flex-col gap-5 text-base">
+              <li >mycuan@gmail.com</li>
+                  <li >0854 0982 5321</li>
+                  <li >@mycuan.id</li>
               </ul>
             </div>
-          </div>
-
-          {/* kontak */}
-          <div className="about mycuan ml-[100px]">
-            <div className="">
-              <div className="mb-5 text-2xl font-semibold">Kontak</div>
-              <ul>
-                <li className="mb-5">mycuan@gmail.com</li>
-                <li className="mb-5">0854 0982 5321</li>
-                <li className="mb-5">@mycuan.id</li>
-              </ul>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
 
-      <div className="bg-blackfooter2 text-white1">
-        <div className="justify-between p-[30px] flex mx-[120px]">
-          <div>Syarat dan Ketentuan</div>
-          <div>Copyright 2022 All Right Reserved</div>
-        </div>
+      <div className="bg-grayScale-90 w-full text-grayScale-10 justify-between p-[30px] flex ">
+        <div>Syarat dan Ketentuan</div>
+        <div>Copyright 2022 All Right Reserved</div>
       </div>
     </>
   );
