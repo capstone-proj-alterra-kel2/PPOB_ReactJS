@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Payment Point Online Bank
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Project Goal
 
-## Available Scripts
+"Payment Point Online Bank" or abbreviated as PPOB is a real-time online bill payment service available 24/7, enabling faster, accurate, and secure data and fund reconciliation processes.
 
-In the project directory, you can run:
+### Project Scope
 
-### `npm start`
+In this project, PPOB is still in the form of a mobile app for end users and a website for administrators. PPOB is focused on the B2C market, so it will directly interact with users. In this material, you are tasked with creating product transactions according to your key points or discussions. Therefore, we have divided the users as follows:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. End Users:
+   End users are the users who use the application on the mobile platform. They can register, perform transactions, and view the transaction history.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Admin:
+   The super admin is a user who manages all accounts and data. The admin in the PPOB system can also manipulate products and transactions.
 
-### `npm test`
+### Key Activities for Team Front End ReactJS (Admin) Website
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Manage Product and Transaction
+- Manage Register user
+- Send invoice via email user (Nilai Plus)
+- Landing page (For User)
 
-### `npm run build`
+### CONTRIBUTORS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Marcell Andreas Samadhani DUha
+- Neta Aulya Kurnia N
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### TECH
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+this website is built using :
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Create React App - Create React App is a script or tool that facilitates developers to quickly create and set up React projects without complex manual configuration.
+- React JS - ReactJS (abbreviated as React) is a JavaScript library used to build user interfaces (UI) for web applications. Developed by Facebook, ReactJS allows developers to create reusable UI components and efficiently manage changes to the display through the concept of Virtual DOM. ReactJS is highly popular in modern web development due to its fast performance, high reactivity, and strong support from the developer community.
+- Tailwind CSS - Tailwind CSS is a CSS framework developed to simplify the process of styling and designing web projects.
+- Axios - Axios facilitates the communication process with the backend through APIs by providing simple and easy-to-use methods.
+- JS Cookie - JS-Cookie is a lightweight JavaScript library used to manage cookies in web applications. This library simplifies the process of setting, reading, and deleting cookies in a simple and user-friendly manner.
+- Google Chrome - Google Chrome is a fast web browser available free of charge, which is an essential tool in the process of creating website pages.
